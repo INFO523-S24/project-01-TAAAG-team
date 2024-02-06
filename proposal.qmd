@@ -26,7 +26,7 @@ The 2021–2022 English Premier League (EPL) season's match-day statistics are c
 
 **Reasons for Choosing this Dataset:**
 
-This dataset draws attention because of its rich detail and storytelling potential in the context of one of the most watched sports leagues in the world. Football games are a complex tapestry of skill, strategy, and occasionally pure unpredictableness. Examining this information provides a singular chance to explore the statistical elements that could impact game results, ranging from team discipline records to the efficiency of shoots on goal. It enables a multifaceted investigation into the relationship between in-game occurrences and success or failure, offering insights that may be of use to observers, coaches, and even players who are trying to improve their tactics. By include halftime data, the analysis gains additional depth and an interesting new perspective on momentum fluctuations within games.
+This dataset draws attention because of its rich detail and storytelling potential in the context of one of the most watched sports leagues in the world. Football games are a complex tapestry of skill, strategy, and occasionally pure unpredictableness. The examination of this information provides a singular chance to explore the statistical elements that could impact game results, ranging from team discipline records to the efficiency of shoots on goal. It enables a multifaceted investigation into the relationship between in-game occurrences and success or failure, offering insights that may be of use to observers, coaches, and even players who are trying to improve their tactics. By include halftime data, the analysis gains additional depth and an interesting new perspective on momentum fluctuations within games.
 
 ## Questions
 
@@ -58,5 +58,4 @@ The variables are involved:** FTR, HTR, HAG, and HTH.
 
 **Analysis:** Use logistic regression to predict full-time results from halftime scores and statistical tests (such as chi-squared tests) to evaluate the relevance of halftime leads on full-time outcomes.
 
-**External Data:** Additional information about halftime vs. full-time performance dynamics may be obtained by incorporating data on team tiredness, such as the number of matches played in a short period of time, or critical in-game occurrences, such as key player injuries.
-
+**External Data:** Additional information about halftime vs. full-time performance dynamics may be obtained by incorporating data on team fatigue, such as the number of matches played in a short period of time, or critical in-game occurrences, such as key player injuries.
