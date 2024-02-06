@@ -15,8 +15,13 @@ import numpy as np
 ## Dataset
 
 ```{python}
-#| label: load-dataset
-#| message: false
+import pandas as pd
+
+#importing csv into pandas dataframe
+import_data = pd.read_csv("data/soccer21-22.csv")
+
+#printing to only show first 5 rows of data
+print(import_data.head())
 ```
 
 **Dataset Description:**
