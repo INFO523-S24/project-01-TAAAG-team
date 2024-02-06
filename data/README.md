@@ -1,7 +1,7 @@
 # Data
--   **[Dataset]**: The 2021–2022 English Premier League (EPL) season's match-day statistics are contained in this dataset, which is sourced from Evan Gower's work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match's dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season.
+-   **[English Premier League Dataset]**: The 2021–2022 English Premier League (EPL) season's match-day statistics are contained in this dataset, which is sourced from Evan Gower's work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match's dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season.
 
-# Codebook for [chosen] Dataset
+# Codebook for English Premier League Dataset
 ```{r}
 # Get the Data
 
