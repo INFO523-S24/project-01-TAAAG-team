@@ -1,6 +1,6 @@
 ---
-title: "Proposal title"
-subtitle: "Proposal"
+title: "Premier League Performance Metrics and Results: A Dynamic Analysis"
+subtitle: "Deciphering the Statistics That Support Football Performance in the 2021–2022"
 format: html
 editor: visual
 jupyter: python3
@@ -19,14 +19,44 @@ import numpy as np
 #| message: false
 ```
 
-A brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.
+**Dataset Description:**
 
-Make sure to load the data and use inline code for some of this information.
+\
+The 2021–2022 English Premier League (EPL) season's match-day statistics are contained in this dataset, which is sourced from Evan Gower's work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match's dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season.
+
+**Reasons for Choosing this Dataset:**
+
+This dataset draws attention because of its rich detail and storytelling potential in the context of one of the most watched sports leagues in the world. Football games are a complex tapestry of skill, strategy, and occasionally pure unpredictableness. Examining this information provides a singular chance to explore the statistical elements that could impact game results, ranging from team discipline records to the efficiency of shoots on goal. It enables a multifaceted investigation into the relationship between in-game occurrences and success or failure, offering insights that may be of use to observers, coaches, and even players who are trying to improve their tactics. By include halftime data, the analysis gains additional depth and an interesting new perspective on momentum fluctuations within games.
 
 ## Questions
 
-The two questions you want to answer.
+**Question 01:**\
+What is the relationship between in-game metrics such as shots on goal, fouls committed, and cards received and the results of matches? Is it possible to create a predictive model using these metrics to predict match results?
+
+**Question 02:**
+
+How do halftime performances affect the outcome at the end of the game? Which teams have a better chance of winning at halftime, and how does this alter from team to team?
 
 ## Analysis plan
 
--   A plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any).
+For Question 01:
+
+**The variables are involved:** 'FTHG', 'FTAG', 'FTR', 'HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR' are the var
+
+**Data Preparation:** To find trends and outliers, combine match information with team-level season summaries.
+
+**Analysis:** To find correlations and create a predictive model for match outcomes based on in-game performance measures, use regression analysis and machine learning techniques (e.g., logistic regression, decision trees).
+
+**External Data:** The predictive power of the model may be improved by including player-specific statistics, team rankings, or past performance data.
+
+For Question 02:
+
+**\
+The variables are involved:** FTR, HTR, HAG, and HTH.
+
+**Data Preparation:** Sort games into groups according to leads, deficits, or ties at the half, then contrast the groupings with the final scores.
+
+**Analysis:** Use logistic regression to predict full-time results from halftime scores and statistical tests (such as chi-squared tests) to evaluate the relevance of halftime leads on full-time outcomes.
+
+**External Data:** Additional information about halftime vs. full-time performance dynamics may be obtained by incorporating data on team tiredness, such as the number of matches played in a short period of time, or critical in-game occurrences, such as key player injuries.
+
