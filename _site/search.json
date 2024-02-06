@@ -2,30 +2,30 @@
   {
     "objectID": "proposal.html",
     "href": "proposal.html",
-    "title": "Proposal title",
+    "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "",
-    "text": "import numpy as np"
+    "text": "import numpy as np\nimport pandas as pd"
   },
   {
     "objectID": "proposal.html#dataset",
     "href": "proposal.html#dataset",
-    "title": "Proposal title",
+    "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Dataset",
-    "text": "Dataset\nA brief description of your dataset including its provenance, dimensions, etc. as well as the reason why you chose this dataset.\nMake sure to load the data and use inline code for some of this information."
+    "text": "Dataset\n\n#importing csv into pandas dataframe\nimport_data = pd.read_csv(\"data/soccer21-22.csv\")\n\n#printing to only show first 5 rows of data\nprint(import_data.head())\n\n         Date    HomeTeam        AwayTeam  FTHG  FTAG FTR  HTHG  HTAG HTR  \\\n0  13/08/2021   Brentford         Arsenal     2     0   H     1     0   H   \n1  14/08/2021  Man United           Leeds     5     1   H     1     0   H   \n2  14/08/2021     Burnley        Brighton     1     2   A     1     0   H   \n3  14/08/2021     Chelsea  Crystal Palace     3     0   H     2     0   H   \n4  14/08/2021     Everton     Southampton     3     1   H     0     1   A   \n\n     Referee  ...  HST  AST  HF  AF  HC  AC  HY  AY  HR  AR  \n0   M Oliver  ...    3    4  12   8   2   5   0   0   0   0  \n1  P Tierney  ...    8    3  11   9   5   4   1   2   0   0  \n2    D Coote  ...    3    8  10   7   7   6   2   1   0   0  \n3     J Moss  ...    6    1  15  11   5   2   0   0   0   0  \n4   A Madley  ...    6    3  13  15   6   8   2   0   0   0  \n\n[5 rows x 22 columns]\n\n\nDataset Description:\nThe 2021–2022 English Premier League (EPL) season’s match-day statistics are contained in this dataset, which is sourced from Evan Gower’s work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match’s dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season.\nReasons for Choosing this Dataset:\nThis dataset captures the attention of millions because of the rich detail and storytelling potential. It is a goldmine for football enthusiasts and can provide deep details within one of the world’s most followed sports leagues. Football is a tasteful concoction of skill, strategy, and raw athleticism. This complex tapestry allows for a broad spectrum of unique opportunities to be statistically explored: fouls affecting game outcomes, team discipline, and shot efficacy. It also enables a multifaceted investigation into the relationship between in-game occurrences and success or failure, offering insights that may be of use to observers, coaches, and even players who are trying to improve their tactics. By include halftime data, the analysis gains additional depth and an interesting new perspective on momentum fluctuations within games."
   },
   {
     "objectID": "proposal.html#questions",
     "href": "proposal.html#questions",
-    "title": "Proposal title",
+    "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Questions",
-    "text": "Questions\nThe two questions you want to answer."
+    "text": "Questions\nQuestion 01: What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?\nQuestion 02: How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship?"
   },
   {
     "objectID": "proposal.html#analysis-plan",
     "href": "proposal.html#analysis-plan",
-    "title": "Proposal title",
+    "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Analysis plan",
-    "text": "Analysis plan\n\nA plan for answering each of the questions including the variables involved, variables to be created (if any), external data to be merged in (if any)."
+    "text": "Analysis plan\n\nFor Question 01:\nThe variables involved: Full-time home and away goals (“FTHG” and “FTAG”) are crucial indicators of match outcomes. Full-time results (“FTR”) will serve as the target variable for predictive modeling. Number of shots taken by the home and away team (“HS” and “AS”) and shots on target (“HST” and “AST”) reflect attacking performance. Number of fouls by the home and away team (“HF” and “AF”) and cards received (“HY”, “AY”, “HR”, and “AR”) indicate team discipline and aggression.\nData Preparation: Combining match information with team-level season summaries will indeed provide valuable context for analysis and assist in identifying trends and outliers. The dataset’s consistency across all rows and columns, without any missing or erroneous values, ensures the reliability of our analysis. Additionally, no additional calculations or adjustments to rows are required, streamlining the process for further analysis.\nAnalysis: The dataset will be partitioned into training and testing sets to aid in model development and assessment. Regression techniques, including logistic regression or decision trees, will be applied to unveil associations between in-game performance metrics and match outcomes. This examination will enable the identification of patterns and relationships pivotal for constructing predictive models aimed at determining match results.\n\nFor Question 02:\nThe variables involved: Full-time home and away goals (“FTHG” and “FTAG”) are necessary to determine team placement. Full-time results (“FTR”) denote the final actual outcome of the match. Half-time goals for the home and away teams, as well as the half-time result (“HTHG”, “HTAG”, and “HTR”), are important variables for the premise of our question. Additionally, the home team and away team (“HomeTeam” and “AwayTeam”) will identify who will win the league in our situation.\nData Preparation: Data integrity checks are diligently performed to guarantee consistency and accuracy, with any discrepancies meticulously documented to maintain transparency. Visualizations serve as powerful tools to elucidate shifts in match outcomes and league standings, offering valuable insights into the ramifications of simulated halftime results on soccer match dynamics and league championship outcomes. Notably, the dataset revealed no missing values during the examination.\nAnalysis: The dataset undergoes organization through chronological sorting of match data. Half-time results, derived from the goals scored by both home and away teams (HTHG and HTAG), are computed and juxtaposed against full-time results (FTR). Recalibration of match outcomes under the assumption that all games conclude at halftime facilitates a simulated scenario. For example, a leading home team at halftime is credited with a win, while a tied match results in a draw for both teams. These reevaluated outcomes are subsequently compared with the current league standings to discern any shifts in team rankings and overall league dynamics."
   },
   {
     "objectID": "index.html",
@@ -45,22 +45,22 @@
     "objectID": "presentation.html#quarto",
     "href": "presentation.html#quarto",
     "title": "Project title",
-    "section": "Quarto",
-    "text": "Quarto\n\nThe presentation is created using the Quarto CLI\n## sets the start of a new slide"
+    "section": "",
+    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide"
   },
   {
     "objectID": "presentation.html#layouts",
     "href": "presentation.html#layouts",
     "title": "Project title",
-    "section": "Layouts",
-    "text": "Layouts\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\nAnd add footnotes"
+    "section": "",
+    "text": "You can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis"
   },
   {
     "objectID": "presentation.html#code",
     "href": "presentation.html#code",
     "title": "Project title",
-    "section": "Code",
-    "text": "Code\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                    mpg   R-squared:                       0.073\nModel:                            OLS   Adj. R-squared:                  0.070\nMethod:                 Least Squares   F-statistic:                     30.59\nDate:                Tue, 05 Dec 2023   Prob (F-statistic):           5.84e-08\nTime:                        15:17:43   Log-Likelihood:                -1346.4\nNo. Observations:                 392   AIC:                             2697.\nDf Residuals:                     390   BIC:                             2705.\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst         35.8015      2.266     15.800      0.000      31.347      40.257\nspeed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623\n==============================================================================\nOmnibus:                       27.687   Durbin-Watson:                   0.589\nProb(Omnibus):                  0.000   Jarque-Bera (JB):               18.976\nSkew:                           0.420   Prob(JB):                     7.57e-05\nKurtosis:                       2.323   Cond. No.                         169.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified."
+    "section": "",
+    "text": "OLS Regression Results                            \n==============================================================================\nDep. Variable:                    mpg   R-squared:                       0.073\nModel:                            OLS   Adj. R-squared:                  0.070\nMethod:                 Least Squares   F-statistic:                     30.59\nDate:                Tue, 05 Dec 2023   Prob (F-statistic):           5.84e-08\nTime:                        15:17:43   Log-Likelihood:                -1346.4\nNo. Observations:                 392   AIC:                             2697.\nDf Residuals:                     390   BIC:                             2705.\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst         35.8015      2.266     15.800      0.000      31.347      40.257\nspeed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623\n==============================================================================\nOmnibus:                       27.687   Durbin-Watson:                   0.589\nProb(Omnibus):                  0.000   Jarque-Bera (JB):               18.976\nSkew:                           0.420   Prob(JB):                     7.57e-05\nKurtosis:                       2.323   Cond. No.                         169.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified."
   },
   {
     "objectID": "presentation.html#plots",
@@ -73,22 +73,22 @@
     "objectID": "presentation.html#plot-and-text",
     "href": "presentation.html#plot-and-text",
     "title": "Project title",
-    "section": "Plot and text",
-    "text": "Plot and text\n\n\n\nSome text\ngoes here"
+    "section": "",
+    "text": "Some text\ngoes here"
   },
   {
     "objectID": "presentation.html#tables",
     "href": "presentation.html#tables",
     "title": "Project title",
     "section": "Tables",
-    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\n\n\n\nisland\n\n\n\nbill_length_mm\n\n\n\nbill_depth_mm\n\n\n\nflipper_length_mm\n\n\n\nbody_mass_g\n\n\n\nsex\n\n\n\n\n\n\n\n\n\n\n\n0\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.1\n\n\n\n18.7\n\n\n\n181.0\n\n\n\n3750.0\n\n\n\nMale\n\n\n\n\n\n\n\n1\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.5\n\n\n\n17.4\n\n\n\n186.0\n\n\n\n3800.0\n\n\n\nFemale\n\n\n\n\n\n\n\n2\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n40.3\n\n\n\n18.0\n\n\n\n195.0\n\n\n\n3250.0\n\n\n\nFemale\n\n\n\n\n\n\n\n4\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n36.7\n\n\n\n19.3\n\n\n\n193.0\n\n\n\n3450.0\n\n\n\nFemale\n\n\n\n\n\n\n\n5\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.3\n\n\n\n20.6\n\n\n\n190.0\n\n\n\n3650.0\n\n\n\nMale"
+    "text": "Tables\nIf you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,\n\n\n\n\n\n\n\n\n\n\n\n\nspecies\n\n\n\nisland\n\n\n\nbill_length_mm\n\n\n\nbill_depth_mm\n\n\n\nflipper_length_mm\n\n\n\nbody_mass_g\n\n\n\nsex\n\n\n\n\n\n\n\n\n\n\n\n0\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.1\n\n\n\n18.7\n\n\n\n181.0\n\n\n\n3750.0\n\n\n\nMale\n\n\n\n\n\n\n\n1\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.5\n\n\n\n17.4\n\n\n\n186.0\n\n\n\n3800.0\n\n\n\nFemale\n\n\n\n\n\n\n\n2\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n40.3\n\n\n\n18.0\n\n\n\n195.0\n\n\n\n3250.0\n\n\n\nFemale\n\n\n\n\n\n\n\n4\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n36.7\n\n\n\n19.3\n\n\n\n193.0\n\n\n\n3450.0\n\n\n\nFemale\n\n\n\n\n\n\n\n5\n\n\n\nAdelie\n\n\n\nTorgersen\n\n\n\n39.3\n\n\n\n20.6\n\n\n\n190.0\n\n\n\n3650.0\n\n\n\nMale"
   },
   {
     "objectID": "presentation.html#images",
     "href": "presentation.html#images",
     "title": "Project title",
     "section": "Images",
-    "text": "Images\n\nImage credit: Danielle Navarro, Percolate."
+    "text": "Images\n\n\n\nImage credit: Danielle Navarro, Percolate."
   },
   {
     "objectID": "presentation.html#math-expressions",
@@ -110,5 +110,19 @@
     "title": "About",
     "section": "",
     "text": "This project was developed by [Team Name] For INFO 523 - Data Mining and Discovery at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTeam member 1: One sentence description of Team member 1 (e.g., year, major, etc.).\nTeam member 2: One sentence description of Team member 2 (e.g., year, major, etc.).\nTeam member 3: One sentence description of Team member 3 (e.g., year, major, etc.).\nTeam member 4: One sentence description of Team member 4 (e.g., year, major, etc.)."
+  },
+  {
+    "objectID": "presentation.html",
+    "href": "presentation.html",
+    "title": "Project title",
+    "section": "",
+    "text": "The presentation is created using the Quarto CLI\n## sets the start of a new slide\n\n\n\n\nYou can use plain text\n\n\n\nor bullet points1\n\n\nor in two columns\n\n\n\nlike\nthis\n\n\n\n\n\n\n                            OLS Regression Results                            \n==============================================================================\nDep. Variable:                    mpg   R-squared:                       0.073\nModel:                            OLS   Adj. R-squared:                  0.070\nMethod:                 Least Squares   F-statistic:                     30.59\nDate:                Tue, 05 Dec 2023   Prob (F-statistic):           5.84e-08\nTime:                        15:17:43   Log-Likelihood:                -1346.4\nNo. Observations:                 392   AIC:                             2697.\nDf Residuals:                     390   BIC:                             2705.\nDf Model:                           1                                         \nCovariance Type:            nonrobust                                         \n==============================================================================\n                 coef    std err          t      P&gt;|t|      [0.025      0.975]\n------------------------------------------------------------------------------\nconst         35.8015      2.266     15.800      0.000      31.347      40.257\nspeed       -354.7055     64.129     -5.531      0.000    -480.788    -228.623\n==============================================================================\nOmnibus:                       27.687   Durbin-Watson:                   0.589\nProb(Omnibus):                  0.000   Jarque-Bera (JB):               18.976\nSkew:                           0.420   Prob(JB):                     7.57e-05\nKurtosis:                       2.323   Cond. No.                         169.\n==============================================================================\n\nNotes:\n[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSome text\ngoes here"
+  },
+  {
+    "objectID": "presentation.html#footnotes",
+    "href": "presentation.html#footnotes",
+    "title": "Project title",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nAnd add footnotes↩︎"
   }
 ]
