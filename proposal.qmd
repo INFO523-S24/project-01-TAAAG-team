@@ -15,7 +15,6 @@ import pandas as pd
 ## Dataset
 
 ```{python}
-
 #importing csv into pandas dataframe
 import_data = pd.read_csv("data/soccer21-22.csv")
 
