@@ -24,6 +24,37 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 print(import_data.head())
 ```
 
+**Full Preview of Data**
+
+| variable | class     | description                                      |
+|:---------|:----------|:-------------------------------------------------|
+| Date     | character | The date when the match was played               |
+| HomeTeam | character | The home team                                    |
+| AwayTeam | character | The away team                                    |
+| FTHG     | double    | Full time home goals                             |
+| FTAG     | double    | Full time away goals                             |
+| FTR      | character | Full time result                                 |
+| HTHG     | double    | Halftime home goals                              |
+| HTAG     | double    | Halftime away goals                              |
+| HTR      | character | Halftime results                                 |
+| Referee  | character | Referee of the match                             |
+| HS       | double    | Number of shots taken by the home team           |
+| AS       | double    | Number of shots taken by the away team           |
+| HST      | double    | Number of shots on target by the home team       |
+| AST      | double    | Number of shots on target by the away team       |
+| HF       | double    | Number of fouls by the home team                 |
+| AF       | double    | Number of fouls by the away team                 |
+| HC       | double    | Number of corners taken by the home team         |
+| AC       | double    | Number of corners taken by the away team         |
+| HY       | double    | Number of yellow cards received by the home team |
+| AY       | double    | Number of yellow cards received by the away team |
+| HR       | double    | Number of red cards received by the home team    |
+| AR       | double    | Number of red cards received by the away team    |
+
+## Introduction
+
+Evan Gower's work on Kaggle has made it possible to obtain statistics from 380 matches, giving us a detailed glimpse at the English Premier League season of 2021–2022. Along with comprehensive statistics for both home and away sides, such as goals, shots, fouls, and cards, it also provides important game information such team names, match dates, and referees. This dataset, which contains data on halftime performance as well as full-time results, is an invaluable resource for anyone wishing to examine the factors that affect football match outcomes, from individual player affects to team plans.
+
 **Dataset Description:**
 
 The 2021–2022 English Premier League (EPL) season's match-day statistics are contained in this dataset, which is sourced from Evan Gower's work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match's dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season.
@@ -42,16 +73,24 @@ This dataset captures the attention of millions because of the rich detail and s
 
 ### For Question 01:
 
+**Introduction:** The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team's eventual success or failure.
+
 **The variables involved:** Full-time home and away goals ("FTHG" and "FTAG") are crucial indicators of match outcomes. Full-time results ("FTR") will serve as the target variable for predictive modeling. Number of shots taken by the home and away team ("HS" and "AS") and shots on target ("HST" and "AST") reflect attacking performance. Number of fouls by the home and the away team ("HF" and "AF") and cards received ("HY", "AY", "HR", and "AR") indicate team discipline and aggression.
 
 **Data Preparation:** Combining match information with team-level season summaries will indeed provide valuable context for analysis and assist in identifying trends and outliers. The dataset's consistency across all rows and columns, without any missing or erroneous values, ensures the reliability of our analysis. Additionally, no additional calculations or adjustments to rows are required, streamlining the process for further analysis.
 
 **Analysis:** The dataset will be partitioned into training and testing sets to aid in model development and assessment. Regression techniques, including logistic regression or decision trees, will be applied to unveil associations between in-game performance metrics and match outcomes. This examination will enable the identification of patterns and relationships pivotal for constructing predictive models aimed at determining match results.
 
+**Discussion:** The initial examination of the data, which concentrated on factors like as cards, fouls, and shots on goal, points to a complex relationship between these measurements and game results. Higher foul and card counts may not always indicate aggressive play, but shots on target and other planned offensive efforts may imply a more direct correlation between winning and succeeding. Because of the data's consistency and lack of missing values, the analysis is streamlined and these associations may be examined in greater detail. Predictive modelling and trend analysis may provide trends that support received wisdom in football or unearth winning unexpected tactics.
+
 #### For Question 02:
+
+**Introduction:** In the second question, an alternate scenario in which football matches end at halftime is examined, along with its implications for league standings. We may evaluate the importance of second-half performances and how they affect the league-wide success of teams by using this hypothetical scenario. This issue grabs attention because it questions the established rules of the game and offers a hypothesis on the nature of comebacks and the tenacity of football teams.
 
 **The variables involved:** Full-time home and away goals ("FTHG" and "FTAG") are necessary to determine team placement. Full-time results ("FTR") denote the final actual outcome of the match. Half-time goals for the home and away teams, as well as the half-time result ("HTHG", "HTAG", and "HTR"), are important variables for the premise of our question. Additionally, the home team and away team ("HomeTeam" and "AwayTeam") will identify who will win the league in our situation.
 
 **Data Preparation:** Data integrity checks are diligently performed to guarantee consistency and accuracy, with any discrepancies meticulously documented to maintain transparency. Visualizations serve as powerful tools to elucidate shifts in match outcomes and league standings, offering valuable insights into the ramifications of simulated halftime results on soccer match dynamics and league championship outcomes. Notably, the dataset revealed no missing values during the examination.
 
 **Analysis:** The dataset undergoes organization through chronological sorting of match data. Half-time results, derived from the goals scored by both home and away teams (HTHG and HTAG), are computed and juxtaposed against full-time results (FTR). Recalibration of match outcomes under the assumption that all games conclude at halftime facilitates a simulated scenario. For example, a leading home team at halftime is credited with a win, while a tied match results in a draw for both teams. These reevaluated outcomes are subsequently compared with the current league standings to discern any shifts in team rankings and overall league dynamics.
+
+**Discussion:** The crucial significance that second-half play plays in football matches is highlighted by the simulation of halftime conclusions. According to preliminary research, some clubs might depend more on strong finishes to win games, which could cause the league rankings to change in this fictitious situation. This study not only emphasises how crucial it is to continue performing for the duration of the game, but it also encourages discussion about team tactics and how well they can be adjusted to suit various game developments. The dependability of these insights is increased by the absence of missing data, offering a strong basis for conjectural debates about team dynamics and league results.
