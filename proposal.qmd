@@ -83,7 +83,7 @@ This dataset captures the attention of millions because of the rich detail and s
 
 **Discussion:** The initial examination of the data, which concentrated on factors like as cards, fouls, and shots on goal, points to a complex relationship between these measurements and game results. Higher foul and card counts may not always indicate aggressive play, but shots on target and other planned offensive efforts may imply a more direct correlation between winning and succeeding. Because of the data's consistency and lack of missing values, the analysis is streamlined and these associations may be examined in greater detail. Predictive modelling and trend analysis may provide trends that support received wisdom in football or unearth winning unexpected tactics.
 
-#### For Question 02:
+### For Question 02:
 
 **Introduction:** In the second question, an alternate scenario in which football matches end at halftime is examined, along with its implications for league standings. We may evaluate the importance of second-half performances and how they affect the league-wide success of teams by using this hypothetical scenario. This issue grabs attention because it questions the established rules of the game and offers a hypothesis on the nature of comebacks and the tenacity of football teams.
 
