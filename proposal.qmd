@@ -26,7 +26,7 @@ print(import_data.head())
 
 **Dataset Description:**
 
-The 2021–2022 English Premier League (EPL) season's match-day statistics are contained in this dataset, which is sourced from Evan Gower's work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match's dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season.
+The 2021–2022 English Premier League (EPL) season's match-day statistics are contained in this dataset, which is sourced from Evan Gower's work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match's dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season. 
 
 **Reasons for Choosing this Dataset:**
 
@@ -34,17 +34,15 @@ This dataset captures the attention of millions because of the rich detail and s
 
 ## Questions
 
-**Question 01:**
-What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?
+**Question 01:** What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?
 
-**Question 02:**
-How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship?
+**Question 02:** How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship ?
 
 ## Analysis plan
 
 ### For Question 01:
 
-**The variables involved:** Full-time home and away goals ("FTHG" and "FTAG") are crucial indicators of match outcomes. Full-time results ("FTR") will serve as the target variable for predictive modeling. Number of shots taken by the home and away team ("HS" and "AS") and shots on target ("HST" and "AST") reflect attacking performance. Number of fouls by the home and away team ("HF" and "AF") and cards received ("HY", "AY", "HR", and "AR") indicate team discipline and aggression.
+**The variables involved:** Full-time home and away goals ("FTHG" and "FTAG") are crucial indicators of match outcomes. Full-time results ("FTR") will serve as the target variable for predictive modeling. Number of shots taken by the home and away team ("HS" and "AS") and shots on target ("HST" and "AST") reflect attacking performance. Number of fouls by the home and the away team ("HF" and "AF") and cards received ("HY", "AY", "HR", and "AR") indicate team discipline and aggression.
 
 **Data Preparation:** Combining match information with team-level season summaries will indeed provide valuable context for analysis and assist in identifying trends and outliers. The dataset's consistency across all rows and columns, without any missing or erroneous values, ensures the reliability of our analysis. Additionally, no additional calculations or adjustments to rows are required, streamlining the process for further analysis.
 
