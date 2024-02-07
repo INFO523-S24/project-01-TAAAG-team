@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -22,7 +22,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -79,13 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
+  "limit": 20,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -94,7 +88,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -108,9 +101,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
+      <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Project Title</span>
     </a>
@@ -122,32 +115,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Project</span></a>
+    <a class="nav-link" href="./index.html" rel="" target="">
+ <span class="menu-text">Project</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./proposal.html" aria-current="page"> 
-<span class="menu-text">Proposal</span></a>
+    <a class="nav-link active" href="./proposal.html" rel="" target="" aria-current="page">
+ <span class="menu-text">Proposal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./presentation.html"> 
-<span class="menu-text">Presentation</span></a>
+    <a class="nav-link" href="./presentation.html" rel="" target="">
+ <span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
+    <a class="nav-link" href="./about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/INFO523-S24/project-01"> <i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/INFO523-S24/project-01" rel="" target=""><i class="bi bi-github" role="img">
 </i> 
-<span class="menu-text"></span></a>
+ <span class="menu-text"></span></a>
   </li>  
 </ul>
-          </div> <!-- /navcollapse -->
-          <div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
 </div>
+          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -161,10 +154,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#dataset" id="toc-dataset" class="nav-link active" data-scroll-target="#dataset">Dataset</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a></li>
   <li><a href="#analysis-plan" id="toc-analysis-plan" class="nav-link" data-scroll-target="#analysis-plan">Analysis plan</a>
   <ul class="collapse">
   <li><a href="#for-question-01" id="toc-for-question-01" class="nav-link" data-scroll-target="#for-question-01">For Question 01:</a></li>
+  <li><a href="#for-question-02" id="toc-for-question-02" class="nav-link" data-scroll-target="#for-question-02">For Question 02:</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -188,17 +183,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
   
 
-
 </header>
 
-
-<div id="load-pkgs" class="cell" data-message="false" data-execution_count="1">
+<div id="load-pkgs" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<div id="6d4fb4b8" class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#importing csv into pandas dataframe</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>import_data <span class="op">=</span> pd.read_csv(<span class="st">"data/soccer21-22.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -222,6 +216,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [5 rows x 22 columns]</code></pre>
 </div>
 </div>
+<p><strong>Full Preview of Data</strong></p>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 15%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">variable</th>
+<th style="text-align: left;">class</th>
+<th style="text-align: left;">description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Date</td>
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">The date when the match was played</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HomeTeam</td>
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">The home team</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">AwayTeam</td>
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">The away team</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FTHG</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Full time home goals</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">FTAG</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Full time away goals</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">FTR</td>
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">Full time result</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HTHG</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Halftime home goals</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">HTAG</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Halftime away goals</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HTR</td>
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">Halftime results</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Referee</td>
+<td style="text-align: left;">character</td>
+<td style="text-align: left;">Referee of the match</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HS</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of shots taken by the home team</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AS</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of shots taken by the away team</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HST</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of shots on target by the home team</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AST</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of shots on target by the away team</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HF</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of fouls by the home team</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AF</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of fouls by the away team</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HC</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of corners taken by the home team</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AC</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of corners taken by the away team</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HY</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of yellow cards received by the home team</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AY</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of yellow cards received by the away team</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">HR</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of red cards received by the home team</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">AR</td>
+<td style="text-align: left;">double</td>
+<td style="text-align: left;">Number of red cards received by the away team</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Evan Gower’s work on Kaggle has made it possible to obtain statistics from 380 matches, giving us a detailed glimpse at the English Premier League season of 2021–2022. Along with comprehensive statistics for both home and away sides, such as goals, shots, fouls, and cards, it also provides important game information such team names, match dates, and referees. This dataset, which contains data on halftime performance as well as full-time results, is an invaluable resource for anyone wishing to examine the factors that affect football match outcomes, from individual player affects to team plans.</p>
 <p><strong>Dataset Description:</strong></p>
 <p>The 2021–2022 English Premier League (EPL) season’s match-day statistics are contained in this dataset, which is sourced from Evan Gower’s work on Kaggle. It is taken from the official Premier League website and has been carefully cleaned. It includes 380 matches, which represents the whole season. Every entry contains an abundance of information, such as the teams involved, the date of the match, the referee, and a variety of in-game statistics for both the home and away sides, including goals, shots, fouls, and cards. It also provides full-time results and halftime analytics, providing a detailed analysis of each match’s dynamics. This dataset offers a basis for more in-depth research into the variables impacting team performance and match results in addition to providing a numerical narrative of the season.</p>
 <p><strong>Reasons for Choosing this Dataset:</strong></p>
@@ -236,17 +361,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="analysis-plan">Analysis plan</h2>
 <section id="for-question-01" class="level3">
 <h3 class="anchored" data-anchor-id="for-question-01">For Question 01:</h3>
+<p><strong>Introduction:</strong> The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team’s eventual success or failure.</p>
 <p><strong>The variables involved:</strong> Full-time home and away goals (“FTHG” and “FTAG”) are crucial indicators of match outcomes. Full-time results (“FTR”) will serve as the target variable for predictive modeling. Number of shots taken by the home and away team (“HS” and “AS”) and shots on target (“HST” and “AST”) reflect attacking performance. Number of fouls by the home and the away team (“HF” and “AF”) and cards received (“HY”, “AY”, “HR”, and “AR”) indicate team discipline and aggression.</p>
 <p><strong>Data Preparation:</strong> Combining match information with team-level season summaries will indeed provide valuable context for analysis and assist in identifying trends and outliers. The dataset’s consistency across all rows and columns, without any missing or erroneous values, ensures the reliability of our analysis. Additionally, no additional calculations or adjustments to rows are required, streamlining the process for further analysis.</p>
 <p><strong>Analysis:</strong> The dataset will be partitioned into training and testing sets to aid in model development and assessment. Regression techniques, including logistic regression or decision trees, will be applied to unveil associations between in-game performance metrics and match outcomes. This examination will enable the identification of patterns and relationships pivotal for constructing predictive models aimed at determining match results.</p>
-<section id="for-question-02" class="level4">
-<h4 class="anchored" data-anchor-id="for-question-02">For Question 02:</h4>
+<p><strong>Discussion:</strong> The initial examination of the data, which concentrated on factors like as cards, fouls, and shots on goal, points to a complex relationship between these measurements and game results. Higher foul and card counts may not always indicate aggressive play, but shots on target and other planned offensive efforts may imply a more direct correlation between winning and succeeding. Because of the data’s consistency and lack of missing values, the analysis is streamlined and these associations may be examined in greater detail. Predictive modelling and trend analysis may provide trends that support received wisdom in football or unearth winning unexpected tactics.</p>
+</section>
+<section id="for-question-02" class="level3">
+<h3 class="anchored" data-anchor-id="for-question-02">For Question 02:</h3>
+<p><strong>Introduction:</strong> In the second question, an alternate scenario in which football matches end at halftime is examined, along with its implications for league standings. We may evaluate the importance of second-half performances and how they affect the league-wide success of teams by using this hypothetical scenario. This issue grabs attention because it questions the established rules of the game and offers a hypothesis on the nature of comebacks and the tenacity of football teams.</p>
 <p><strong>The variables involved:</strong> Full-time home and away goals (“FTHG” and “FTAG”) are necessary to determine team placement. Full-time results (“FTR”) denote the final actual outcome of the match. Half-time goals for the home and away teams, as well as the half-time result (“HTHG”, “HTAG”, and “HTR”), are important variables for the premise of our question. Additionally, the home team and away team (“HomeTeam” and “AwayTeam”) will identify who will win the league in our situation.</p>
 <p><strong>Data Preparation:</strong> Data integrity checks are diligently performed to guarantee consistency and accuracy, with any discrepancies meticulously documented to maintain transparency. Visualizations serve as powerful tools to elucidate shifts in match outcomes and league standings, offering valuable insights into the ramifications of simulated halftime results on soccer match dynamics and league championship outcomes. Notably, the dataset revealed no missing values during the examination.</p>
 <p><strong>Analysis:</strong> The dataset undergoes organization through chronological sorting of match data. Half-time results, derived from the goals scored by both home and away teams (HTHG and HTAG), are computed and juxtaposed against full-time results (FTR). Recalibration of match outcomes under the assumption that all games conclude at halftime facilitates a simulated scenario. For example, a leading home team at halftime is credited with a win, while a tied match results in a draw for both teams. These reevaluated outcomes are subsequently compared with the current league standings to discern any shifts in team rankings and overall league dynamics.</p>
+<p><strong>Discussion:</strong> The crucial significance that second-half play plays in football matches is highlighted by the simulation of halftime conclusions. According to preliminary research, some clubs might depend more on strong finishes to win games, which could cause the league rankings to change in this fictitious situation. This study not only emphasises how crucial it is to continue performing for the duration of the game, but it also encourages discussion about team tactics and how well they can be adjusted to suit various game developments. The dependability of these insights is increased by the absence of missing data, offering a strong basis for conjectural debates about team dynamics and league results.</p>
 
 
-</section>
 </section>
 </section>
 
@@ -330,9 +459,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+  function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
+      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -342,17 +472,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start',
+      placement: 'bottom-start'
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -365,125 +486,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
       return note.innerHTML;
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
-        }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(note);
-        }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
-    }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
-          }
-        } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
-          .then(res => res.text())
-          .then(html => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
-            if (note !== null) {
-              const html = processXRef(id, note);
-              instance.setContent(html);
-            } 
-          }).finally(() => {
-            instance.enable();
-            instance.show();
-          });
-        }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -527,7 +529,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
-            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -553,32 +554,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -639,7 +614,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
 
 
 
