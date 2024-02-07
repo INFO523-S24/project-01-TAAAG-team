@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.538">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -198,7 +198,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
-<div id="388ec3b7" class="cell" data-execution_count="2">
+<div id="6d4fb4b8" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#importing csv into pandas dataframe</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>import_data <span class="op">=</span> pd.read_csv(<span class="st">"data/soccer21-22.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -230,13 +230,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="questions" class="level2">
 <h2 class="anchored" data-anchor-id="questions">Questions</h2>
 <p><strong>Question 01:</strong> What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?</p>
-<p><strong>Question 02:</strong> How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship?</p>
+<p><strong>Question 02:</strong> How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship ?</p>
 </section>
 <section id="analysis-plan" class="level2">
 <h2 class="anchored" data-anchor-id="analysis-plan">Analysis plan</h2>
 <section id="for-question-01" class="level3">
 <h3 class="anchored" data-anchor-id="for-question-01">For Question 01:</h3>
-<p><strong>The variables involved:</strong> Full-time home and away goals (“FTHG” and “FTAG”) are crucial indicators of match outcomes. Full-time results (“FTR”) will serve as the target variable for predictive modeling. Number of shots taken by the home and away team (“HS” and “AS”) and shots on target (“HST” and “AST”) reflect attacking performance. Number of fouls by the home and away team (“HF” and “AF”) and cards received (“HY”, “AY”, “HR”, and “AR”) indicate team discipline and aggression.</p>
+<p><strong>The variables involved:</strong> Full-time home and away goals (“FTHG” and “FTAG”) are crucial indicators of match outcomes. Full-time results (“FTR”) will serve as the target variable for predictive modeling. Number of shots taken by the home and away team (“HS” and “AS”) and shots on target (“HST” and “AST”) reflect attacking performance. Number of fouls by the home and the away team (“HF” and “AF”) and cards received (“HY”, “AY”, “HR”, and “AR”) indicate team discipline and aggression.</p>
 <p><strong>Data Preparation:</strong> Combining match information with team-level season summaries will indeed provide valuable context for analysis and assist in identifying trends and outliers. The dataset’s consistency across all rows and columns, without any missing or erroneous values, ensures the reliability of our analysis. Additionally, no additional calculations or adjustments to rows are required, streamlining the process for further analysis.</p>
 <p><strong>Analysis:</strong> The dataset will be partitioned into training and testing sets to aid in model development and assessment. Regression techniques, including logistic regression or decision trees, will be applied to unveil associations between in-game performance metrics and match outcomes. This examination will enable the identification of patterns and relationships pivotal for constructing predictive models aimed at determining match results.</p>
 <section id="for-question-02" class="level4">
@@ -412,7 +412,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
