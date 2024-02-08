@@ -8,7 +8,6 @@ jupyter: python3
 
 ```{python}
 #importing libraries
-import numpy as np
 import pandas as pd
 ```
 
@@ -17,9 +16,6 @@ import pandas as pd
 ```{python}
 #importing csv into pandas dataframe
 import_data = pd.read_csv("data/soccer21-22.csv")
-
-#printing to only show first 5 rows of data
-print(import_data.head())
 ```
 
 **Full Preview of Data**

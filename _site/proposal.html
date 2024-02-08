@@ -185,36 +185,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<div id="load-pkgs" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#importing libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="dataset" class="level2">
 <h2 class="anchored" data-anchor-id="dataset">Dataset</h2>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#importing csv into pandas dataframe</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>import_data <span class="op">=</span> pd.read_csv(<span class="st">"data/soccer21-22.csv"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">#printing to only show first 5 rows of data</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(import_data.head())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         Date    HomeTeam        AwayTeam  FTHG  FTAG FTR  HTHG  HTAG HTR  \
-0  13/08/2021   Brentford         Arsenal     2     0   H     1     0   H   
-1  14/08/2021  Man United           Leeds     5     1   H     1     0   H   
-2  14/08/2021     Burnley        Brighton     1     2   A     1     0   H   
-3  14/08/2021     Chelsea  Crystal Palace     3     0   H     2     0   H   
-4  14/08/2021     Everton     Southampton     3     1   H     0     1   A   
-
-     Referee  ...  HST  AST  HF  AF  HC  AC  HY  AY  HR  AR  
-0   M Oliver  ...    3    4  12   8   2   5   0   0   0   0  
-1  P Tierney  ...    8    3  11   9   5   4   1   2   0   0  
-2    D Coote  ...    3    8  10   7   7   6   2   1   0   0  
-3     J Moss  ...    6    1  15  11   5   2   0   0   0   0  
-4   A Madley  ...    6    3  13  15   6   8   2   0   0   0  
-
-[5 rows x 22 columns]</code></pre>
-</div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>import_data <span class="op">=</span> pd.read_csv(<span class="st">"data/soccer21-22.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Full Preview of Data</strong></p>
 <table class="table">
