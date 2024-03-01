@@ -70,27 +70,30 @@ Combining match information with team-level season summaries.
 Spliting data into appropriate sets then applying regression techniques. 
 :::
 :::
-What 
-
-## Layouts
-
-You can use plain text
-
-::: columns
-::: {.column width="40%"}
--   or bullet points[^1]
-:::
-
-::: {.column width="60%"}
-or in two columns
-:::
-:::
 
 [^1]: And add footnotes
 
--   like
+# Question 2
 
--   this
+## What if the matches ended at halftime?..
+
+Can analyzing successful teams based on certain characteristics coorelate to more wins and better team statistics?
+
+::: columns
+::: {.column width="35%"}
+-   Critical variables :
+-   Data preparation : 
+-   Analysis : 
+:::
+
+::: {.column width="65%"}
+FTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.
+Performing thorough checks and creating visualizations. 
+Creating a funtion to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
+:::
+::: 
+
+[^1]: And add footnotes
 
 ## Code
 
