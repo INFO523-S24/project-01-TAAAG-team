@@ -1,7 +1,7 @@
 ---
-title: "Project title"
+title: "Premier League Performance Metrics and Results: A Dynamic Analysis"
 subtitle: "INFO 523 - Spring 2023 - Project 1"
-author: "Author names"
+author: "Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan"
 title-slide-attributes:
   data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
   data-background-size: stretch
@@ -51,13 +51,26 @@ mtcars['speed'] = mtcars['horsepower'] / mtcars['weight']
 penguins = sns.load_dataset('penguins').dropna()
 ```
 
-# Using Quarto for presentations
+# Question 1
 
-## Quarto
+## Exploring the complex connections between in-game metrics
 
--   The presentation is created using the Quarto CLI
+Can these help forecast match outcomes?
 
--   `##` sets the start of a new slide
+::: columns
+::: {.column width="35%"}
+-   Critical variables :
+-   Data preparation : 
+-   Analysis : 
+:::
+
+::: {.column width="65%"}
+FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.
+Combining match information with team-level season summaries.
+Spliting data into appropriate sets then applying regression techniques. 
+:::
+:::
+What 
 
 ## Layouts
 
