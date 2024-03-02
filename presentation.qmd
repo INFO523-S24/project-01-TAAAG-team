@@ -57,43 +57,26 @@ penguins = sns.load_dataset('penguins').dropna()
 
 Can these help forecast match outcomes?
 
-::: columns
-::: {.column width="35%"}
 -   Critical variables :
+    - FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.
 -   Data preparation : 
+    -  Combining match information with team-level season summaries. 
 -   Analysis : 
-:::
-
-::: {.column width="65%"}
-FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.
-Combining match information with team-level season summaries.
-Spliting data into appropriate sets then applying regression techniques. 
-:::
-:::
-
-[^1]: And add footnotes
+    -   Spliting data into appropriate sets then applying regression techniques.
 
 # Question 2
 
 ## What if the matches ended at halftime?..
 
-Can analyzing successful teams based on certain characteristics coorelate to more wins and better team statistics?
+Do certain characteristics seen in successful teams result in more wins?
 
-::: columns
-::: {.column width="35%"}
 -   Critical variables :
+    -   FTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.
 -   Data preparation : 
+    -  Performing thorough checks and creating visualizations. 
 -   Analysis : 
-:::
+    -  Creating a funtion to determine results of matches at halftime and using this recalibration as a new baseline of analysis. 
 
-::: {.column width="65%"}
-FTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.
-Performing thorough checks and creating visualizations. 
-Creating a funtion to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
-:::
-::: 
-
-[^1]: And add footnotes
 
 ## Code
 
