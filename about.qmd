@@ -5,12 +5,14 @@ editor: visual
 jupyter: python3
 ---
 
-This project was developed by **\[Team Name\]** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
+This project was developed by **\[TAAAG Team\]** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
--   Team member 1: One sentence description of Team member 1 (e.g., year, major, etc.).
+-   Tejas Bhawari: One sentence description of Team member 1 (e.g., year, major, etc.).
 
--   Team member 2: One sentence description of Team member 2 (e.g., year, major, etc.).
+-   Gabriel Geffen: One sentence description of Team member 2 (e.g., year, major, etc.).
 
--   Team member 3: One sentence description of Team member 3 (e.g., year, major, etc.).
+-   Ayesha Khatun: One sentence description of Team member 3 (e.g., year, major, etc.).
 
--   Team member 4: One sentence description of Team member 4 (e.g., year, major, etc.).
+-   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future. 
+-   
+-   Akash Srinivasan: One sentence description of Team member 4 (e.g., year, major, etc.).
