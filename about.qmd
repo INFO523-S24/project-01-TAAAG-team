@@ -14,5 +14,5 @@ This project was developed by **\[TAAAG Team\]** For [INFO 523 - Data Mining and
 -   Ayesha Khatun: One sentence description of Team member 3 (e.g., year, major, etc.).
 
 -   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future. 
--   
+
 -   Akash Srinivasan: One sentence description of Team member 4 (e.g., year, major, etc.).
