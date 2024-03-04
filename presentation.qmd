@@ -48,7 +48,7 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 
 # Question 1
 
-## Exploring the complex connections between in-game metrics
+## Exploring the complex connections between in-game metrics {.smaller}
 
 Can these help forecast match outcomes?
 
@@ -61,7 +61,7 @@ Can these help forecast match outcomes?
 
 # Question 2
 
-## What if the matches ended at halftime?..
+## What if the matches ended at halftime?..{.smaller}
 
 Do certain characteristics seen in successful teams result in more wins?
 
@@ -70,7 +70,7 @@ Do certain characteristics seen in successful teams result in more wins?
 -   Data preparation :
     -   Performing thorough checks and creating visualizations.
 -   Analysis :
-    -   Creating a funtion to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
+    -   Creating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
 
 ## Code
 
