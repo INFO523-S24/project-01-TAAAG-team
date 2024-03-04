@@ -53,10 +53,10 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 Can these help forecast match outcomes?
 
 -   Critical variables :
-    - FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.
--   Data preparation : 
-    -  Combining match information with team-level season summaries. 
--   Analysis : 
+    -   FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.
+-   Data preparation :
+    -   Combining match information with team-level season summaries.
+-   Analysis :
     -   Spliting data into appropriate sets then applying regression techniques.
 
 # Question 2
@@ -67,11 +67,10 @@ Do certain characteristics seen in successful teams result in more wins?
 
 -   Critical variables :
     -   FTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.
--   Data preparation : 
-    -  Performing thorough checks and creating visualizations. 
--   Analysis : 
-    -  Creating a funtion to determine results of matches at halftime and using this recalibration as a new baseline of analysis. 
-
+-   Data preparation :
+    -   Performing thorough checks and creating visualizations.
+-   Analysis :
+    -   Creating a funtion to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
 
 ## Code
 
@@ -81,23 +80,23 @@ import statsmodels.api as sm
 import pandas as pd
 
 # Fit a linear regression model
-X = mtcars[['speed']]
-y = mtcars['mpg']
-model = LinearRegression().fit(X, y)
+#X = mtcars[['speed']]
+#y = mtcars['mpg']
+#model = LinearRegression().fit(X, y)
 
 # Summary of the model
-X2 = sm.add_constant(X)
-est = sm.OLS(y, X2)
-est2 = est.fit()
-print(est2.summary())
+#X2 = sm.add_constant(X)
+#est = sm.OLS(y, X2)
+#est2 = est.fit()
+#print(est2.summary())
 ```
 
 ## Plots
 
 ```{python}
-penguins['species'] = penguins['species'].apply(lambda x: "Adelie" if x == "Adelie" else "Other")
-sns.scatterplot(data=penguins, x='flipper_length_mm', y='body_mass_g', hue='species')
-plt.show()
+#penguins['species'] = penguins['species'].apply(lambda x: "Adelie" if x == "Adelie" else "Other")
+#sns.scatterplot(data=penguins, x='flipper_length_mm', y='body_mass_g', hue='species')
+#plt.show()
 ```
 
 ## Plot and text
@@ -113,9 +112,9 @@ plt.show()
 ```{python}
 #| warning: false
 #| fig.width: 5.5
-fig, ax = plt.subplots(figsize=(5.5, 5.5 * 0.618))
-sns.boxplot(data=penguins, x='bill_length_mm', y='species', hue='species', ax=ax)
-plt.show()
+#fig, ax = plt.subplots(figsize=(5.5, 5.5 * 0.618))
+#sns.boxplot(data=penguins, x='bill_length_mm', y='species', hue='species', ax=ax)
+#plt.show()
 ```
 :::
 :::
@@ -127,7 +126,7 @@ plt.show()
 If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
 
 ```{python}
-penguins.head().to_html()
+#penguins.head().to_html()
 ```
 
 ## Images
