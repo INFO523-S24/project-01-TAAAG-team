@@ -1,7 +1,7 @@
 ---
-title: "Project title"
-subtitle: "INFO 523 - Project 1"
-author: "TAAAG Team"
+title: "Premier League Performance Metrics and Results: A Dynamic Analysis"
+subtitle: "INFO 523 - Spring 2023 - Project 1"
+author: "TAAAG Team- Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan"
 format: html
 editor: visual
 jupyter: python3
@@ -10,3 +10,159 @@ jupyter: python3
 ## Abstract
 
 Add project abstract here.
+## Introduction
+
+## Question 1:
+
+### Introduction
+### Approach
+**Data Preparation and Pre-processing**
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+# Load the dataset
+df = pd.read_csv('data/soccer21-22.csv')
+
+# Data preprocessing
+# Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise
+df['Result'] = (df['FTR'] == 'H').astype(int)
+
+# Feature selection
+features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']
+X = df[features]
+y = df['Result']
+
+# Splitting the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Logistic Regression model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+# Predictions
+y_pred = model.predict(X_test)
+
+# Evaluating the model
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+
+# Plot 1: Feature importance visualization
+coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
+plt.figure(figsize=(10, 6))
+sns.barplot(x=coefficients['Coefficient'], y=coefficients.index)
+plt.title('Feature Importance in Predicting Home Team Wins')
+plt.xlabel('Coefficient Value')
+plt.ylabel('In-game Metrics')
+
+# Plot 2: Confusion Matrix
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.title('Confusion Matrix for Home Team Win Prediction')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.show()
+
+# Print accuracy
+print(f'Model Accuracy: {accuracy:.2f}')
+```
+
+```{python}
+# Load required libraries
+# Load required libraries
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Load the dataset
+df = pd.read_csv('data/soccer21-22.csv')
+
+# Define the target variable - Home win (1) or not (0)
+df['HomeWin'] = df['FTR'].apply(lambda x: 1 if x == 'H' else 0)
+
+# Select features of interest
+features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY']
+
+# Compute correlation matrix for the features
+corr = df[features].corr()
+
+# Heatmap of correlation between features
+plt.figure(figsize=(8, 6))
+sns.heatmap(corr, annot=True, cmap='coolwarm', fmt=".2f")
+plt.title("Feature Correlation Heatmap")
+plt.show()
+
+# Pairplot for selected features with a limited number of data points for clarity
+sns.pairplot(df.sample(50, random_state=42)[features + ['HomeWin']], hue='HomeWin', palette="Set1", diag_kind="kde", markers=["o", "s"])
+plt.suptitle("Pairplot of Features with Home Win", y=1.02)
+plt.show()
+```
+
+```{python}
+# Load Libraries
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score
+
+# Read in the data
+df = pd.read_csv('data/soccer21-22.csv')
+
+# Prepare the dataset for visualization and modeling
+# Home team win (1) or not (0)
+df['HomeWin'] = df['FTR'].apply(lambda x: 1 if x == 'H' else 0)
+
+# Subset of features for analysis
+features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']
+
+# Visualization 1: Relationship between in-game metrics and match outcomes
+sns.pairplot(df, vars=features, hue='FTR', corner=True)
+plt.suptitle("Relationship Between In-Game Metrics and Match Outcomes", y=1.02)
+plt.show()
+
+# Visualization 2: Predictive Model Capability
+# Prepare data for modeling
+X = df[features]
+y = df['HomeWin']
+
+# Split the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Initialize and train the RandomForest Classifier
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
+clf.fit(X_train, y_train)
+
+# Make predictions
+y_pred = clf.predict(X_test)
+
+# Model accuracy
+accuracy = accuracy_score(y_test, y_pred)
+
+# Feature importances visualization
+feature_importances = pd.Series(clf.feature_importances_, index=features).sort_values(ascending=False)
+
+plt.figure(figsize=(10, 6))
+feature_importances.plot(kind='bar', color='skyblue')
+plt.title(f"Feature Importances in Predicting Home Team Win (Accuracy: {accuracy:.2f})")
+plt.ylabel('Importance')
+plt.xlabel('In-Game Metric')
+plt.show()
+```
+## Question 2:
+
+
+
+### Introduction
+### Approach
+**Data Preparation and Pre-processing**
+### Discussion
+
+
+
+## References
