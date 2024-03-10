@@ -9,7 +9,7 @@ This project was developed by **\[TAAAG Team\]** For [INFO 523 - Data Mining and
 
 -   Tejas Bhawari: One sentence description of Team member 1 (e.g., year, major, etc.).
 
--   Gabriel Geffen: One sentence description of Team member 2 (e.g., year, major, etc.).
+-   Gabriel Geffen: First-year Ph.D. student in civil engineering with an emphasis in traffic engineering.
 
 -   Ayesha Khatun: One sentence description of Team member 3 (e.g., year, major, etc.).
 
