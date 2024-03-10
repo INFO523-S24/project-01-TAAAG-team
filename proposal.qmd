@@ -61,7 +61,7 @@ This dataset captures the attention of millions because of the rich detail and s
 
 **Question 01:** What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?
 
-**Question 02:** How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship ?
+**Question 02:** How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship?
 
 ## Analysis plan
 

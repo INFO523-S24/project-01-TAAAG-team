@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.549">
+<meta name="generator" content="quarto-1.4.538">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -149,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 <p>This project was developed by <strong>[TAAAG Team]</strong> For <a href="https://datamineaz.org/">INFO 523 - Data Mining and Discovery</a> at the University of Arizona, taught by Dr.&nbsp;Greg Chism. The team is comprised of the following team members.</p>
 <ul>
 <li><p>Tejas Bhawari: One sentence description of Team member 1 (e.g., year, major, etc.).</p></li>
-<li><p>Gabriel Geffen: One sentence description of Team member 2 (e.g., year, major, etc.).</p></li>
+<li><p>Gabriel Geffen: First-year Ph.D.&nbsp;student in civil engineering with an emphasis in traffic engineering.</p></li>
 <li><p>Ayesha Khatun: One sentence description of Team member 3 (e.g., year, major, etc.).</p></li>
 <li><p>Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future.</p></li>
 <li><p>Akash Srinivasan: One sentence description of Team member 4 (e.g., year, major, etc.).</p></li>
@@ -319,12 +319,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
