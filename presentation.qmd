@@ -109,6 +109,7 @@ cm = confusion_matrix(y_test, y_pred)
 ```
 
 ## Feature Importance Visualization
+
 ```{python, message=FALSE, warning=FALSE}
 #| echo: true
 #| output-location: slide
@@ -124,6 +125,7 @@ plt.show()
 ```
 
 ## Confusion Matrix
+
 ```{python, message=FALSE, warning=FALSE}
 #| echo: true
 #| output-location: slide
@@ -144,7 +146,6 @@ print(f'Model Accuracy: {accuracy:.2f}')
 ## What if the matches ended at halftime?
 
 ::: panel-tabset
-
 ### Critical variables
 
 -   **FTHG** and **FTAG** are needed to determine team placements
@@ -159,12 +160,11 @@ print(f'Model Accuracy: {accuracy:.2f}')
 
 ### Analysis
 
--  Creating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
+-   Creating a function to determine results of matches at halftime and using this re-calibration as a new baseline of analysis.
 -   Chronologically organized data
-
 :::
 
-## Code {.smaller}
+## Code
 
 ::: panel-tabset
 
@@ -335,7 +335,6 @@ ht_ranking = pd.DataFrame({
     'Ranking': range(1, len(team_points) + 1)
 })
 ```
-
 :::
 
 ## Plots
