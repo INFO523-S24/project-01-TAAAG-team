@@ -172,6 +172,7 @@ print(f'Model Accuracy: {accuracy:.2f}')
 
 ```{python}
 #| echo: true
+#| smaller: true
 # Import libraries
 import pandas as pd
 
@@ -214,6 +215,7 @@ ft_ranking = pd.DataFrame({
 
 ```{python}
 #| echo: true
+#| smaller: true
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['FTHG'].sum().reset_index()
 home_goals_conceded = df.groupby('HomeTeam')['FTAG'].sum().reset_index()
@@ -256,6 +258,7 @@ ft_ranking = pd.DataFrame({
 
 ```{python}
 #| echo: true
+#| smaller: true
 # Import libraries
 import pandas as pd
 
@@ -298,6 +301,7 @@ ht_ranking = pd.DataFrame({
 
 ```{python}
 #| echo: true
+#| smaller: true
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['HTHG'].sum().reset_index()
 home_goals_conceded = df.groupby('HomeTeam')['HTAG'].sum().reset_index()
