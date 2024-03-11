@@ -164,9 +164,9 @@ print(f'Model Accuracy: {accuracy:.2f}')
 
 :::
 
-## Code
+## Code {.smaller}
 
-::: panel-tabset {.smaller}
+::: panel-tabset
 
 ### Data Prep
 
