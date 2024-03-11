@@ -166,9 +166,10 @@ print(f'Model Accuracy: {accuracy:.2f}')
 
 ## Code
 
-::: panel-tabset
+::: panel-tabset {.smaller}
 
-###Data Prep
+### Data Prep
+
 ```{python}
 #| echo: true
 # Import libraries
@@ -207,8 +208,6 @@ ft_ranking = pd.DataFrame({
     'Points': team_points['TotalPoints'],
     'Ranking': range(1, len(team_points) + 1)
 })
-
-print(ft_ranking)
 ```
 
 ### Offical Rankings
@@ -251,8 +250,6 @@ ft_ranking = pd.DataFrame({
     'GoalDifference': team_points['GoalDifference'],
     'Ranking': range(1, len(team_points) + 1)
 })
-
-print(ft_ranking)
 ```
 
 ### Repeated
@@ -295,8 +292,6 @@ ht_ranking = pd.DataFrame({
     'Points': team_points['TotalPoints'],
     'Ranking': range(1, len(team_points) + 1)
 })
-
-print(ht_ranking)
 ```
 
 ### Repeated with ties
@@ -339,8 +334,6 @@ ht_ranking = pd.DataFrame({
     'GoalDifference': team_points['GoalDifference'],
     'Ranking': range(1, len(team_points) + 1)
 })
-
-print(ht_ranking)
 ```
 
 :::
