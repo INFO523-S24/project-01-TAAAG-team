@@ -53,13 +53,22 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 ## Exploring the complex connections between in-game metrics
 
 Can these help forecast match outcomes?
-:::{.incremental}
--   Critical variables :
-    -   FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.
--   Data preparation :
-    -   Combining match information with team-level season summaries.
--   Analysis :
-    -   Splitting data into appropriate sets then applying regression techniques
+:::{.panel-tabset}
+
+### Critical variables
+-   *FTHG* and *FTAG* are crucial indicators
+-   *FTR* serves as the target variable
+-   *HS*, *AS*, *HST*,and *AST* reflect attacking performance.
+-   *HF*, *AF*, *HY*, *AY*, *HR*,and *AR* all indicate team discipline and aggresion
+
+### Data preparation
+-   Combining match information with team-level season summaries
+-   The consistency of the dataset ensures reliability of our analysis
+
+### Analysis
+-   Splitting data into appropriate sets then applying regression techniques
+-   Regression techniques 
+-   Discovering patterns and relationships critical for building predictive models
 
 :::
 
