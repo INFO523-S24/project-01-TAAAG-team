@@ -88,7 +88,7 @@
     "href": "presentation.html#exploring-the-complex-connections-between-in-game-metrics",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Exploring the complex connections between in-game metrics",
-    "text": "Exploring the complex connections between in-game metrics\nCan these help forecast match outcomes?\n\nCritical variables :\n\nFTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.\n\nData preparation :\n\nCombining match information with team-level season summaries.\n\nAnalysis :\n\nSpliting data into appropriate sets then applying regression techniques."
+    "text": "Exploring the complex connections between in-game metrics\nCan these help forecast match outcomes? :::{.incremental} - Critical variables : - FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR. - Data preparation : - Combining match information with team-level season summaries. - Analysis : - Splitting data into appropriate sets then applying regression techniques\n:::"
   },
   {
     "objectID": "presentation.html#code",
@@ -98,29 +98,36 @@
     "text": "Code"
   },
   {
-    "objectID": "presentation.html#plots",
-    "href": "presentation.html#plots",
+    "objectID": "presentation.html#feature-importance-visualization",
+    "href": "presentation.html#feature-importance-visualization",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
-    "section": "Plots",
-    "text": "Plots"
+    "section": "Feature Importance Visualization",
+    "text": "Feature Importance Visualization"
+  },
+  {
+    "objectID": "presentation.html#confusion-matrix",
+    "href": "presentation.html#confusion-matrix",
+    "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
+    "section": "Confusion Matrix",
+    "text": "Confusion Matrix\n\nCodePlot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel Accuracy: 0.78"
   },
   {
     "objectID": "presentation.html#what-if-the-matches-ended-at-halftime..",
     "href": "presentation.html#what-if-the-matches-ended-at-halftime..",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "What if the matches ended at halftime?..",
-    "text": "What if the matches ended at halftime?..\nDo certain characteristics seen in successful teams result in more wins?\n\nCritical variables :\n\nFTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.\n\nData preparation :\n\nPerforming thorough checks and creating visualizations.\n\nAnalysis :\n\nCreating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis."
+    "text": "What if the matches ended at halftime?..\n\nDo certain characteristics seen in successful teams result in more wins?\n\nCritical variables :\n\nFTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.\n\nData preparation :\n\nPerforming thorough checks and creating visualizations.\n\nAnalysis :\n\nCreating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis."
   },
   {
-    "objectID": "presentation.html#code-1",
-    "href": "presentation.html#code-1",
+    "objectID": "presentation.html#code-2",
+    "href": "presentation.html#code-2",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Code",
     "text": "Code"
   },
   {
-    "objectID": "presentation.html#plots-1",
-    "href": "presentation.html#plots-1",
+    "objectID": "presentation.html#plots",
+    "href": "presentation.html#plots",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Plots",
     "text": "Plots"
