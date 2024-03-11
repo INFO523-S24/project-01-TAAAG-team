@@ -52,8 +52,6 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 
 ## Exploring the complex connections between in-game metrics
 
-Can these help forecast match outcomes?
-
 :::{.panel-tabset}
 
 ### Critical variables

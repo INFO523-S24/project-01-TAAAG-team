@@ -88,7 +88,7 @@
     "href": "presentation.html#exploring-the-complex-connections-between-in-game-metrics",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Exploring the complex connections between in-game metrics",
-    "text": "Exploring the complex connections between in-game metrics\nCan these help forecast match outcomes? :::{.panel-tabset}\nCritical variables\n\nFTHG and FTAG are crucial indicators\nFTR serves as the target variable\nHS, AS, HST,and AST reflect attacking performance.\nHF, AF, HY, AY, HR,and AR all indicate team discipline and aggresion\n\nData preparation\n\nCombining match information with team-level season summaries\nThe consistency of the dataset ensures reliability of our analysis\n\nAnalysis\n\nSplitting data into appropriate sets then applying regression techniques\nRegression techniques\nDiscovering patterns and relationships critical for building predictive models\n\n:::"
+    "text": "Exploring the complex connections between in-game metrics\nCan these help forecast match outcomes?\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are crucial indicators\nFTR serves as the target variable\nHS, AS, HST,and AST reflect attacking performance.\nHF, AF, HY, AY, HR,and AR all indicate team discipline and aggresion\n\n\n\n\nCombining match information with team-level season summaries\nThe consistency of the dataset ensures reliability of our analysis\n\n\n\n\nSplitting data into appropriate sets then applying regression techniques\nRegression techniques\nDiscovering patterns and relationships critical for building predictive models"
   },
   {
     "objectID": "presentation.html#code",
