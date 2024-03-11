@@ -75,6 +75,7 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 
 ```{python, message=FALSE, warning=FALSE}
 #| echo: true
+#| code-overflow: wrap
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -113,7 +114,7 @@ cm = confusion_matrix(y_test, y_pred)
 ```{python, message=FALSE, warning=FALSE}
 #| echo: true
 #| output-location: slide
-#| 
+#| code-overflow: wrap
 # Plot 1: Feature importance visualization
 coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
 plt.figure(figsize=(10, 8))
@@ -166,12 +167,11 @@ print(f'Model Accuracy: {accuracy:.2f}')
 
 ## Code
 
-### Data Prep
-
 ```{python}
 #| echo: true
 #| code-fold: true
-#| code-summary: "Show the code"
+#| code-summary: "Data Prep & Pre-processing"
+#| code-overflow: wrap
 # Import libraries
 import pandas as pd
 
@@ -210,12 +210,11 @@ ft_ranking = pd.DataFrame({
 })
 ```
 
-### Offical Rankings
-
 ```{python}
 #| echo: true
+#| code-overflow: wrap
 #| code-fold: true
-#| code-summary: "Show the code"
+#| code-summary: "Official Rankings"
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['FTHG'].sum().reset_index()
 home_goals_conceded = df.groupby('HomeTeam')['FTAG'].sum().reset_index()
@@ -254,12 +253,11 @@ ft_ranking = pd.DataFrame({
 })
 ```
 
-### Repeated
-
 ```{python}
 #| echo: true
+#| code-overflow: wrap
 #| code-fold: true
-#| code-summary: "Show the code"
+#| code-summary: "Half Time Results"
 # Import libraries
 import pandas as pd
 
@@ -298,12 +296,12 @@ ht_ranking = pd.DataFrame({
 })
 ```
 
-### Repeated with ties
 
 ```{python}
 #| echo: true
+#| code-overflow: wrap
 #| code-fold: true
-#| code-summary: "Show the code"
+#| code-summary: "Repeated Half Time Results"
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['HTHG'].sum().reset_index()
 home_goals_conceded = df.groupby('HomeTeam')['HTAG'].sum().reset_index()
