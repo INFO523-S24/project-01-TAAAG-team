@@ -440,7 +440,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="dbb4cc08" class="cell" data-execution_count="4">
+<div id="90a18d18" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -476,7 +476,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="feature-importance-visualization" class="slide level2">
 <h2>Feature Importance Visualization</h2>
-<div id="284f9590" class="cell" data-execution_count="5">
+<div id="b9bb9fd3" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Plot 1: Feature importance visualization</span></span>
 <span id="cb2-2"><a></a>coefficients <span class="op">=</span> pd.DataFrame(model.coef_[<span class="dv">0</span>], X.columns, columns<span class="op">=</span>[<span class="st">'Coefficient'</span>]).sort_values(by<span class="op">=</span><span class="st">'Coefficient'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-3"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
@@ -498,7 +498,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 </div></section><section id="confusion-matrix" class="slide level2">
 <h2>Confusion Matrix</h2>
-<div id="8e9c0d5a" class="cell" data-execution_count="6">
+<div id="0f233cc4" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Plot 2: Confusion Matrix</span></span>
 <span id="cb3-2"><a></a>sns.heatmap(cm, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
 <span id="cb3-3"><a></a>plt.title(<span class="st">'Confusion Matrix for Home Team Win Prediction'</span>)</span>
@@ -561,7 +561,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Data Prep</a></li><li><a href="#tabset-3-2">Offical Rankings</a></li><li><a href="#tabset-3-3">Repeated</a></li><li><a href="#tabset-3-4">Repeated with ties</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<div id="fddb8daf" class="cell" data-execution_count="7">
+<div id="8ae8704d" class="cell" data-smaller="true" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Import libraries</span></span>
 <span id="cb5-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb5-3"><a></a></span>
@@ -601,7 +601,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 </div>
 <div id="tabset-3-2">
-<div id="1d84bf1e" class="cell" data-execution_count="8">
+<div id="0f18796d" class="cell" data-smaller="true" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="co"># Aggregate goals scored and conceded for each team</span></span>
 <span id="cb6-2"><a></a>home_goals_scored <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
 <span id="cb6-3"><a></a>home_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
@@ -641,7 +641,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 </div>
 <div id="tabset-3-3">
-<div id="dfd9a535" class="cell" data-execution_count="9">
+<div id="5090eb73" class="cell" data-smaller="true" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Import libraries</span></span>
 <span id="cb7-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb7-3"><a></a></span>
@@ -681,7 +681,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 </div>
 <div id="tabset-3-4">
-<div id="48b44942" class="cell" data-execution_count="10">
+<div id="b7005fd7" class="cell" data-smaller="true" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="co"># Aggregate goals scored and conceded for each team</span></span>
 <span id="cb8-2"><a></a>home_goals_scored <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
 <span id="cb8-3"><a></a>home_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HTAG'</span>].<span class="bu">sum</span>().reset_index()</span>

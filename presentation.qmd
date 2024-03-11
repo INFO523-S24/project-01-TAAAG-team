@@ -166,13 +166,12 @@ print(f'Model Accuracy: {accuracy:.2f}')
 
 ## Code
 
-::: panel-tabset
-
 ### Data Prep
 
 ```{python}
 #| echo: true
-#| smaller: true
+#| code-fold: true
+#| code-summary: "Show the code"
 # Import libraries
 import pandas as pd
 
@@ -215,7 +214,8 @@ ft_ranking = pd.DataFrame({
 
 ```{python}
 #| echo: true
-#| smaller: true
+#| code-fold: true
+#| code-summary: "Show the code"
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['FTHG'].sum().reset_index()
 home_goals_conceded = df.groupby('HomeTeam')['FTAG'].sum().reset_index()
@@ -258,7 +258,8 @@ ft_ranking = pd.DataFrame({
 
 ```{python}
 #| echo: true
-#| smaller: true
+#| code-fold: true
+#| code-summary: "Show the code"
 # Import libraries
 import pandas as pd
 
@@ -301,7 +302,8 @@ ht_ranking = pd.DataFrame({
 
 ```{python}
 #| echo: true
-#| smaller: true
+#| code-fold: true
+#| code-summary: "Show the code"
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['HTHG'].sum().reset_index()
 home_goals_conceded = df.groupby('HomeTeam')['HTAG'].sum().reset_index()
@@ -339,7 +341,6 @@ ht_ranking = pd.DataFrame({
     'Ranking': range(1, len(team_points) + 1)
 })
 ```
-:::
 
 ## Plots
 
