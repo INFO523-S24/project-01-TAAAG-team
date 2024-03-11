@@ -95,21 +95,21 @@
     "href": "presentation.html#code",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Code",
-    "text": "Code"
+    "text": "Code\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import confusion_matrix, accuracy_score\n\n# Load the dataset\ndf = pd.read_csv('data/soccer21-22.csv')\n\n# Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise\ndf['Result'] = (df['FTR'] == 'H').astype(int)\n\n# Feature selection\nfeatures = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']\nX = df[features]\ny = df['Result']\n\n# Splitting the dataset into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Logistic Regression model\nmodel = LogisticRegression(max_iter=1000)\nmodel.fit(X_train, y_train)\n\n# Predictions\ny_pred = model.predict(X_test)\n\n# Evaluating the model\naccuracy = accuracy_score(y_test, y_pred)\ncm = confusion_matrix(y_test, y_pred)"
   },
   {
     "objectID": "presentation.html#feature-importance-visualization",
     "href": "presentation.html#feature-importance-visualization",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Feature Importance Visualization",
-    "text": "Feature Importance Visualization"
+    "text": "Feature Importance Visualization\n\nCodePlot\n\n\n\n# Plot 1: Feature importance visualization\ncoefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)\nplt.figure(figsize=(10, 8))\nsns.barplot(x=coefficients['Coefficient'], y=coefficients.index)\nplt.title('Feature Importance in Predicting Home Team Wins')\nplt.xlabel('Coefficient Value')\nplt.ylabel('In-game Metrics')\nplt.show()"
   },
   {
     "objectID": "presentation.html#confusion-matrix",
     "href": "presentation.html#confusion-matrix",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Confusion Matrix",
-    "text": "Confusion Matrix\n\nCodePlot\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel Accuracy: 0.78"
+    "text": "Confusion Matrix\n\nCodePlot\n\n\n\n# Plot 2: Confusion Matrix\nsns.heatmap(cm, annot=True, fmt='d', cmap='Blues')\nplt.title('Confusion Matrix for Home Team Win Prediction')\nplt.xlabel('Predicted Label')\nplt.ylabel('True Label')\nplt.show()\n\n# Print accuracy\nprint(f'Model Accuracy: {accuracy:.2f}')\n\n\n\n\n\n\n\n\nModel Accuracy: 0.78\n\n\n\n\n\n\n\n\n\n\n\n\n\nModel Accuracy: 0.78"
   },
   {
     "objectID": "presentation.html#what-if-the-matches-ended-at-halftime..",
@@ -119,8 +119,8 @@
     "text": "What if the matches ended at halftime?..\n\nDo certain characteristics seen in successful teams result in more wins?\n\nCritical variables :\n\nFTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.\n\nData preparation :\n\nPerforming thorough checks and creating visualizations.\n\nAnalysis :\n\nCreating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis."
   },
   {
-    "objectID": "presentation.html#code-2",
-    "href": "presentation.html#code-2",
+    "objectID": "presentation.html#code-3",
+    "href": "presentation.html#code-3",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Code",
     "text": "Code"
