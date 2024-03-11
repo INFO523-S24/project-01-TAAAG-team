@@ -9,7 +9,6 @@ title-slide-attributes:
   data-slide-number: none
 format:
   revealjs:
-    smaller: true
     scrollable: true
     theme:  ['data/customtheming.scss']
   
@@ -142,63 +141,215 @@ print(f'Model Accuracy: {accuracy:.2f}')
 
 # Question 2
 
-## What if the matches ended at halftime?..
+## What if the matches ended at halftime?
 
-::: incremental
-Do certain characteristics seen in successful teams result in more wins?
+::: panel-tabset
 
--   Critical variables :
-    -   FTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.
--   Data preparation :
-    -   Performing thorough checks and creating visualizations.
--   Analysis :
-    -   Creating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
+### Critical variables
+
+-   **FTHG** and **FTAG** are needed to determine team placements
+-   **FTR** denotes fthe final actual outcome
+-   **HTHG**, **HTAG**,and **HTR** are important as well
+-   **HomeTeam** and **AwayTeam** combined with the rest help determine the winner
+
+### Data preparation
+
+-   Performing thorough checks and creating visualizations.
+-   Making sure data has no missing values
+
+### Analysis
+
+-  Creating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
+-   Chronologically organized data
+
 :::
 
 ## Code
 
+::: panel-tabset
+
+###Data Prep
 ```{python}
-from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
+#| echo: true
+# Import libraries
 import pandas as pd
 
-# Fit a linear regression model
-#X = mtcars[['speed']]
-#y = mtcars['mpg']
-#model = LinearRegression().fit(X, y)
+# Load the dataset
+df = pd.read_csv('data/soccer21-22.csv')
 
-# Summary of the model
-#X2 = sm.add_constant(X)
-#est = sm.OLS(y, X2)
-#est2 = est.fit()
-#print(est2.summary())
+# Function to determine the winner based on points
+def calculate_points(row):
+    if row['FTR'] == 'H':
+        return 3
+    elif row['FTR'] == 'D':
+        return 1
+    else:
+        return 0
+
+# Apply the function to calculate points for each match
+df['HomePoints'] = df.apply(lambda row: calculate_points(row), axis = 1)
+df['AwayPoints'] = df.apply(lambda row: 3 - calculate_points(row) if row['FTR'] != 'D' else 1, axis = 1)
+
+# Aggregate points for each team
+home_points = df.groupby('HomeTeam')['HomePoints'].sum().reset_index()
+away_points = df.groupby('AwayTeam')['AwayPoints'].sum().reset_index()
+
+# Combine home and away points
+team_points = pd.merge(home_points, away_points, how = 'outer', left_on = 'HomeTeam', right_on = 'AwayTeam')
+team_points['TotalPoints'] = team_points['HomePoints'] + team_points['AwayPoints']
+
+# Sort team_points DataFrame based on TotalPoints
+team_points = team_points.sort_values(by = 'TotalPoints', ascending = False)
+
+# Create ranking DataFrame
+ft_ranking = pd.DataFrame({
+    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Points': team_points['TotalPoints'],
+    'Ranking': range(1, len(team_points) + 1)
+})
+
+print(ft_ranking)
 ```
+
+### Offical Rankings
+
+```{python}
+#| echo: true
+# Aggregate goals scored and conceded for each team
+home_goals_scored = df.groupby('HomeTeam')['FTHG'].sum().reset_index()
+home_goals_conceded = df.groupby('HomeTeam')['FTAG'].sum().reset_index()
+away_goals_scored = df.groupby('AwayTeam')['FTAG'].sum().reset_index()
+away_goals_conceded = df.groupby('AwayTeam')['FTHG'].sum().reset_index()
+
+# Merge home and away goals scored and conceded with team_points
+team_points = pd.merge(team_points, home_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, home_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, away_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+team_points = pd.merge(team_points, away_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+
+# Rename columns during merge
+team_points.rename(columns={'FTHG_x': 'HomeGoalsScored', 'FTAG_x': 'HomeGoalsConceded',
+                            'FTAG_y': 'AwayGoalsScored', 'FTHG_y': 'AwayGoalsConceded'}, inplace = True)
+
+# Fill NaN values with 0
+team_points.fillna(0, inplace = True)
+
+# Calculate total goals scored and conceded
+team_points['TotalGoalsScored'] = team_points['HomeGoalsScored'] + team_points['AwayGoalsScored']
+team_points['TotalGoalsConceded'] = team_points['HomeGoalsConceded'] + team_points['AwayGoalsConceded']
+
+# Calculate goal difference
+team_points['GoalDifference'] = team_points['TotalGoalsScored'] - team_points['TotalGoalsConceded']
+
+# Sort team_points DataFrame based on TotalPoints and GoalDifference
+team_points = team_points.sort_values(by = ['TotalPoints', 'GoalDifference'], ascending = [False, False])
+
+# Create ranking DataFrame
+ft_ranking = pd.DataFrame({
+    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Points': team_points['TotalPoints'],
+    'GoalDifference': team_points['GoalDifference'],
+    'Ranking': range(1, len(team_points) + 1)
+})
+
+print(ft_ranking)
+```
+
+### Repeated
+
+```{python}
+#| echo: true
+# Import libraries
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('data/soccer21-22.csv')
+
+# Function to determine the winner based on points
+def calculate_points(row):
+    if row['HTR'] == 'H':
+        return 3
+    elif row['HTR'] == 'D':
+        return 1
+    else:
+        return 0
+
+# Apply the function to calculate points for each match
+df['HomePoints'] = df.apply(lambda row: calculate_points(row), axis = 1)
+df['AwayPoints'] = df.apply(lambda row: 3 - calculate_points(row) if row['HTR'] != 'D' else 1, axis = 1)
+
+# Aggregate points for each team
+home_points = df.groupby('HomeTeam')['HomePoints'].sum().reset_index()
+away_points = df.groupby('AwayTeam')['AwayPoints'].sum().reset_index()
+
+# Combine home and away points
+team_points = pd.merge(home_points, away_points, how = 'outer', left_on = 'HomeTeam', right_on = 'AwayTeam')
+team_points['TotalPoints'] = team_points['HomePoints'] + team_points['AwayPoints']
+
+# Sort team_points DataFrame based on TotalPoints
+team_points = team_points.sort_values(by = 'TotalPoints', ascending = False)
+
+# Create ranking DataFrame
+ht_ranking = pd.DataFrame({
+    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Points': team_points['TotalPoints'],
+    'Ranking': range(1, len(team_points) + 1)
+})
+
+print(ht_ranking)
+```
+
+### Repeated with ties
+
+```{python}
+#| echo: true
+# Aggregate goals scored and conceded for each team
+home_goals_scored = df.groupby('HomeTeam')['HTHG'].sum().reset_index()
+home_goals_conceded = df.groupby('HomeTeam')['HTAG'].sum().reset_index()
+away_goals_scored = df.groupby('AwayTeam')['HTAG'].sum().reset_index()
+away_goals_conceded = df.groupby('AwayTeam')['HTHG'].sum().reset_index()
+
+# Merge home and away goals scored and conceded with team_points
+team_points = pd.merge(team_points, home_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, home_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, away_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+team_points = pd.merge(team_points, away_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+
+# Rename columns during merge
+team_points.rename(columns={'HTHG_x': 'HomeGoalsScored', 'HTAG_x': 'HomeGoalsConceded',
+                            'HTAG_y': 'AwayGoalsScored', 'HTHG_y': 'AwayGoalsConceded'}, inplace = True)
+
+# Fill NaN values with 0
+team_points.fillna(0, inplace = True)
+
+# Calculate total goals scored and conceded
+team_points['TotalGoalsScored'] = team_points['HomeGoalsScored'] + team_points['AwayGoalsScored']
+team_points['TotalGoalsConceded'] = team_points['HomeGoalsConceded'] + team_points['AwayGoalsConceded']
+
+# Calculate goal difference
+team_points['GoalDifference'] = team_points['TotalGoalsScored'] - team_points['TotalGoalsConceded']
+
+# Sort team_points DataFrame based on TotalPoints and GoalDifference
+team_points = team_points.sort_values(by = ['TotalPoints', 'GoalDifference'], ascending = [False, False])
+
+# Create ranking DataFrame
+ht_ranking = pd.DataFrame({
+    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Points': team_points['TotalPoints'],
+    'GoalDifference': team_points['GoalDifference'],
+    'Ranking': range(1, len(team_points) + 1)
+})
+
+print(ht_ranking)
+```
+
+:::
 
 ## Plots
 
 ```{python, message=FALSE, warning=FALSE, echo=FALSE}
 
 ```
-
-## Plot and text
-
-::: columns
-::: {.column width="50%"}
--   Some text
-
--   goes here
-:::
-
-::: {.column width="50%"}
-```{python}
-#| warning: false
-#| fig.width: 5.5
-#fig, ax = plt.subplots(figsize=(5.5, 5.5 * 0.618))
-#sns.boxplot(data=penguins, x='bill_length_mm', y='species', hue='species', ax=ax)
-#plt.show()
-```
-:::
-:::
 
 # A new section...
 

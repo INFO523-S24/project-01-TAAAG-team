@@ -440,7 +440,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="2b2096fd" class="cell" data-execution_count="4">
+<div id="f233a5c1" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -476,11 +476,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="feature-importance-visualization" class="slide level2">
 <h2>Feature Importance Visualization</h2>
-<div class="panel-tabset">
-<ul id="tabset-2" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-2-1">Code</a></li><li><a href="#tabset-2-2">Plot</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1">
-<div id="fd0ab1e5" class="cell" data-execution_count="5">
+<div id="4f8013fc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Plot 1: Feature importance visualization</span></span>
 <span id="cb2-2"><a></a>coefficients <span class="op">=</span> pd.DataFrame(model.coef_[<span class="dv">0</span>], X.columns, columns<span class="op">=</span>[<span class="st">'Coefficient'</span>]).sort_values(by<span class="op">=</span><span class="st">'Coefficient'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-3"><a></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
@@ -489,6 +485,10 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <span id="cb2-6"><a></a>plt.xlabel(<span class="st">'Coefficient Value'</span>)</span>
 <span id="cb2-7"><a></a>plt.ylabel(<span class="st">'In-game Metrics'</span>)</span>
 <span id="cb2-8"><a></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</section>
+<section id="feature-importance-visualization-output" class="slide level2 output-location-slide"><h2>Feature Importance Visualization</h2><div class="cell output-location-slide" data-execution_count="5">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
@@ -496,29 +496,9 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </figure>
 </div>
 </div>
-</div>
-</div>
-<div id="tabset-2-2">
-<div id="a7391344" class="cell" data-execution_count="6">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/cell-7-output-1.png"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="confusion-matrix" class="slide level2">
+</div></section><section id="confusion-matrix" class="slide level2">
 <h2>Confusion Matrix</h2>
-<div class="panel-tabset">
-<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Code</a></li><li><a href="#tabset-3-2">Plot</a></li></ul>
-<div class="tab-content">
-<div id="tabset-3-1">
-<div id="08e6f93d" class="cell" data-execution_count="7">
+<div id="d2e4d9b6" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Plot 2: Confusion Matrix</span></span>
 <span id="cb3-2"><a></a>sns.heatmap(cm, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
 <span id="cb3-3"><a></a>plt.title(<span class="st">'Confusion Matrix for Home Team Win Prediction'</span>)</span>
@@ -528,35 +508,20 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <span id="cb3-7"><a></a></span>
 <span id="cb3-8"><a></a><span class="co"># Print accuracy</span></span>
 <span id="cb3-9"><a></a><span class="bu">print</span>(<span class="ss">f'Model Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</section><section id="confusion-matrix-output" class="slide level2 output-location-slide"><h2>Confusion Matrix</h2><div class="cell output-location-slide" data-execution_count="6">
 <div class="cell-output cell-output-display">
 <div>
 <figure>
-<p><img data-src="presentation_files/figure-revealjs/cell-8-output-1.png"></p>
+<p><img data-src="presentation_files/figure-revealjs/cell-7-output-1.png"></p>
 </figure>
 </div>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Model Accuracy: 0.78</code></pre>
 </div>
-</div>
-</div>
-<div id="tabset-3-2">
-<div id="e59c4959" class="cell" data-execution_count="8">
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="presentation_files/figure-revealjs/cell-9-output-1.png"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Model Accuracy: 0.78</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section></section>
+</div></section></section>
 <section>
 <section id="question-2" class="title-slide slide level1 center">
 <h1>Question 2</h1>
@@ -582,7 +547,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </ul>
 </div>
 </section>
-<section id="code-3" class="slide level2">
+<section id="code-1" class="slide level2">
 <h2>Code</h2>
 </section>
 <section id="plots" class="slide level2">
