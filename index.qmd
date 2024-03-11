@@ -11,11 +11,11 @@ jupyter: python3
 
 This study explores how in-game data, like as shots on goal, fouls, and cards, affect match outcomes by looking at 380 matches from the English Premier League's 2021–2022 season. We examine the critical impact these variables play in deciding whether a home or away side wins using Evan Gower's painstakingly selected dataset. We examine these data and use logistic regression to forecast match outcomes, providing information about the dynamics of the game. This work opens the door for predictive modelling in sports analytics while also improving our knowledge of football strategy.
 
-## Introduction:
+## Introduction
 
 Evan Gower's work on Kaggle has made it possible to obtain statistics from 380 matches, giving us a detailed glimpse at the English Premier League season of 2021–2022. Along with comprehensive statistics for both home and away sides, such as goals, shots, fouls, and cards, it also provides important game information such team names, match dates, and referees. This dataset, which contains data on halftime performance as well as full-time results, is an invaluable resource for anyone wishing to examine the factors that affect football match outcomes, from individual player affects to team plans.
 
-## Question 1: 
+## Question 1
 
 What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?
 
@@ -120,7 +120,7 @@ plt.show()
 
 For example, if 'HS' (Home Shots) and 'HST' (Home Shots on Target) have a correlation coefficient close to 1, it means that when the home team takes more shots, they also tend to have more shots on target. Conversely, if 'HS' and 'AF' (Away Fouls) have a correlation coefficient close to -1, it suggests that as the home team takes more shots, the away team tends to commit fewer fouls, indicating a possible defensive strategy or play style difference when under pressure.
 
-## Question 2: 
+## Question 2
 
 How do the outcomes of soccer matches vary under the premise that all games concluded at halftime? How does this disparity differ from team to team, and what is the influence of the overall outcome of the league championship?
 

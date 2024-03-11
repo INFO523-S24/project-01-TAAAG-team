@@ -48,7 +48,7 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 
 # Question 1
 
-## Exploring the complex connections between in-game metrics {.smaller}
+## Exploring the complex connections between in-game metrics
 
 Can these help forecast match outcomes?
 
@@ -59,9 +59,49 @@ Can these help forecast match outcomes?
 -   Analysis :
     -   Spliting data into appropriate sets then applying regression techniques.
 
+## Code
+
+```{python, message=FALSE, warning=FALSE, echo=FALSE}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import confusion_matrix, accuracy_score
+
+# Load the dataset
+df = pd.read_csv('data/soccer21-22.csv')
+
+# Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise
+df['Result'] = (df['FTR'] == 'H').astype(int)
+
+# Feature selection
+features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']
+X = df[features]
+y = df['Result']
+
+# Splitting the dataset into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Logistic Regression model
+model = LogisticRegression(max_iter=1000)
+model.fit(X_train, y_train)
+
+# Predictions
+y_pred = model.predict(X_test)
+
+# Evaluating the model
+accuracy = accuracy_score(y_test, y_pred)
+cm = confusion_matrix(y_test, y_pred)
+```
+
+## Plots
+
+
+
 # Question 2
 
-## What if the matches ended at halftime?..{.smaller}
+## What if the matches ended at halftime?..
 
 Do certain characteristics seen in successful teams result in more wins?
 
@@ -93,10 +133,15 @@ import pandas as pd
 
 ## Plots
 
-```{python}
-#penguins['species'] = penguins['species'].apply(lambda x: "Adelie" if x == "Adelie" else "Other")
-#sns.scatterplot(data=penguins, x='flipper_length_mm', y='body_mass_g', hue='species')
-#plt.show()
+```{python, message=FALSE, warning=FALSE, echo=FALSE}
+# Plot 1: Feature importance visualization
+coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
+plt.figure(figsize=(10, 8))
+sns.barplot(x=coefficients['Coefficient'], y=coefficients.index)
+plt.title('Feature Importance in Predicting Home Team Wins')
+plt.xlabel('Coefficient Value')
+plt.ylabel('In-game Metrics')
+plt.show()
 ```
 
 ## Plot and text
