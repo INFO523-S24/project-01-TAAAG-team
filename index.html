@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="approach">Approach</h3>
 <p>First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team’s outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.</p>
 <p><strong>Data Preparation and Pre-processing</strong> We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called “Result,” where a “1” denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.</p>
-<div id="25b4f2aa" class="cell" data-execution_count="1">
+<div id="a52cdc9e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -259,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f5729115" class="cell" data-execution_count="2">
+<div id="5a9f3fca" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Feature importance visualization</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coefficients <span class="op">=</span> pd.DataFrame(model.coef_[<span class="dv">0</span>], X.columns, columns<span class="op">=</span>[<span class="st">'Coefficient'</span>]).sort_values(by<span class="op">=</span><span class="st">'Coefficient'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
@@ -279,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Feature Importance Visualization by Logistic Regression</strong></p>
 <p>A positive coefficient value (bar extending to the right) suggests that higher values of the corresponding metric increase the likelihood of the home team winning. For instance, a positive coefficient for <code>Number of shots on Target by Home Team (HTS)</code> indicates that the home side has a greater chance of winning if they have more shoots on target.</p>
 <p>On the other hand, a negative coefficient value (bar extending to the left) indicates that the probability of the home side winning is decreased at greater levels of that statistic. For example, if <code>Number of redcards recieved Home Team (HR)</code> has a negative coefficient, it means that the home team’s chances of winning are likely to be lowered by committing more red cards received.</p>
-<div id="5438ec6f" class="cell" data-execution_count="3">
+<div id="b71f62fb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2: Confusion Matrix</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Confusion Matrix for Home Team Win Prediction'</span>)</span>
@@ -303,7 +303,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Confusion Matrix for Home Team Win Prediction</strong></p>
 <p>This chart shows how well the model guessed if the home team would win a soccer game. It’s like a report card for the model’s predictions. For example, if the model guessed that the home team wouldn’t win (maybe it thought the game would be a draw or the away team would win), and that was correct, that count goes in the top left corner. If the model thought the home team wouldn’t win, but they actually did, that count goes in the bottom left corner.</p>
 <p>On the other hand, if the model predicted a home win and was right, that goes in the bottom right corner. But if it predicted a home win and was wrong, that goes in the top right corner.</p>
-<div id="864dabbf" class="cell" data-execution_count="4">
+<div id="d3386aeb" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the target variable - Home win (1) or not (0)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'HomeWin'</span>] <span class="op">=</span> df[<span class="st">'FTR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'H'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
