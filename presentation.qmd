@@ -8,8 +8,6 @@ title-slide-attributes:
   data-background-opacity: "0.7"
   data-slide-number: none
 format:
-  html: 
-    code-overflow: wrap
   revealjs:
     scrollable: true
     theme:  ['data/customtheming.scss']
