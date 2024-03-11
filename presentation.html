@@ -244,6 +244,7 @@
     }
     .reveal .slide:not(.center) {
       height: 100%;
+      overflow-y: auto;
     }
     .reveal .slide.scrollable {
       overflow-y: auto;
@@ -345,27 +346,41 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="exploring-the-complex-connections-between-in-game-metrics" class="slide level2">
 <h2>Exploring the complex connections between in-game metrics</h2>
-<p>Can these help forecast match outcomes?</p>
-<ul>
-<li>Critical variables :
-<ul>
-<li>FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR.</li>
-</ul></li>
-<li>Data preparation :
-<ul>
-<li>Combining match information with team-level season summaries.</li>
-</ul></li>
-<li>Analysis :
-<ul>
-<li>Spliting data into appropriate sets then applying regression techniques.</li>
-</ul></li>
-</ul>
+<p>Can these help forecast match outcomes? :::{.incremental} - Critical variables : - FTHG, FTAG, FTR, HS, AS, HST, AST, HF, AF, HY, AY, HR, AR. - Data preparation : - Combining match information with team-level season summaries. - Analysis : - Splitting data into appropriate sets then applying regression techniques</p>
+<p>:::</p>
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
 </section>
-<section id="plots" class="slide level2">
-<h2>Plots</h2>
+<section id="feature-importance-visualization" class="slide level2">
+<h2>Feature Importance Visualization</h2>
+
+<img data-src="presentation_files/figure-revealjs/cell-6-output-1.png" class="r-stretch"></section>
+<section id="confusion-matrix" class="slide level2">
+<h2>Confusion Matrix</h2>
+<div class="panel-tabset">
+<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Code</a></li><li><a href="#tabset-1-2">Plot</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1">
+<div id="d52841d8" class="cell" data-execution_count="6">
+<div class="cell-output cell-output-display">
+<div>
+<figure>
+<p><img data-src="presentation_files/figure-revealjs/cell-7-output-1.png"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2">
+<div id="87881c8d" class="cell" data-execution_count="7">
+<div class="cell-output cell-output-stdout">
+<pre><code>Model Accuracy: 0.78</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="question-2" class="title-slide slide level1 center">
@@ -374,29 +389,30 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="what-if-the-matches-ended-at-halftime.." class="slide level2">
 <h2>What if the matches ended at halftime?..</h2>
+<div>
 <p>Do certain characteristics seen in successful teams result in more wins?</p>
 <ul>
-<li>Critical variables :
+<li class="fragment">Critical variables :
 <ul>
-<li>FTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.</li>
+<li class="fragment">FTHG, FTAG, FTR, HTHG, HTAG, HTR, HomeTeam, AwayTeam.</li>
 </ul></li>
-<li>Data preparation :
+<li class="fragment">Data preparation :
 <ul>
-<li>Performing thorough checks and creating visualizations.</li>
+<li class="fragment">Performing thorough checks and creating visualizations.</li>
 </ul></li>
-<li>Analysis :
+<li class="fragment">Analysis :
 <ul>
-<li>Creating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.</li>
+<li class="fragment">Creating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.</li>
 </ul></li>
 </ul>
+</div>
 </section>
-<section id="code-1" class="slide level2">
+<section id="code-2" class="slide level2">
 <h2>Code</h2>
 </section>
-<section id="plots-1" class="slide level2">
+<section id="plots" class="slide level2">
 <h2>Plots</h2>
-
-<img data-src="presentation_files/figure-revealjs/cell-7-output-1.png" class="r-stretch"></section>
+</section>
 <section id="plot-and-text" class="slide level2">
 <h2>Plot and text</h2>
 <div class="columns">
@@ -423,7 +439,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <h2>Images</h2>
 
 <img data-src="images/watercolour_sys02_img34_teacup-ocean.png" class="quarto-figure quarto-figure-center r-stretch" width="500"><p class="caption">Image credit: Danielle Navarro, Percolate.</p></section>
-<section id="math-expressions" class="slide level2 smaller">
+<section id="math-expressions" class="slide level2 smaller scrollable">
 <h2>Math Expressions</h2>
 <p>You can write LaTeX math expressions inside a pair of dollar signs, e.g.&nbsp;$\alpha+\beta$ renders <span class="math inline">\(\alpha + \beta\)</span>. You can use the display style with double dollar signs:</p>
 <pre><code>$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$</code></pre>
@@ -485,7 +501,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 'autoAnimateDuration': 1,
 'autoAnimateUnmatched': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
