@@ -52,28 +52,30 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 
 ## Exploring the complex connections between in-game metrics
 
-:::{.panel-tabset}
-
+::: panel-tabset
 ### Critical variables
-- *FTHG* and *FTAG* are crucial indicators
-- *FTR* serves as the target variable
-- *HS*, *AS*, *HST*,and *AST* reflect attacking performance.
-- *HF*, *AF*, *HY*, *AY*, *HR*,and *AR* all indicate team discipline and aggresion
+
+-   **FTHG** and **FTAG** are crucial indicators
+-   **FTR** serves as the target variable
+-   **HS**, **AS**, **HST**,and **AST** reflect attacking performance.
+-   **HF**, **AF**, **HY**, **AY**, **HR**,and **AR** all indicate team discipline and aggresion
 
 ### Data preparation
-- Combining match information with team-level season summaries
-- The consistency of the dataset ensures reliability of our analysis
+
+-   Combining match information with team-level season summaries
+-   The consistency of the dataset ensures reliability of our analysis
 
 ### Analysis
-- Splitting data into appropriate sets then applying regression techniques
-- Regression techniques 
-- Discovering patterns and relationships critical for building predictive models
 
+-   Splitting data into appropriate sets then applying regression techniques
+-   Regression techniques
+-   Discovering patterns and relationships critical for building predictive models
 :::
 
 ## Code
 
 ```{python, message=FALSE, warning=FALSE}
+#| echo: true
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -109,7 +111,10 @@ cm = confusion_matrix(y_test, y_pred)
 
 ## Feature Importance Visualization
 
-```{python, message=FALSE, warning=FALSE, echo=FALSE}
+::: panel-tabset
+### Code
+```{python, message=FALSE, warning=FALSE}
+#| echo: true
 # Plot 1: Feature importance visualization
 coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
 plt.figure(figsize=(10, 8))
@@ -120,11 +125,40 @@ plt.ylabel('In-game Metrics')
 plt.show()
 ```
 
+### Plot
+```{python, message=FALSE, warning=FALSE, echo=FALSE}
+# Plot 1: Feature importance visualization
+coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
+plt.figure(figsize=(10, 8))
+sns.barplot(x=coefficients['Coefficient'], y=coefficients.index)
+plt.title('Feature Importance in Predicting Home Team Wins')
+plt.xlabel('Coefficient Value')
+plt.ylabel('In-game Metrics')
+plt.show()
+```
+:::
+
 ## Confusion Matrix
 
-:::{.panel-tabset}
-
+::: panel-tabset
 ### Code
+
+```{python, message=FALSE, warning=FALSE}
+#| echo: true
+
+# Plot 2: Confusion Matrix
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.title('Confusion Matrix for Home Team Win Prediction')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.show()
+
+# Print accuracy
+print(f'Model Accuracy: {accuracy:.2f}')
+```
+
+### Plot
+
 ```{python, message=FALSE, warning=FALSE, echo=FALSE}
 # Plot 2: Confusion Matrix
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
@@ -132,22 +166,17 @@ plt.title('Confusion Matrix for Home Team Win Prediction')
 plt.xlabel('Predicted Label')
 plt.ylabel('True Label')
 plt.show()
-```
 
-### Plot
-
-```{python, message=FALSE, warning=FALSE, echo=FALSE}
 # Print accuracy
 print(f'Model Accuracy: {accuracy:.2f}')
 ```
-
 :::
 
 # Question 2
 
 ## What if the matches ended at halftime?..
 
-::: {.incremental}
+::: incremental
 Do certain characteristics seen in successful teams result in more wins?
 
 -   Critical variables :
@@ -156,7 +185,6 @@ Do certain characteristics seen in successful teams result in more wins?
     -   Performing thorough checks and creating visualizations.
 -   Analysis :
     -   Creating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.
-
 :::
 
 ## Code
