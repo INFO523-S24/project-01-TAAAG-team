@@ -110,11 +110,10 @@ cm = confusion_matrix(y_test, y_pred)
 ```
 
 ## Feature Importance Visualization
-
-::: panel-tabset
-### Code
 ```{python, message=FALSE, warning=FALSE}
 #| echo: true
+#| output-location: slide
+#| 
 # Plot 1: Feature importance visualization
 coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
 plt.figure(figsize=(10, 8))
@@ -124,27 +123,11 @@ plt.xlabel('Coefficient Value')
 plt.ylabel('In-game Metrics')
 plt.show()
 ```
-
-### Plot
-```{python, message=FALSE, warning=FALSE, echo=FALSE}
-# Plot 1: Feature importance visualization
-coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
-plt.figure(figsize=(10, 8))
-sns.barplot(x=coefficients['Coefficient'], y=coefficients.index)
-plt.title('Feature Importance in Predicting Home Team Wins')
-plt.xlabel('Coefficient Value')
-plt.ylabel('In-game Metrics')
-plt.show()
-```
-:::
 
 ## Confusion Matrix
-
-::: panel-tabset
-### Code
-
 ```{python, message=FALSE, warning=FALSE}
 #| echo: true
+#| output-location: slide
 
 # Plot 2: Confusion Matrix
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
@@ -156,21 +139,6 @@ plt.show()
 # Print accuracy
 print(f'Model Accuracy: {accuracy:.2f}')
 ```
-
-### Plot
-
-```{python, message=FALSE, warning=FALSE, echo=FALSE}
-# Plot 2: Confusion Matrix
-sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
-plt.title('Confusion Matrix for Home Team Win Prediction')
-plt.xlabel('Predicted Label')
-plt.ylabel('True Label')
-plt.show()
-
-# Print accuracy
-print(f'Model Accuracy: {accuracy:.2f}')
-```
-:::
 
 # Question 2
 
