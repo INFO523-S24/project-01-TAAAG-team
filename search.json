@@ -130,7 +130,7 @@
     "href": "presentation.html#what-if-the-matches-ended-at-halftime",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "What if the matches ended at halftime?",
-    "text": "What if the matches ended at halftime?\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are needed to determine team placements\nFTR denotes fthe final actual outcome\nHTHG, HTAG,and HTR are important as well\nHomeTeam and AwayTeam combined with the rest help determine the winner\n\n\n\n\nPerforming thorough checks and creating visualizations.\nMaking sure data has no missing values\n\n\n\n\nCreating a function to determine results of matches at halftime and using this recalibration as a new baseline of analysis.\nChronologically organized data"
+    "text": "What if the matches ended at halftime?\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are needed to determine team placements\nFTR denotes fthe final actual outcome\nHTHG, HTAG,and HTR are important as well\nHomeTeam and AwayTeam combined with the rest help determine the winner\n\n\n\n\nPerforming thorough checks and creating visualizations.\nMaking sure data has no missing values\n\n\n\n\nCreating a function to determine results of matches at halftime and using this re-calibration as a new baseline of analysis.\nChronologically organized data"
   },
   {
     "objectID": "presentation.html#code-1",
