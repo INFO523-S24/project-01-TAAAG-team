@@ -178,6 +178,49 @@ ft_ranking = pd.DataFrame({
 })
 
 print(ft_ranking)
+```
+
+```{python}
+team_colors = {
+    'Arsenal': 'red',
+    'Aston Villa': 'red',
+    'Brentford': 'black',
+    'Brighton': 'blue',
+    'Burnley': 'brown',
+    'Chelsea': 'blue',
+    'Crystal Palace': 'blue',
+    'Everton': 'blue',
+    'Leeds': 'brown',
+    'Leicester': 'blue',
+    'Liverpool': 'red',
+    'Man City': 'lightblue',
+    'Man United': 'red',
+    'Newcastle': 'black',
+    'Norwich': 'yellow',
+    'Southampton': 'red',
+    'Tottenham': 'navy',
+    'Watford': 'brown',
+    'West Ham': 'brown',
+    'Wolves': 'gold',
+}
+```
+```{python}
+
+
+plt.figure(figsize=(12, 6))
+bars = plt.bar(ft_ranking['Team'], ft_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']],alpha=0.5,width=0.5)
+plt.title('Full-Time Rankings Based on Points')
+plt.xlabel('Team')
+plt.ylabel('Total Points')
+plt.xticks(rotation=45, ha='center')
+
+
+for bar, rank in zip(bars, ft_ranking['Ranking']):
+    plt.text(bar.get_x() + bar.get_width() / 2 - 0.15, bar.get_height() + 0.1, str(rank), ha='left', color='black', fontsize=12)
+
+
+plt.show()
+
 
 ```
 
@@ -224,6 +267,27 @@ ft_ranking = pd.DataFrame({
 })
 
 print(ft_ranking)
+
+
+
+```
+
+```{python}
+fig, ax = plt.subplots(figsize=(12, 6))
+bars = ax.bar(ft_ranking['Team'], ft_ranking['GoalDifference'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']], alpha=0.5, width=0.5)
+plt.title('Bar Plot of Goal Difference for Teams')
+plt.xlabel('Team')
+plt.ylabel('Goals ')
+plt.xticks(rotation=45, ha='right')
+
+# Create a secondary x-axis at the top
+ax2 = ax.twiny()
+ax2.set_xlim(ax.get_xlim())
+ax2.set_xticks(ax.get_xticks())
+ax2.set_xticklabels(ft_ranking['GoalDifference'], ha='left')
+ax2.set_xlabel('Goal Difference')
+
+plt.show()
 
 ```
 
@@ -273,6 +337,23 @@ print(ht_ranking)
 
 ```
 
+```{python}
+
+plt.figure(figsize=(12, 6))
+bars = plt.bar(ht_ranking['Team'], ht_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=0.5, width=0.5)
+plt.title('Half-Time Rankings Based on Points')
+plt.xlabel('Team')
+plt.ylabel('Total Points')
+plt.xticks(rotation=45, ha='right')
+
+# Add rankings on top of each bar
+for bar, rank in zip(bars, ht_ranking['Ranking']):
+    plt.text(bar.get_x() + bar.get_width() / 2 - 0.15, bar.get_height() + 0.1, str(rank), ha='left', color='black', fontsize=9)
+
+plt.show()
+
+```
+
 Again, there are ties with the rankings when only looking at points based on half-time results. Therefore, we must look at goal difference as well.
 
 ```{python}
@@ -309,7 +390,7 @@ team_points = team_points.sort_values(by = ['TotalPoints', 'GoalDifference'], as
 
 # Create ranking DataFrame
 ht_ranking = pd.DataFrame({
-    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Team': team_points['HomeTeam'],
     'Points': team_points['TotalPoints'],
     'GoalDifference': team_points['GoalDifference'],
     'Ranking': range(1, len(team_points) + 1)
@@ -319,6 +400,23 @@ print(ht_ranking)
 
 ```
 
+```{python}
+
+# Create the primary axis
+fig, ax1 = plt.subplots(figsize=(12, 6))
+bars = ax1.bar(ht_ranking['Team'], ht_ranking['GoalDifference'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=0.5, width=0.5)
+ax1.set_title('Bar Plot of Goal Difference for Teams (Half-Time)')
+ax1.set_xlabel('Team')
+ax1.set_ylabel('Goal Difference')
+ax1.tick_params(axis='x', rotation=45 )
+
+# Create the secondary axis (top axis)
+ax2 = ax1.twiny()
+ax2.set_xlim(ax1.get_xlim()) 
+ax2.set_xticks(ax1.get_xticks()) 
+ax2.set_xticklabels(ht_ranking['GoalDifference'], rotation_mode='anchor') 
+plt.show()
+```
 ### Discussion
 
 ## References
