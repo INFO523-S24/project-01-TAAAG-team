@@ -3,9 +3,9 @@ title: "Premier League Performance Metrics and Results: A Dynamic Analysis"
 subtitle: "INFO 523 - Spring 2023 - Project 1"
 author: "Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan"
 title-slide-attributes:
-  data-background-image: images/watercolour_sys02_img34_teacup-ocean.jpg
+  data-background-image: images/stadium.jpg
   data-background-size: stretch
-  data-background-opacity: "0.7"
+  data-background-opacity: "0.8"
   data-slide-number: none
 format:
   revealjs:
