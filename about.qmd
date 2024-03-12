@@ -15,4 +15,4 @@ This project was developed by **\[TAAAG Team\]** For [INFO 523 - Data Mining and
 
 -   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future.
 
--   Akash Srinivasan: One sentence description of Team member 4 (e.g., year, major, etc.).
+-   Akash Srinivasan: First-year , MS in Data Science, Graduate Research Assistant School of Medicine, UA-Phoenix
