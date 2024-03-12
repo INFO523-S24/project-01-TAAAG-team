@@ -137,8 +137,11 @@ Initially, we will employ traditional ranking methods based on full-time match r
 **Data Preparation and Pre-processing** 
 Data preparation for the analysis of the 2021-2022 European Premier League (EPL) season began with the calculation of points awarded to home and away teams based on match outcomes, adhering to the EPL's point allocation system. Subsequently, the dataset was organized through grouping operations, which revealed instances of point ties among teams. To address this, a feature engineering process was employed to derive the goal difference metric, representing the difference between goals scored and goals conceded by each team. This involved aggregating match statistics to determine the net goals accumulated by each team throughout the season. By iteratively refining the dataset through these preprocessing steps, we ensured the readiness of the data for subsequent analysis, laying the groundwork for examining match outcomes and team dynamics during the 2021-2022 EPL season.
 
+With an overview of the preparation and pre-processing steps, we begin by calculating team rankings using full time results. The code below shows the general structure that is used to calculate team rankings using the win/draw/loss point systems. Although the code works for both full time results and half time results, the instance below illustrates an example for full time results.
 ```{python}
 #| label: calculate-full-time-rankings-based-on-points
+#| code-fold: true
+#| code-summary: "Show code to rank teams based on points"
 
 # Import libraries
 import pandas as pd
@@ -181,31 +184,37 @@ print(ft_ranking)
 ```
 
 ```{python}
+#| label: Creating-team-colors-for-the-bar-plot
+#| echo: false
+
 team_colors = {
-    'Arsenal': 'red',
-    'Aston Villa': 'red',
-    'Brentford': 'black',
-    'Brighton': 'blue',
-    'Burnley': 'brown',
-    'Chelsea': 'blue',
-    'Crystal Palace': 'blue',
-    'Everton': 'blue',
-    'Leeds': 'brown',
-    'Leicester': 'blue',
-    'Liverpool': 'red',
-    'Man City': 'lightblue',
-    'Man United': 'red',
-    'Newcastle': 'black',
-    'Norwich': 'yellow',
-    'Southampton': 'red',
-    'Tottenham': 'navy',
-    'Watford': 'brown',
-    'West Ham': 'brown',
-    'Wolves': 'gold',
+    'Arsenal': '#EF0107',          # Arsenal (Red)
+    'Aston Villa': '#95BFE5',      # Aston Villa (Light Blue)
+    'Brentford': '#FFCC00',        # Brentford (Yellow)
+    'Brighton': '#0057B8',         # Brighton (Blue)
+    'Burnley': '#6C1D45',          # Burnley (Claret)
+    'Chelsea': '#034694',          # Chelsea (Blue)
+    'Crystal Palace': '#1B458F',   # Crystal Palace (Blue/Red)
+    'Everton': '#003399',          # Everton (Blue)
+    'Leeds': '#F9D12B',            # Leeds (Yellow)
+    'Leicester': '#003090',        # Leicester (Blue)
+    'Liverpool': '#C8102E',        # Liverpool (Red)
+    'Man City': '#6CABDD',         # Manchester City (Sky Blue)
+    'Man United': '#DA291C',       # Manchester United (Red)
+    'Newcastle': '#241F20',        # Newcastle United (Black)
+    'Norwich': '#00A650',          # Norwich City (Green/Yellow)
+    'Southampton': '#D71920',      # Southampton (Red)
+    'Tottenham': '#132257',        # Tottenham Hotspur (Navy)
+    'Watford': '#FDB913',          # Watford (Yellow/Black)
+    'West Ham': '#7A263A',         # West Ham United (Claret/Blue)
+    'Wolves': '#FDB913'            # Wolverhampton Wanderers (Old Gold)
 }
+
 ```
 ```{python}
-
+#| label: Plot-the-table-as-a-bar-plot-for-visualization
+#| code-fold: true
+#| code-summary: "Show code to plot team ranks"
 
 plt.figure(figsize=(12, 6))
 bars = plt.bar(ft_ranking['Team'], ft_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']],alpha=0.5,width=0.5)
@@ -221,13 +230,14 @@ for bar, rank in zip(bars, ft_ranking['Ranking']):
 
 plt.show()
 
-
 ```
 
-Since there are ties in points, we must move on to the second metric to determine official rankings
+The table and bar plot above show the rankings of all the teams based on the point system. Although Brighton and Wolves are ranked as 9th and 10th, we see from the table that they have tied in the number of points earned. The EPL further breaks ties by considering goal difference, which is the number of goals scored in each season minus the number of goals conceded in the season. The below code shows how to further break down ties using goal difference.
 
 ```{python}
 #| label: calculate-full-time-rankings-based-on-goal-difference
+#| code-fold: true
+#| code-summary: "Show code to rank teams based on goal difference"
 
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['FTHG'].sum().reset_index()
@@ -268,11 +278,13 @@ ft_ranking = pd.DataFrame({
 
 print(ft_ranking)
 
-
-
 ```
 
 ```{python}
+#| label: plot-full-time-rankings-based-on-goal-difference
+#| code-fold: true
+#| code-summary: "Show code to plot team ranks when considering goal difference"
+
 fig, ax = plt.subplots(figsize=(12, 6))
 bars = ax.bar(ft_ranking['Team'], ft_ranking['GoalDifference'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']], alpha=0.5, width=0.5)
 plt.title('Bar Plot of Goal Difference for Teams')
@@ -291,10 +303,11 @@ plt.show()
 
 ```
 
-Now we repeat the process again with the half time results before beginning our analysis and discussion.
+With the point system and goal difference, we no longer have ties between any teams and have the official ranking of teams in the 2021-2022 EPL Season. Now we repeat the process again with the half time results before beginning our discussion. The below table and plot show the half-time result ranking. 
 
 ```{python}
 #| label: calculate-half-time-rankings-based-on-points
+#| echo: false
 
 # Import libraries
 import pandas as pd
@@ -338,6 +351,7 @@ print(ht_ranking)
 ```
 
 ```{python}
+#| echo: false
 
 plt.figure(figsize=(12, 6))
 bars = plt.bar(ht_ranking['Team'], ht_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=0.5, width=0.5)
@@ -354,10 +368,11 @@ plt.show()
 
 ```
 
-Again, there are ties with the rankings when only looking at points based on half-time results. Therefore, we must look at goal difference as well.
+Again, there are ties with the rankings when only looking at points based on half-time results. Therefore, we must look at goal difference as well. The table and plot below show the updated rankings when considering points and goal difference.
 
 ```{python}
 #| label: calculate-half-time-rankings-based-on-goal-difference
+#| echo: false
 
 # Aggregate goals scored and conceded for each team
 home_goals_scored = df.groupby('HomeTeam')['HTHG'].sum().reset_index()
@@ -401,6 +416,7 @@ print(ht_ranking)
 ```
 
 ```{python}
+#| echo: false
 
 # Create the primary axis
 fig, ax1 = plt.subplots(figsize=(12, 6))
@@ -417,6 +433,7 @@ ax2.set_xticks(ax1.get_xticks())
 ax2.set_xticklabels(ht_ranking['GoalDifference'], rotation_mode='anchor') 
 plt.show() 
 ``` 
+
 ### Discussion
 
 ## References
