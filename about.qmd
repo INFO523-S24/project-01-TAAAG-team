@@ -7,7 +7,7 @@ jupyter: python3
 
 This project was developed by **\[TAAAG Team\]** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
--   Tejas Bhawari: One sentence description of Team member 1 (e.g., year, major, etc.).
+-   Tejas Bhawari: First-year, MS in Data Science, RPA Developer (e.g., year, major, etc.).
 
 -   Gabriel Geffen: First-year Ph.D. student in civil engineering with an emphasis in traffic engineering.
 
