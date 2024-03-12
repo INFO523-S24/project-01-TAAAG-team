@@ -9,9 +9,14 @@ title-slide-attributes:
   data-slide-number: none
 format:
   revealjs:
+    transition: concave
+    background-transition: fade
     scrollable: true
     code-block-height: 1000px
-    code-overflow: wrap
+    # code-overflow: wrap
+    code-tools: true 
+    code-block-bg: true
+    code-block-border-left: "blue"
     theme:  ['data/customtheming.scss']
   
 editor: visual
@@ -109,21 +114,9 @@ y_pred = model.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred)
 ```
-
 ## Feature Importance Visualization
 
-```{python, message=FALSE, warning=FALSE}
-#| echo: true
-#| output-location: slide
-# Plot 1: Feature importance visualization
-coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
-plt.figure(figsize=(10, 8))
-sns.barplot(x=coefficients['Coefficient'], y=coefficients.index)
-plt.title('Feature Importance in Predicting Home Team Wins')
-plt.xlabel('Coefficient Value')
-plt.ylabel('In-game Metrics')
-plt.show()
-```
+![](images/image1.png){.nostretch fig-align="center" width="725px"}
 
 ## Confusion Matrix
 
