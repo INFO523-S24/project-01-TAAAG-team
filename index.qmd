@@ -416,7 +416,7 @@ ax2.set_xlim(ax1.get_xlim())
 ax2.set_xticks(ax1.get_xticks()) 
 ax2.set_xticklabels(ht_ranking['GoalDifference'], rotation_mode='anchor') 
 plt.show()
-```
+``` 
 ### Discussion
 
 ## References
