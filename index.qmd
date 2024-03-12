@@ -216,6 +216,9 @@ team_colors = {
 #| code-fold: true
 #| code-summary: "Show code to plot team ranks"
 
+# Set the style to ticks
+sns.set_style("ticks")
+
 plt.figure(figsize=(12, 6))
 bars = plt.bar(ft_ranking['Team'], ft_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']],alpha=0.5,width=0.5)
 plt.title('Full-Time Rankings Based on Points')
@@ -285,19 +288,15 @@ print(ft_ranking)
 #| code-fold: true
 #| code-summary: "Show code to plot team ranks when considering goal difference"
 
-fig, ax = plt.subplots(figsize=(12, 6))
-bars = ax.bar(ft_ranking['Team'], ft_ranking['GoalDifference'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']], alpha=0.5, width=0.5)
+# Set the style to whitegrid
+sns.set_style("whitegrid")
+
+fig, ax = plt.subplots(figsize = (12, 6))
+bars = ax.bar(ft_ranking['Team'], ft_ranking['GoalDifference'], color = [team_colors.get(team, 'gray') for team in ft_ranking['Team']], alpha=0.5, width=0.5)
 plt.title('Bar Plot of Goal Difference for Teams')
 plt.xlabel('Team')
-plt.ylabel('Goals ')
+plt.ylabel('Goal Difference')
 plt.xticks(rotation=45, ha='right')
-
-# Create a secondary x-axis at the top
-ax2 = ax.twiny()
-ax2.set_xlim(ax.get_xlim())
-ax2.set_xticks(ax.get_xticks())
-ax2.set_xticklabels(ft_ranking['GoalDifference'], ha='left')
-ax2.set_xlabel('Goal Difference')
 
 plt.show()
 
@@ -352,6 +351,9 @@ print(ht_ranking)
 
 ```{python}
 #| echo: false
+
+# Set the style to ticks
+sns.set_style("ticks")
 
 plt.figure(figsize=(12, 6))
 bars = plt.bar(ht_ranking['Team'], ht_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=0.5, width=0.5)
@@ -418,6 +420,9 @@ print(ht_ranking)
 ```{python}
 #| echo: false
 
+# Set the style to whitegrid
+sns.set_style("whitegrid")
+
 # Create the primary axis
 fig, ax1 = plt.subplots(figsize=(12, 6))
 bars = ax1.bar(ht_ranking['Team'], ht_ranking['GoalDifference'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=0.5, width=0.5)
@@ -426,14 +431,24 @@ ax1.set_xlabel('Team')
 ax1.set_ylabel('Goal Difference')
 ax1.tick_params(axis='x', rotation=45 )
 
-# Create the secondary axis (top axis)
-ax2 = ax1.twiny()
-ax2.set_xlim(ax1.get_xlim()) 
-ax2.set_xticks(ax1.get_xticks()) 
-ax2.set_xticklabels(ht_ranking['GoalDifference'], rotation_mode='anchor') 
 plt.show() 
 ``` 
 
 ### Discussion
 
+The analysis of halftime outcomes in the context of team rankings provides valuable insights into the dynamics of team performance and strategic decision-making in professional football. In particular, focusing on the top three teams before and after halftime reveals interesting patterns. Despite the structural changes in the game, the top three teams largely maintain their positions, with only minor adjustments observed. This consistency suggests that these teams possess strategies or training regimens that consistently place them at the forefront of the league, regardless of variations in match structure or halftime strategies.
+
+When examining the overall changes in rankings, notable shifts are observed, particularly in the swapping of first and second place. This exchange of positions between the top two teams, while subtle, may indicate differing strengths in the first and second halves of matches. For instance, while Manchester City emerges as the eventual winners of the EPL league, the swapping of positions with Liverpool could imply a potential area for improvement in either team's gameplay strategy. It suggests the need for Liverpool to enhance their stamina or second-half strategies, despite their strong performance in the initial phases of matches.
+
+Moreover, significant changes in rank, such as Southampton's improvement from 15th to 6th place, underscore the importance of halftime strategies and team conditioning. The notable rise in Southampton's ranking may signify either a highly aggressive starting strategy that may not be sustainable or potential deficiencies in second-half performance due to inadequate conditioning or strategic adjustments. These findings highlight the complexity of team dynamics and the multifaceted factors influencing match outcomes and league standings.
+
+Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.
+
 ## References
+
+Pandas documentation used to assist with joining dataframes and resetting index.
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html
+https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html
+
+We also checked the official Premier League website to determine how rankings are calculated.
+https://www.premierleague.com/premier-league-explained 
