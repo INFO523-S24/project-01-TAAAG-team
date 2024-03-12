@@ -1,8 +1,8 @@
 {
-  "hash": "1b3f64000492deab6d50bc441c494392",
+  "hash": "6bb077aab28c43051504edec647f8b3d",
   "result": {
     "engine": "jupyter",
-    "markdown": "---\ntitle: About\nformat: html\neditor: visual\n---\n\nThis project was developed by **\\[TAAAG Team\\]** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\n-   Tejas Bhawari: One sentence description of Team member 1 (e.g., year, major, etc.).\n\n-   Gabriel Geffen: First-year Ph.D. student in civil engineering with an emphasis in traffic engineering.\n\n-   Ayesha Khatun: One sentence description of Team member 3 (e.g., year, major, etc.).\n\n-   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future. \n\n-   Akash Srinivasan: One sentence description of Team member 4 (e.g., year, major, etc.).\n\n",
+    "markdown": "---\ntitle: About\nformat: html\neditor: visual\n---\n\nThis project was developed by **\\[TAAAG Team\\]** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\n-   Tejas Bhawari: First-year, MS in Data Science, RPA Developer.\n\n-   Gabriel Geffen: First-year Ph.D. student in civil engineering with an emphasis in traffic engineering.\n\n-   Ayesha Khatun: GitHub name @ayeshakhatunsujana Ph.D. student, School of Information.\n\n-   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future.\n\n-   Akash Srinivasan: One sentence description of Team member 4 (e.g., year, major, etc.).\n\n",
     "supporting": [
       "about_files\\figure-html"
     ],
