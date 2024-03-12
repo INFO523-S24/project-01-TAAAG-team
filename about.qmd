@@ -7,12 +7,12 @@ jupyter: python3
 
 This project was developed by **\[TAAAG Team\]** For [INFO 523 - Data Mining and Discovery](https://datamineaz.org/) at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.
 
--   Tejas Bhawari: One sentence description of Team member 1 (e.g., year, major, etc.).
+-   Tejas Bhawari: First-year, MS in Data Science, RPA Developer.
 
 -   Gabriel Geffen: First-year Ph.D. student in civil engineering with an emphasis in traffic engineering.
 
--   Ayesha Khatun: One sentence description of Team member 3 (e.g., year, major, etc.).
+-   Ayesha Khatun: GitHub name @ayeshakhatunsujana Ph.D. student, School of Information.
 
--   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future. 
+-   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future.
 
 -   Akash Srinivasan: One sentence description of Team member 4 (e.g., year, major, etc.).
