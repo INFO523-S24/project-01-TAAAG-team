@@ -11,7 +11,7 @@ This project was developed by **\[TAAAG Team\]** For [INFO 523 - Data Mining and
 
 -   Gabriel Geffen: First-year Ph.D. student in civil engineering with an emphasis in traffic engineering.
 
--   Ayesha Khatun: GitHub name @ayeshakhatunsujana Ph.D. student, School of Information.
+-   Ayesha Khatun: 1st year, Phd Student, Information Science (Research Area: Natural Language Processing), School of Information.
 
 -   Alyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future.
 
