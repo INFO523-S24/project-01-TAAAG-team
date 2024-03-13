@@ -56,16 +56,9 @@ plt.rcParams['figure.figsize'] = (6, 6 * 0.618)
 import_data = pd.read_csv("data/soccer21-22.csv")
 ```
 
-
-
-## Ever wondered, How do things like shots and fouls during a game affect who wins, and what if soccer matches ended at halftime—how would that change the game?
-
-![](images/IntoPic.jpg){.nostretch fig-align="center" width="20000px"}
-
 # Question 1
 
-
-### What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?
+## What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?
 
 #### Approach
 
