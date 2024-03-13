@@ -125,7 +125,7 @@ y = df['Result']
 ### Critical variables
 
 -   **FTHG** and **FTAG** are needed to determine team placements
--   **FTR** denotes fthe final actual outcome
+-   **FTR** denotes the final actual outcome
 -   **HTHG**, **HTAG**,and **HTR** are important as well
 -   **HomeTeam** and **AwayTeam** combined with the rest help determine the winner
 

@@ -95,7 +95,7 @@
     "href": "presentation.html#exploring-the-complex-connections-between-in-game-metrics",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Exploring the complex connections between in-game metrics",
-    "text": "Exploring the complex connections between in-game metrics\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are crucial indicators\nFTR serves as the target variable\nHS, AS, HST,and AST reflect attacking performance.\nHF, AF, HY, AY, HR,and AR all indicate team discipline and aggresion\n\n\n\n\nCombining match information with team-level season summaries\nThe consistency of the dataset ensures reliability of our analysis\n\n\n# Load the dataset\ndf = pd.read_csv('data/soccer21-22.csv')\n\n# Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise\ndf['Result'] = (df['FTR'] == 'H').astype(int)\n\n# Feature selection\nfeatures = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']\nX = df[features]\ny = df['Result']\n\n\n\n\nSplitting data into appropriate sets then applying regression techniques\nRegression techniques\nDiscovering patterns and relationships critical for building predictive models"
+    "text": "Exploring the complex connections between in-game metrics\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are crucial indicators\nFTR serves as the target variable\nHS, AS, HST,and AST reflect attacking performance.\nHF, AF, HY, AY, HR,and AR all indicate team discipline and aggresion\n\n\n\n\nCombining match information with team-level season summaries\nThe consistency of the dataset ensures reliability of our analysis\n\n\n# Load the dataset\ndf = pd.read_csv('data/soccer21-22.csv')\n\n# Creating a binary target variable 'Result' \n# 1 represents a home win ('H') and 0 otherwise\ndf['Result'] = (df['FTR'] == 'H').astype(int)\n\n# Feature selection\nfeatures = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']\nX = df[features]\ny = df['Result']\n\n\n\n\nSplitting data into appropriate sets then applying regression techniques\nRegression techniques, confusion matrix, and feature correlation heatmap\nDiscovering patterns and relationships critical for building predictive models"
   },
   {
     "objectID": "presentation.html#feature-importance-visualization",
@@ -116,7 +116,7 @@
     "href": "presentation.html#feature-correlation-heatmap",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Feature Correlation Heatmap",
-    "text": "Feature Correlation Heatmap\n # Question 2"
+    "text": "Feature Correlation Heatmap"
   },
   {
     "objectID": "presentation.html#what-if-the-matches-ended-at-halftime",
