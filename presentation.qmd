@@ -196,6 +196,12 @@ ft_ranking = pd.DataFrame({
 ![](images/fifa2_v2.png){.nostretch fig-align="center" width="700px"}
 :::
 
+## References
+
+\[1\] Title: English Premier League Dataset, Source: tidytuesday, Link: <https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-04/soccer21-22.csv>
+
+\[2\] Quarto, For documentation and presentation - [Quarto](https://quarto.org/docs/reference/formats/html.html)
+
 # Discussion
 
 Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.
