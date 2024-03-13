@@ -404,22 +404,16 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 
 </section>
-<section id="ever-wondered-how-do-things-like-shots-and-fouls-during-a-game-affect-who-wins-and-what-if-soccer-matches-ended-at-halftimehow-would-that-change-the-game" class="slide level2">
-<h2>Ever wondered, How do things like shots and fouls during a game affect who wins, and what if soccer matches ended at halftime—how would that change the game?</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/IntoPic.jpg" class="quarto-figure quarto-figure-center" width="20000"></p>
-</figure>
-</div>
-</section>
 <section>
 <section id="question-1" class="title-slide slide level1 center">
 <h1>Question 1</h1>
 
 </section>
-<h3 id="what-is-the-connection-between-in-game-metrics-such-as-shots-on-goal-fouls-committed-and-cards-received-and-the-outcomes-of-soccer-matches">What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?</h3>
+<section id="what-is-the-connection-between-in-game-metrics-such-as-shots-on-goal-fouls-committed-and-cards-received-and-the-outcomes-of-soccer-matches" class="slide level2">
+<h2>What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?</h2>
 <h4 id="approach">Approach</h4>
 <p>We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix.</p>
+</section>
 <section id="exploring-the-complex-connections-between-in-game-metrics" class="slide level2">
 <h2>Exploring the complex connections between in-game metrics</h2>
 <div class="panel-tabset">
@@ -438,7 +432,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <li>Combining match information with team-level season summaries</li>
 <li>The consistency of the dataset ensures reliability of our analysis</li>
 </ul>
-<div id="5ca9b594" class="cell" data-execution_count="4">
+<div id="c5f03b80" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Load the dataset</span></span>
 <span id="cb1-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/soccer21-22.csv'</span>)</span>
 <span id="cb1-3"><a></a></span>
@@ -521,7 +515,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="a7062625" class="cell" data-execution_count="5">
+<div id="700f83dc" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Import libraries</span></span>
 <span id="cb2-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a></a></span>
