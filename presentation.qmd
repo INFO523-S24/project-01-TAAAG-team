@@ -115,6 +115,8 @@ y = df['Result']
 ## Feature Correlation Heatmap
 
 ![](images/image3.png){.nostretch fig-align="center" width="900px"}
+
+
 # Question 2
 
 ## What if the matches ended at halftime?
