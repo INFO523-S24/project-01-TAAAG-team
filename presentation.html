@@ -404,41 +404,16 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 
 </section>
-<section id="code" class="slide level2">
-<h2>Code</h2>
-<div id="ebfe5506" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-3"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-4"><a></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb1-5"><a></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb1-6"><a></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> confusion_matrix, accuracy_score</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a><span class="co"># Load the dataset</span></span>
-<span id="cb1-9"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/soccer21-22.csv'</span>)</span>
-<span id="cb1-10"><a></a></span>
-<span id="cb1-11"><a></a><span class="co"># Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise</span></span>
-<span id="cb1-12"><a></a>df[<span class="st">'Result'</span>] <span class="op">=</span> (df[<span class="st">'FTR'</span>] <span class="op">==</span> <span class="st">'H'</span>).astype(<span class="bu">int</span>)</span>
-<span id="cb1-13"><a></a></span>
-<span id="cb1-14"><a></a><span class="co"># Feature selection</span></span>
-<span id="cb1-15"><a></a>features <span class="op">=</span> [<span class="st">'HS'</span>, <span class="st">'AS'</span>, <span class="st">'HST'</span>, <span class="st">'AST'</span>, <span class="st">'HF'</span>, <span class="st">'AF'</span>, <span class="st">'HY'</span>, <span class="st">'AY'</span>, <span class="st">'HR'</span>, <span class="st">'AR'</span>]</span>
-<span id="cb1-16"><a></a>X <span class="op">=</span> df[features]</span>
-<span id="cb1-17"><a></a>y <span class="op">=</span> df[<span class="st">'Result'</span>]</span>
-<span id="cb1-18"><a></a></span>
-<span id="cb1-19"><a></a><span class="co"># Splitting the dataset into training and testing sets</span></span>
-<span id="cb1-20"><a></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb1-21"><a></a></span>
-<span id="cb1-22"><a></a><span class="co"># Logistic Regression model</span></span>
-<span id="cb1-23"><a></a>model <span class="op">=</span> LogisticRegression(max_iter<span class="op">=</span><span class="dv">1000</span>)</span>
-<span id="cb1-24"><a></a>model.fit(X_train, y_train)</span>
-<span id="cb1-25"><a></a></span>
-<span id="cb1-26"><a></a><span class="co"># Predictions</span></span>
-<span id="cb1-27"><a></a>y_pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb1-28"><a></a></span>
-<span id="cb1-29"><a></a><span class="co"># Evaluating the model</span></span>
-<span id="cb1-30"><a></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
-<span id="cb1-31"><a></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section>
+<section id="question-1" class="title-slide slide level1 center">
+<h1>Question 1</h1>
+
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<h3 id="what-is-the-connection-between-in-game-metrics-such-as-shots-on-goal-fouls-committed-and-cards-received-and-the-outcomes-of-soccer-matches">What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?</h3>
+<h4 id="approach">Approach</h4>
+<p>We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix.</p>
 </section>
 <section id="exploring-the-complex-connections-between-in-game-metrics" class="slide level2">
 <h2>Exploring the complex connections between in-game metrics</h2>
@@ -458,6 +433,18 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <li>Combining match information with team-level season summaries</li>
 <li>The consistency of the dataset ensures reliability of our analysis</li>
 </ul>
+<div id="0ccc7373" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/soccer21-22.csv'</span>)</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a><span class="co"># Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise</span></span>
+<span id="cb1-5"><a></a>df[<span class="st">'Result'</span>] <span class="op">=</span> (df[<span class="st">'FTR'</span>] <span class="op">==</span> <span class="st">'H'</span>).astype(<span class="bu">int</span>)</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a><span class="co"># Feature selection</span></span>
+<span id="cb1-8"><a></a>features <span class="op">=</span> [<span class="st">'HS'</span>, <span class="st">'AS'</span>, <span class="st">'HST'</span>, <span class="st">'AST'</span>, <span class="st">'HF'</span>, <span class="st">'AF'</span>, <span class="st">'HY'</span>, <span class="st">'AY'</span>, <span class="st">'HR'</span>, <span class="st">'AR'</span>]</span>
+<span id="cb1-9"><a></a>X <span class="op">=</span> df[features]</span>
+<span id="cb1-10"><a></a>y <span class="op">=</span> df[<span class="st">'Result'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </div>
 <div id="tabset-1-3">
 <ul>
@@ -468,17 +455,6 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 </div>
 </div>
-</section>
-<section>
-<section id="question-1" class="title-slide slide level1 center">
-<h1>Question 1</h1>
-
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
-<h3 id="what-is-the-connection-between-in-game-metrics-such-as-shots-on-goal-fouls-committed-and-cards-received-and-the-outcomes-of-soccer-matches">What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?</h3>
-<h4 id="approach">Approach</h4>
-<p>We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix.</p>
 </section>
 <section id="feature-importance-visualization" class="slide level2">
 <h2>Feature Importance Visualization</h2>
@@ -495,11 +471,10 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <p><img data-src="images/Image2.png" class="quarto-figure quarto-figure-center" width="900"></p>
 </figure>
 </div>
-</section></section>
-<section>
-<section id="question-2" class="title-slide slide level1 center">
-<h1>Question 2</h1>
-
+</section>
+<section id="feature-correlation-heatmap" class="slide level2">
+<h2>Feature Correlation Heatmap</h2>
+<p><img data-src="images/image3.png" class="quarto-figure quarto-figure-center" width="900"> # Question 2</p>
 </section>
 <section id="what-if-the-matches-ended-at-halftime" class="slide level2">
 <h2>What if the matches ended at halftime?</h2>
@@ -529,9 +504,9 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </div>
 </div>
 </section>
-<section id="code-1" class="slide level2">
+<section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="64bfd6b2" class="cell" data-execution_count="5">
+<div id="6daaf915" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Import libraries</span></span>
 <span id="cb2-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a></a></span>
@@ -720,23 +695,6 @@ ht_ranking = pd.DataFrame({
 <section id="discussion" class="title-slide slide level1 center">
 <h1>Discussion</h1>
 <p>Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.</p>
-<!-- ## Math Expressions {.smaller}
-
-You can write LaTeX math expressions inside a pair of dollar signs, e.g. \$\\alpha+\\beta\$ renders $\alpha + \beta$. You can use the display style with double dollar signs:
-
-```         
-$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
-```
-
-$$
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-$$
-
-Limitations:
-
-1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
-
-2.  There should not be spaces after the opening `$` or before the closing `$`. -->
 </section>
 
 <section id="section-1" class="title-slide slide level1 center">

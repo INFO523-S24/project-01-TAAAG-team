@@ -84,25 +84,18 @@
     "text": "This project was developed by [TAAAG Team] For INFO 523 - Data Mining and Discovery at the University of Arizona, taught by Dr. Greg Chism. The team is comprised of the following team members.\n\nTejas Bhawari: First-year, MS in Data Science, RPA Developer.\nGabriel Geffen: First-year Ph.D. student in civil engineering with an emphasis in traffic engineering.\nAyesha Khatun: GitHub name @ayeshakhatunsujana Ph.D. student, School of Information.\nAlyssa Nether: A nondegree seeking graduate student exploring the realm of data science hoping to apply for the program in the future.\nAkash Srinivasan: First-year , MS in Data Science, Graduate Research Assistant School of Medicine, UA-Phoenix"
   },
   {
-    "objectID": "presentation.html#code",
-    "href": "presentation.html#code",
+    "objectID": "presentation.html#section",
+    "href": "presentation.html#section",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
-    "section": "Code",
-    "text": "Code\n\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.metrics import confusion_matrix, accuracy_score\n\n# Load the dataset\ndf = pd.read_csv('data/soccer21-22.csv')\n\n# Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise\ndf['Result'] = (df['FTR'] == 'H').astype(int)\n\n# Feature selection\nfeatures = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']\nX = df[features]\ny = df['Result']\n\n# Splitting the dataset into training and testing sets\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\n# Logistic Regression model\nmodel = LogisticRegression(max_iter=1000)\nmodel.fit(X_train, y_train)\n\n# Predictions\ny_pred = model.predict(X_test)\n\n# Evaluating the model\naccuracy = accuracy_score(y_test, y_pred)\ncm = confusion_matrix(y_test, y_pred)"
+    "section": "",
+    "text": "What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?\nApproach\nWe choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix."
   },
   {
     "objectID": "presentation.html#exploring-the-complex-connections-between-in-game-metrics",
     "href": "presentation.html#exploring-the-complex-connections-between-in-game-metrics",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Exploring the complex connections between in-game metrics",
-    "text": "Exploring the complex connections between in-game metrics\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are crucial indicators\nFTR serves as the target variable\nHS, AS, HST,and AST reflect attacking performance.\nHF, AF, HY, AY, HR,and AR all indicate team discipline and aggresion\n\n\n\n\nCombining match information with team-level season summaries\nThe consistency of the dataset ensures reliability of our analysis\n\n\n\n\nSplitting data into appropriate sets then applying regression techniques\nRegression techniques\nDiscovering patterns and relationships critical for building predictive models"
-  },
-  {
-    "objectID": "presentation.html#section",
-    "href": "presentation.html#section",
-    "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
-    "section": "",
-    "text": "What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?\nApproach\nWe choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix."
+    "text": "Exploring the complex connections between in-game metrics\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are crucial indicators\nFTR serves as the target variable\nHS, AS, HST,and AST reflect attacking performance.\nHF, AF, HY, AY, HR,and AR all indicate team discipline and aggresion\n\n\n\n\nCombining match information with team-level season summaries\nThe consistency of the dataset ensures reliability of our analysis\n\n\n# Load the dataset\ndf = pd.read_csv('data/soccer21-22.csv')\n\n# Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise\ndf['Result'] = (df['FTR'] == 'H').astype(int)\n\n# Feature selection\nfeatures = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']\nX = df[features]\ny = df['Result']\n\n\n\n\nSplitting data into appropriate sets then applying regression techniques\nRegression techniques\nDiscovering patterns and relationships critical for building predictive models"
   },
   {
     "objectID": "presentation.html#feature-importance-visualization",
@@ -119,6 +112,13 @@
     "text": "Confusion Matrix"
   },
   {
+    "objectID": "presentation.html#feature-correlation-heatmap",
+    "href": "presentation.html#feature-correlation-heatmap",
+    "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
+    "section": "Feature Correlation Heatmap",
+    "text": "Feature Correlation Heatmap\n # Question 2"
+  },
+  {
     "objectID": "presentation.html#what-if-the-matches-ended-at-halftime",
     "href": "presentation.html#what-if-the-matches-ended-at-halftime",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
@@ -126,8 +126,8 @@
     "text": "What if the matches ended at halftime?\n\nCritical variablesData preparationAnalysis\n\n\n\nFTHG and FTAG are needed to determine team placements\nFTR denotes fthe final actual outcome\nHTHG, HTAG,and HTR are important as well\nHomeTeam and AwayTeam combined with the rest help determine the winner\n\n\n\n\nPerforming thorough checks and creating visualizations.\nMaking sure data has no missing values\n\n\n\n\nCreating a function to determine results of matches at halftime and using this re-calibration as a new baseline of analysis.\nChronologically organized data"
   },
   {
-    "objectID": "presentation.html#code-1",
-    "href": "presentation.html#code-1",
+    "objectID": "presentation.html#code",
+    "href": "presentation.html#code",
     "title": "Premier League Performance Metrics and Results: A Dynamic Analysis",
     "section": "Code",
     "text": "Code\n\n# Import libraries\nimport pandas as pd\n\n# Load the dataset\ndf = pd.read_csv('data/soccer21-22.csv')\n\n# Function to determine the winner based on points\ndef calculate_points(row):\n    if row['FTR'] == 'H':\n        return 3\n    elif row['FTR'] == 'D':\n        return 1\n    else:\n        return 0\n\n# Apply the function to calculate points for each match\ndf['HomePoints'] = df.apply(lambda row: calculate_points(row), axis = 1)\ndf['AwayPoints'] = df.apply(lambda row: 3 - calculate_points(row) if row['FTR'] != 'D' else 1, axis = 1)\n\n# Aggregate points for each team\nhome_points = df.groupby('HomeTeam')['HomePoints'].sum().reset_index()\naway_points = df.groupby('AwayTeam')['AwayPoints'].sum().reset_index()\n\n# Combine home and away points\nteam_points = pd.merge(home_points, away_points, how = 'outer', left_on = 'HomeTeam', right_on = 'AwayTeam')\nteam_points['TotalPoints'] = team_points['HomePoints'] + team_points['AwayPoints']\n\n# Sort team_points DataFrame based on TotalPoints\nteam_points = team_points.sort_values(by = 'TotalPoints', ascending = False)\n\n# Create ranking DataFrame\nft_ranking = pd.DataFrame({\n    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging\n    'Points': team_points['TotalPoints'],\n    'Ranking': range(1, len(team_points) + 1)\n})"
