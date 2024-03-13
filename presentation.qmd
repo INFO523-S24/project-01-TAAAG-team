@@ -58,12 +58,13 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 
 # Question 1
 
+### Ever wondered, How do things like shots and fouls during a game affect who wins, and what if soccer matches ended at halftime—how would that change the game?
 
-##
+![](images/IntoPic.jpg){.nostretch fig-align="center" width="30000px"}
+
 ### What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?
 
 #### Approach
-
 
 We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix.
 
@@ -96,7 +97,6 @@ features = ['HS', 'AS', 'HST', 'AST', 'HF', 'AF', 'HY', 'AY', 'HR', 'AR']
 X = df[features]
 y = df['Result']
 ```
-
 
 ### Analysis
 
@@ -184,22 +184,22 @@ ft_ranking = pd.DataFrame({
 })
 ```
 
-
-
 ## Plots
-::: panel-tabset
 
+::: panel-tabset
 ###### Full-Time
+
 ![](images/fifa1.png){.nostretch fig-align="center" width="700px"}
 
 ###### Half-Time
-![](images/fifa2_v2.png){.nostretch fig-align="center" width="700px"}
 
+![](images/fifa2.png){.nostretch fig-align="center" width="700px"}
 :::
 
 # Discussion
+
 Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.
 
-#
+# 
 
 ![](images/suui.gif){.nostretch fig-align="center" width="30000px"}
