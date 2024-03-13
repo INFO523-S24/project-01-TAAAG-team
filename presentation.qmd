@@ -84,6 +84,9 @@ We choose relevant attributes such as shots, shots on goal, fouls committed, and
 
 ```{python}
 #| echo: true
+# Load the dataset
+df = pd.read_csv('data/soccer21-22.csv')
+
 # Creating a binary target variable 'Result' where 1 represents a home win ('H') and 0 otherwise
 df['Result'] = (df['FTR'] == 'H').astype(int)
 
