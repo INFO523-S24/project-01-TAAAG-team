@@ -409,12 +409,15 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <h1>Question 1</h1>
 
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
+<h3 id="ever-wondered-how-do-things-like-shots-and-fouls-during-a-game-affect-who-wins-and-what-if-soccer-matches-ended-at-halftimehow-would-that-change-the-game">Ever wondered, How do things like shots and fouls during a game affect who wins, and what if soccer matches ended at halftime—how would that change the game?</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/IntoPic.jpg" class="nostretch quarto-figure quarto-figure-center" width="30000"></p>
+</figure>
+</div>
 <h3 id="what-is-the-connection-between-in-game-metrics-such-as-shots-on-goal-fouls-committed-and-cards-received-and-the-outcomes-of-soccer-matches">What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches?</h3>
 <h4 id="approach">Approach</h4>
 <p>We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix.</p>
-</section>
 <section id="exploring-the-complex-connections-between-in-game-metrics" class="slide level2">
 <h2>Exploring the complex connections between in-game metrics</h2>
 <div class="panel-tabset">
@@ -433,7 +436,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <li>Combining match information with team-level season summaries</li>
 <li>The consistency of the dataset ensures reliability of our analysis</li>
 </ul>
-<div id="64e3534e" class="cell" data-execution_count="4">
+<div id="bc49fba0" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Load the dataset</span></span>
 <span id="cb1-2"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/soccer21-22.csv'</span>)</span>
 <span id="cb1-3"><a></a></span>
@@ -516,7 +519,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="d5aad600" class="cell" data-execution_count="5">
+<div id="a5e5363a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Import libraries</span></span>
 <span id="cb2-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a></a></span>
@@ -570,19 +573,24 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <div id="tabset-3-2">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/fifa2.png" class="nostretch quarto-figure quarto-figure-center" width="700"></p>
+<p><img data-src="images/fifa2_v2.png" class="nostretch quarto-figure quarto-figure-center" width="700"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<p>[1] Title: English Premier League Dataset, Source: tidytuesday, Link: <a href="https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-04/soccer21-22.csv" class="uri">https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-04-04/soccer21-22.csv</a></p>
+<p>[2] Quarto, For documentation and presentation - <a href="https://quarto.org/docs/reference/formats/html.html">Quarto</a></p>
 </section></section>
 <section id="discussion" class="title-slide slide level1 center">
 <h1>Discussion</h1>
 <p>Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.</p>
 </section>
 
-<section id="section-1" class="title-slide slide level1 center">
+<section id="section" class="title-slide slide level1 center">
 <h1></h1>
 <div class="quarto-figure quarto-figure-center">
 <figure>
