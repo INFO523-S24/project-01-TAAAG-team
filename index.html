@@ -214,19 +214,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Evan Gower’s work on Kaggle has made it possible to obtain statistics from 380 matches, giving us a detailed glimpse at the English Premier League season of 2021–2022. Along with comprehensive statistics for both home and away sides, such as goals, shots, fouls, and cards, it also provides important game information such team names, match dates, and referees. This dataset, which contains data on halftime performance as well as full-time results, is an invaluable resource for anyone wishing to examine the factors that affect football match outcomes, from individual player affects to team plans.</p>
-</section>
-<section id="question-1" class="level2">
-<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p>What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?</p>
-<section id="introduction-1" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
-<p>The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team’s eventual success or failure.</p>
-</section>
-<section id="approach" class="level3">
-<h3 class="anchored" data-anchor-id="approach">Approach</h3>
-<p>First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team’s outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.</p>
-<p><strong>Data Preparation and Pre-processing</strong> We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called “Result,” where a “1” denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.</p>
-<div id="ea77b218" class="cell" data-execution_count="1">
+<div id="fb2f3336" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Importing Dataset</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -258,8 +248,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div id="c248c781" class="cell" data-execution_count="2">
+</section>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p>What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?</p>
+<section id="introduction-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
+<p>The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team’s eventual success or failure.</p>
+</section>
+<section id="approach" class="level3">
+<h3 class="anchored" data-anchor-id="approach">Approach</h3>
+<p>First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team’s outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.</p>
+<p><strong>Data Preparation and Pre-processing</strong> We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called “Result,” where a “1” denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.</p>
+<div id="dcb2dec0" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Plot 1: Feature importance visualization</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Feature importance visualization</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coefficients <span class="op">=</span> pd.DataFrame(model.coef_[<span class="dv">0</span>], X.columns, columns<span class="op">=</span>[<span class="st">'Coefficient'</span>]).sort_values(by<span class="op">=</span><span class="st">'Coefficient'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
@@ -268,6 +273,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Coefficient Value'</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'In-game Metrics'</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -279,7 +285,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Feature Importance Visualization by Logistic Regression</strong></p>
 <p>A positive coefficient value (bar extending to the right) suggests that higher values of the corresponding metric increase the likelihood of the home team winning. For instance, a positive coefficient for <code>Number of shots on Target by Home Team (HTS)</code> indicates that the home side has a greater chance of winning if they have more shoots on target.</p>
 <p>On the other hand, a negative coefficient value (bar extending to the left) indicates that the probability of the home side winning is decreased at greater levels of that statistic. For example, if <code>Number of redcards recieved Home Team (HR)</code> has a negative coefficient, it means that the home team’s chances of winning are likely to be lowered by committing more red cards received.</p>
-<div id="caa68c7a" class="cell" data-execution_count="3">
+<div id="4bd3edb3" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Plot 2: Confusion Matrix</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2: Confusion Matrix</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Confusion Matrix for Home Team Win Prediction'</span>)</span>
@@ -289,6 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print accuracy</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Model Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -303,7 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Confusion Matrix for Home Team Win Prediction</strong></p>
 <p>This chart shows how well the model guessed if the home team would win a soccer game. It’s like a report card for the model’s predictions. For example, if the model guessed that the home team wouldn’t win (maybe it thought the game would be a draw or the away team would win), and that was correct, that count goes in the top left corner. If the model thought the home team wouldn’t win, but they actually did, that count goes in the bottom left corner.</p>
 <p>On the other hand, if the model predicted a home win and was right, that goes in the bottom right corner. But if it predicted a home win and was wrong, that goes in the top right corner.</p>
-<div id="d9d5e7cd" class="cell" data-execution_count="4">
+<div id="60b77420" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Heat Map</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the target variable - Home win (1) or not (0)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'HomeWin'</span>] <span class="op">=</span> df[<span class="st">'FTR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'H'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -318,6 +329,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Feature Correlation Heatmap"</span>)</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -341,7 +353,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="approach-1">Approach</h3>
 <p>Initially, we will employ traditional ranking methods based on full-time match results. Per the European Premier League, rank will be determined based on points per game, where a win is three points, a draw is one point, and a loss is zero points. When necessary, we will employ goal difference and total goals scored to determine team standings. Subsequently, we will simulate halftime outcomes for each match and recalculate team rankings using the same criteria applied for full-time results. An analysis will be conducted in two parts: first, comparing the disparities between the rankings derived from full-time and halftime outcomes; and secondly, focusing on the performance of the top three and bottom three teams in both scenarios to assess the influence of halftime outcomes on promotion, relegation, and the overall league championship. Through this comprehensive approach, we aim to provide insights into the dynamics of soccer match outcomes and their implications for team standings and league competitiveness.</p>
 <p><strong>Data Preparation and Pre-processing</strong> Data preparation for the analysis of the 2021-2022 European Premier League (EPL) season began with the calculation of points awarded to home and away teams based on match outcomes, adhering to the EPL’s point allocation system. Subsequently, the dataset was organized through grouping operations, which revealed instances of point ties among teams. To address this, a feature engineering process was employed to derive the goal difference metric, representing the difference between goals scored and goals conceded by each team. This involved aggregating match statistics to determine the net goals accumulated by each team throughout the season. By iteratively refining the dataset through these preprocessing steps, we ensured the readiness of the data for subsequent analysis, laying the groundwork for examining match outcomes and team dynamics during the 2021-2022 EPL season.</p>
+<p>With an overview of the preparation and pre-processing steps, we begin by calculating team rankings using full time results. The code below shows the general structure that is used to calculate team rankings using the win/draw/loss point systems. Although the code works for both full time results and half time results, the instance below illustrates an example for full time results.</p>
 <div id="calculate-full-time-rankings-based-on-points" class="cell" data-execution_count="5">
+<details class="code-fold">
+<summary>Show code to rank teams based on points</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -380,6 +395,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>})</span>
 <span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ft_ranking)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Team  Points  Ranking
 11        Man City      93        1
@@ -404,92 +420,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 14         Norwich      22       20</code></pre>
 </div>
 </div>
-<div id="31348a8d" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>team_colors <span class="op">=</span> {</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Arsenal'</span>: <span class="st">'red'</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Aston Villa'</span>: <span class="st">'red'</span>,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Brentford'</span>: <span class="st">'black'</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Brighton'</span>: <span class="st">'blue'</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Burnley'</span>: <span class="st">'brown'</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Chelsea'</span>: <span class="st">'blue'</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Crystal Palace'</span>: <span class="st">'blue'</span>,</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Everton'</span>: <span class="st">'blue'</span>,</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Leeds'</span>: <span class="st">'brown'</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Leicester'</span>: <span class="st">'blue'</span>,</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Liverpool'</span>: <span class="st">'red'</span>,</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Man City'</span>: <span class="st">'lightblue'</span>,</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Man United'</span>: <span class="st">'red'</span>,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Newcastle'</span>: <span class="st">'black'</span>,</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Norwich'</span>: <span class="st">'yellow'</span>,</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Southampton'</span>: <span class="st">'red'</span>,</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Tottenham'</span>: <span class="st">'navy'</span>,</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Watford'</span>: <span class="st">'brown'</span>,</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'West Ham'</span>: <span class="st">'brown'</span>,</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Wolves'</span>: <span class="st">'gold'</span>,</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div id="0c2baaf7" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'Points'</span>], color<span class="op">=</span>[team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]],alpha<span class="op">=</span><span class="fl">0.5</span>,width<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Full-Time Rankings Based on Points'</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Team'</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Points'</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, rank <span class="kw">in</span> <span class="bu">zip</span>(bars, ft_ranking[<span class="st">'Ranking'</span>]):</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    plt.text(bar.get_x() <span class="op">+</span> bar.get_width() <span class="op">/</span> <span class="dv">2</span> <span class="op">-</span> <span class="fl">0.15</span>, bar.get_height() <span class="op">+</span> <span class="fl">0.1</span>, <span class="bu">str</span>(rank), ha<span class="op">=</span><span class="st">'left'</span>, color<span class="op">=</span><span class="st">'black'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-Plot-the-table-as-a-bar-plot-for-visualization" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Show code to plot team ranks</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the style to ticks</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'Points'</span>], color<span class="op">=</span>[team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]],alpha<span class="op">=</span><span class="dv">1</span>,width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Full-Time Rankings Based on Points'</span>)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Team'</span>)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Points'</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, rank <span class="kw">in</span> <span class="bu">zip</span>(bars, ft_ranking[<span class="st">'Ranking'</span>]):</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    plt.text(bar.get_x() <span class="op">+</span> bar.get_width() <span class="op">/</span> <span class="dv">2</span> <span class="op">-</span> <span class="fl">0.15</span>, bar.get_height() <span class="op">+</span> <span class="fl">0.1</span>, <span class="bu">str</span>(rank), ha<span class="op">=</span><span class="st">'left'</span>, color<span class="op">=</span><span class="st">'black'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-8-output-1.png" width="957" height="586" class="figure-img"></p>
+<p><img src="index_files/figure-html/plot-the-table-as-a-bar-plot-for-visualization-output-1.png" id="plot-the-table-as-a-bar-plot-for-visualization" width="953" height="578" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Since there are ties in points, we must move on to the second metric to determine official rankings</p>
+<p>The table and bar plot above show the rankings of all the teams based on the point system. Although Brighton and Wolves are ranked as 9th and 10th, we see from the table that they have tied in the number of points earned. The EPL further breaks ties by considering goal difference, which is the number of goals scored in each season minus the number of goals conceded in the season. The below code shows how to further break down ties using goal difference.</p>
 <div id="calculate-full-time-rankings-based-on-goal-difference" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate goals scored and conceded for each team</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>home_goals_scored <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>home_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>away_goals_scored <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'FTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>away_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'FTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge home and away goals scored and conceded with team_points</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns during merge</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>team_points.rename(columns<span class="op">=</span>{<span class="st">'FTHG_x'</span>: <span class="st">'HomeGoalsScored'</span>, <span class="st">'FTAG_x'</span>: <span class="st">'HomeGoalsConceded'</span>,</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'FTAG_y'</span>: <span class="st">'AwayGoalsScored'</span>, <span class="st">'FTHG_y'</span>: <span class="st">'AwayGoalsConceded'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill NaN values with 0</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>team_points.fillna(<span class="dv">0</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total goals scored and conceded</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsScored'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsScored'</span>]</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'TotalGoalsConceded'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsConceded'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsConceded'</span>]</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate goal difference</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'GoalDifference'</span>] <span class="op">=</span> team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">-</span> team_points[<span class="st">'TotalGoalsConceded'</span>]</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort team_points DataFrame based on TotalPoints and GoalDifference</span></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> team_points.sort_values(by <span class="op">=</span> [<span class="st">'TotalPoints'</span>, <span class="st">'GoalDifference'</span>], ascending <span class="op">=</span> [<span class="va">False</span>, <span class="va">False</span>])</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ranking DataFrame</span></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>ft_ranking <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Team'</span>: team_points[<span class="st">'HomeTeam'</span>],  <span class="co"># You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging</span></span>
-<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GoalDifference'</span>: team_points[<span class="st">'GoalDifference'</span>],</span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ft_ranking)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details class="code-fold">
+<summary>Show code to rank teams based on goal difference</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate goals scored and conceded for each team</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>home_goals_scored <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>home_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>away_goals_scored <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'FTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>away_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'FTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge home and away goals scored and conceded with team_points</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns during merge</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>team_points.rename(columns<span class="op">=</span>{<span class="st">'FTHG_x'</span>: <span class="st">'HomeGoalsScored'</span>, <span class="st">'FTAG_x'</span>: <span class="st">'HomeGoalsConceded'</span>,</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'FTAG_y'</span>: <span class="st">'AwayGoalsScored'</span>, <span class="st">'FTHG_y'</span>: <span class="st">'AwayGoalsConceded'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill NaN values with 0</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>team_points.fillna(<span class="dv">0</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total goals scored and conceded</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsScored'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsScored'</span>]</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'TotalGoalsConceded'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsConceded'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsConceded'</span>]</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate goal difference</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'GoalDifference'</span>] <span class="op">=</span> team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">-</span> team_points[<span class="st">'TotalGoalsConceded'</span>]</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort team_points DataFrame based on TotalPoints and GoalDifference</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> team_points.sort_values(by <span class="op">=</span> [<span class="st">'TotalPoints'</span>, <span class="st">'GoalDifference'</span>], ascending <span class="op">=</span> [<span class="va">False</span>, <span class="va">False</span>])</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ranking DataFrame</span></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>ft_ranking <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Team'</span>: team_points[<span class="st">'HomeTeam'</span>],  <span class="co"># You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GoalDifference'</span>: team_points[<span class="st">'GoalDifference'</span>],</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ft_ranking)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Team  Points  GoalDifference  Ranking
 0         Man City      93              73        1
@@ -514,70 +515,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 19         Norwich      22             -61       20</code></pre>
 </div>
 </div>
-<div id="67fba3c2" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'GoalDifference'</span>], color<span class="op">=</span>[team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]], alpha<span class="op">=</span><span class="fl">0.5</span>, width<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Bar Plot of Goal Difference for Teams'</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Team'</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Goals '</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a secondary x-axis at the top</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax.twiny()</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>ax2.set_xlim(ax.get_xlim())</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>ax2.set_xticks(ax.get_xticks())</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>ax2.set_xticklabels(ft_ranking[<span class="st">'GoalDifference'</span>], ha<span class="op">=</span><span class="st">'left'</span>)</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>ax2.set_xlabel(<span class="st">'Goal Difference'</span>)</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-plot-full-time-rankings-based-on-goal-difference" class="cell" data-execution_count="9">
+<details class="code-fold">
+<summary>Show code to plot team ranks when considering goal difference</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the style to whitegrid</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'GoalDifference'</span>], color <span class="op">=</span> [team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]], alpha<span class="op">=</span><span class="dv">1</span>, width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Bar Plot of Goal Difference for Teams'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Team'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Goal Difference'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-10-output-1.png" width="968" height="624" class="figure-img"></p>
+<p><img src="index_files/figure-html/plot-full-time-rankings-based-on-goal-difference-output-1.png" id="plot-full-time-rankings-based-on-goal-difference" width="961" height="578" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Now we repeat the process again with the half time results before beginning our analysis and discussion.</p>
+<p>With the point system and goal difference, we no longer have ties between any teams and have the official ranking of teams in the 2021-2022 EPL Season. Now we repeat the process again with the half time results before beginning our discussion. The below table and plot show the half-time result ranking.</p>
 <div id="calculate-half-time-rankings-based-on-points" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import libraries</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/soccer21-22.csv'</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to determine the winner based on points</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_points(row):</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> row[<span class="st">'HTR'</span>] <span class="op">==</span> <span class="st">'H'</span>:</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">3</span></span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> row[<span class="st">'HTR'</span>] <span class="op">==</span> <span class="st">'D'</span>:</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply the function to calculate points for each match</span></span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'HomePoints'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: calculate_points(row), axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'AwayPoints'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: <span class="dv">3</span> <span class="op">-</span> calculate_points(row) <span class="cf">if</span> row[<span class="st">'HTR'</span>] <span class="op">!=</span> <span class="st">'D'</span> <span class="cf">else</span> <span class="dv">1</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate points for each team</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>home_points <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HomePoints'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>away_points <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'AwayPoints'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine home and away points</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(home_points, away_points, how <span class="op">=</span> <span class="st">'outer'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'TotalPoints'</span>] <span class="op">=</span> team_points[<span class="st">'HomePoints'</span>] <span class="op">+</span> team_points[<span class="st">'AwayPoints'</span>]</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort team_points DataFrame based on TotalPoints</span></span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> team_points.sort_values(by <span class="op">=</span> <span class="st">'TotalPoints'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ranking DataFrame</span></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>ht_ranking <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Team'</span>: team_points[<span class="st">'HomeTeam'</span>],  <span class="co"># You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging</span></span>
-<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
-<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ht_ranking)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Team  Points  Ranking
 10       Liverpool      79        1
@@ -602,67 +564,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 17         Watford      28       20</code></pre>
 </div>
 </div>
-<div id="f9cd05c8" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(ht_ranking[<span class="st">'Team'</span>], ht_ranking[<span class="st">'Points'</span>], color<span class="op">=</span>[team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ht_ranking[<span class="st">'Team'</span>]], alpha<span class="op">=</span><span class="fl">0.5</span>, width<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Half-Time Rankings Based on Points'</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Team'</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Points'</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add rankings on top of each bar</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> bar, rank <span class="kw">in</span> <span class="bu">zip</span>(bars, ht_ranking[<span class="st">'Ranking'</span>]):</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    plt.text(bar.get_x() <span class="op">+</span> bar.get_width() <span class="op">/</span> <span class="dv">2</span> <span class="op">-</span> <span class="fl">0.15</span>, bar.get_height() <span class="op">+</span> <span class="fl">0.1</span>, <span class="bu">str</span>(rank), ha<span class="op">=</span><span class="st">'left'</span>, color<span class="op">=</span><span class="st">'black'</span>, fontsize<span class="op">=</span><span class="dv">9</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="60638098" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-12-output-1.png" width="957" height="586" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-12-output-1.png" width="953" height="578" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Again, there are ties with the rankings when only looking at points based on half-time results. Therefore, we must look at goal difference as well.</p>
+<p>Again, there are ties with the rankings when only looking at points based on half-time results. Therefore, we must look at goal difference as well. The table and plot below show the updated rankings when considering points and goal difference.</p>
 <div id="calculate-half-time-rankings-based-on-goal-difference" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate goals scored and conceded for each team</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>home_goals_scored <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>home_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>away_goals_scored <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'HTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>away_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'HTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge home and away goals scored and conceded with team_points</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns during merge</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>team_points.rename(columns<span class="op">=</span>{<span class="st">'HTHG_x'</span>: <span class="st">'HomeGoalsScored'</span>, <span class="st">'HTAG_x'</span>: <span class="st">'HomeGoalsConceded'</span>,</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'HTAG_y'</span>: <span class="st">'AwayGoalsScored'</span>, <span class="st">'HTHG_y'</span>: <span class="st">'AwayGoalsConceded'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill NaN values with 0</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>team_points.fillna(<span class="dv">0</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate total goals scored and conceded</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsScored'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsScored'</span>]</span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'TotalGoalsConceded'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsConceded'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsConceded'</span>]</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate goal difference</span></span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>team_points[<span class="st">'GoalDifference'</span>] <span class="op">=</span> team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">-</span> team_points[<span class="st">'TotalGoalsConceded'</span>]</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Sort team_points DataFrame based on TotalPoints and GoalDifference</span></span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>team_points <span class="op">=</span> team_points.sort_values(by <span class="op">=</span> [<span class="st">'TotalPoints'</span>, <span class="st">'GoalDifference'</span>], ascending <span class="op">=</span> [<span class="va">False</span>, <span class="va">False</span>])</span>
-<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Create ranking DataFrame</span></span>
-<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>ht_ranking <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Team'</span>: team_points[<span class="st">'HomeTeam'</span>],</span>
-<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
-<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>    <span class="st">'GoalDifference'</span>: team_points[<span class="st">'GoalDifference'</span>],</span>
-<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(ht_ranking)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              Team  Points  GoalDifference  Ranking
 0        Liverpool      79              30        1
@@ -687,25 +599,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 19         Watford      28             -19       20</code></pre>
 </div>
 </div>
-<div id="14a108b5" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the primary axis</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax1.bar(ht_ranking[<span class="st">'Team'</span>], ht_ranking[<span class="st">'GoalDifference'</span>], color<span class="op">=</span>[team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ht_ranking[<span class="st">'Team'</span>]], alpha<span class="op">=</span><span class="fl">0.5</span>, width<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">'Bar Plot of Goal Difference for Teams (Half-Time)'</span>)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">'Team'</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">'Goal Difference'</span>)</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'x'</span>, rotation<span class="op">=</span><span class="dv">45</span> )</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the secondary axis (top axis)</span></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twiny()</span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>ax2.set_xlim(ax1.get_xlim()) </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>ax2.set_xticks(ax1.get_xticks()) </span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>ax2.set_xticklabels(ht_ranking[<span class="st">'GoalDifference'</span>], rotation_mode<span class="op">=</span><span class="st">'anchor'</span>) </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.show() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="be06b17a" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-14-output-1.png" width="968" height="608" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-14-output-1.png" width="961" height="578" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -713,10 +611,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="discussion" class="level3">
 <h3 class="anchored" data-anchor-id="discussion">Discussion</h3>
+<p>The analysis of halftime outcomes in the context of team rankings provides valuable insights into the dynamics of team performance and strategic decision-making in professional football. In particular, focusing on the top three teams before and after halftime reveals interesting patterns. Despite the structural changes in the game, the top three teams largely maintain their positions, with only minor adjustments observed. This consistency suggests that these teams possess strategies or training regimens that consistently place them at the forefront of the league, regardless of variations in match structure or halftime strategies.</p>
+<p>When examining the overall changes in rankings, notable shifts are observed, particularly in the swapping of first and second place. This exchange of positions between the top two teams, while subtle, may indicate differing strengths in the first and second halves of matches. For instance, while Manchester City emerges as the eventual winners of the EPL league, the swapping of positions with Liverpool could imply a potential area for improvement in either team’s gameplay strategy. It suggests the need for Liverpool to enhance their stamina or second-half strategies, despite their strong performance in the initial phases of matches.</p>
+<p>Moreover, significant changes in rank, such as Southampton’s improvement from 15th to 6th place, underscore the importance of halftime strategies and team conditioning. The notable rise in Southampton’s ranking may signify either a highly aggressive starting strategy that may not be sustainable or potential deficiencies in second-half performance due to inadequate conditioning or strategic adjustments. These findings highlight the complexity of team dynamics and the multifaceted factors influencing match outcomes and league standings.</p>
+<p>Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.</p>
 </section>
 </section>
 <section id="references" class="level2">
 <h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Pandas documentation used to assist with joining dataframes and resetting index. https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html</p>
+<p>We also checked the official Premier League website to determine how rankings are calculated. https://www.premierleague.com/premier-league-explained</p>
 
 
 </section>

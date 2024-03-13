@@ -406,7 +406,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="code" class="slide level2">
 <h2>Code</h2>
-<div id="eeb85c12" class="cell" data-execution_count="4">
+<div id="ebfe5506" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -531,9 +531,7 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 </section>
 <section id="code-1" class="slide level2">
 <h2>Code</h2>
-<div id="36bc3cc2" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Data Prep &amp; Pre-processing</summary>
+<div id="64bfd6b2" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Import libraries</span></span>
 <span id="cb2-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-3"><a></a></span>
@@ -570,170 +568,191 @@ Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan
 <span id="cb2-34"><a></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
 <span id="cb2-35"><a></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
 <span id="cb2-36"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-<div id="5aa977e4" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Official Rankings</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Aggregate goals scored and conceded for each team</span></span>
-<span id="cb3-2"><a></a>home_goals_scored <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb3-3"><a></a>home_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'FTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb3-4"><a></a>away_goals_scored <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'FTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb3-5"><a></a>away_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'FTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="co"># Merge home and away goals scored and conceded with team_points</span></span>
-<span id="cb3-8"><a></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb3-9"><a></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb3-10"><a></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb3-11"><a></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb3-12"><a></a></span>
-<span id="cb3-13"><a></a><span class="co"># Rename columns during merge</span></span>
-<span id="cb3-14"><a></a>team_points.rename(columns<span class="op">=</span>{<span class="st">'FTHG_x'</span>: <span class="st">'HomeGoalsScored'</span>, <span class="st">'FTAG_x'</span>: <span class="st">'HomeGoalsConceded'</span>,</span>
-<span id="cb3-15"><a></a>                            <span class="st">'FTAG_y'</span>: <span class="st">'AwayGoalsScored'</span>, <span class="st">'FTHG_y'</span>: <span class="st">'AwayGoalsConceded'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb3-16"><a></a></span>
-<span id="cb3-17"><a></a><span class="co"># Fill NaN values with 0</span></span>
-<span id="cb3-18"><a></a>team_points.fillna(<span class="dv">0</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb3-19"><a></a></span>
-<span id="cb3-20"><a></a><span class="co"># Calculate total goals scored and conceded</span></span>
-<span id="cb3-21"><a></a>team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsScored'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsScored'</span>]</span>
-<span id="cb3-22"><a></a>team_points[<span class="st">'TotalGoalsConceded'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsConceded'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsConceded'</span>]</span>
-<span id="cb3-23"><a></a></span>
-<span id="cb3-24"><a></a><span class="co"># Calculate goal difference</span></span>
-<span id="cb3-25"><a></a>team_points[<span class="st">'GoalDifference'</span>] <span class="op">=</span> team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">-</span> team_points[<span class="st">'TotalGoalsConceded'</span>]</span>
-<span id="cb3-26"><a></a></span>
-<span id="cb3-27"><a></a><span class="co"># Sort team_points DataFrame based on TotalPoints and GoalDifference</span></span>
-<span id="cb3-28"><a></a>team_points <span class="op">=</span> team_points.sort_values(by <span class="op">=</span> [<span class="st">'TotalPoints'</span>, <span class="st">'GoalDifference'</span>], ascending <span class="op">=</span> [<span class="va">False</span>, <span class="va">False</span>])</span>
-<span id="cb3-29"><a></a></span>
-<span id="cb3-30"><a></a><span class="co"># Create ranking DataFrame</span></span>
-<span id="cb3-31"><a></a>ft_ranking <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb3-32"><a></a>    <span class="st">'Team'</span>: team_points[<span class="st">'HomeTeam'</span>],  <span class="co"># You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging</span></span>
-<span id="cb3-33"><a></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
-<span id="cb3-34"><a></a>    <span class="st">'GoalDifference'</span>: team_points[<span class="st">'GoalDifference'</span>],</span>
-<span id="cb3-35"><a></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb3-36"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="93465b72" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Half Time Results</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a><span class="co"># Import libraries</span></span>
-<span id="cb4-2"><a></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb4-3"><a></a></span>
-<span id="cb4-4"><a></a><span class="co"># Load the dataset</span></span>
-<span id="cb4-5"><a></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/soccer21-22.csv'</span>)</span>
-<span id="cb4-6"><a></a></span>
-<span id="cb4-7"><a></a><span class="co"># Function to determine the winner based on points</span></span>
-<span id="cb4-8"><a></a><span class="kw">def</span> calculate_points(row):</span>
-<span id="cb4-9"><a></a>    <span class="cf">if</span> row[<span class="st">'HTR'</span>] <span class="op">==</span> <span class="st">'H'</span>:</span>
-<span id="cb4-10"><a></a>        <span class="cf">return</span> <span class="dv">3</span></span>
-<span id="cb4-11"><a></a>    <span class="cf">elif</span> row[<span class="st">'HTR'</span>] <span class="op">==</span> <span class="st">'D'</span>:</span>
-<span id="cb4-12"><a></a>        <span class="cf">return</span> <span class="dv">1</span></span>
-<span id="cb4-13"><a></a>    <span class="cf">else</span>:</span>
-<span id="cb4-14"><a></a>        <span class="cf">return</span> <span class="dv">0</span></span>
-<span id="cb4-15"><a></a></span>
-<span id="cb4-16"><a></a><span class="co"># Apply the function to calculate points for each match</span></span>
-<span id="cb4-17"><a></a>df[<span class="st">'HomePoints'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: calculate_points(row), axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb4-18"><a></a>df[<span class="st">'AwayPoints'</span>] <span class="op">=</span> df.<span class="bu">apply</span>(<span class="kw">lambda</span> row: <span class="dv">3</span> <span class="op">-</span> calculate_points(row) <span class="cf">if</span> row[<span class="st">'HTR'</span>] <span class="op">!=</span> <span class="st">'D'</span> <span class="cf">else</span> <span class="dv">1</span>, axis <span class="op">=</span> <span class="dv">1</span>)</span>
-<span id="cb4-19"><a></a></span>
-<span id="cb4-20"><a></a><span class="co"># Aggregate points for each team</span></span>
-<span id="cb4-21"><a></a>home_points <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HomePoints'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb4-22"><a></a>away_points <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'AwayPoints'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb4-23"><a></a></span>
-<span id="cb4-24"><a></a><span class="co"># Combine home and away points</span></span>
-<span id="cb4-25"><a></a>team_points <span class="op">=</span> pd.merge(home_points, away_points, how <span class="op">=</span> <span class="st">'outer'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb4-26"><a></a>team_points[<span class="st">'TotalPoints'</span>] <span class="op">=</span> team_points[<span class="st">'HomePoints'</span>] <span class="op">+</span> team_points[<span class="st">'AwayPoints'</span>]</span>
-<span id="cb4-27"><a></a></span>
-<span id="cb4-28"><a></a><span class="co"># Sort team_points DataFrame based on TotalPoints</span></span>
-<span id="cb4-29"><a></a>team_points <span class="op">=</span> team_points.sort_values(by <span class="op">=</span> <span class="st">'TotalPoints'</span>, ascending <span class="op">=</span> <span class="va">False</span>)</span>
-<span id="cb4-30"><a></a></span>
-<span id="cb4-31"><a></a><span class="co"># Create ranking DataFrame</span></span>
-<span id="cb4-32"><a></a>ht_ranking <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb4-33"><a></a>    <span class="st">'Team'</span>: team_points[<span class="st">'HomeTeam'</span>],  <span class="co"># You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging</span></span>
-<span id="cb4-34"><a></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
-<span id="cb4-35"><a></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb4-36"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<div id="a7ac76de" class="cell" data-execution_count="8">
-<details class="code-fold">
-<summary>Repeated Half Time Results</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Aggregate goals scored and conceded for each team</span></span>
-<span id="cb5-2"><a></a>home_goals_scored <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb5-3"><a></a>home_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'HomeTeam'</span>)[<span class="st">'HTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb5-4"><a></a>away_goals_scored <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'HTAG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb5-5"><a></a>away_goals_conceded <span class="op">=</span> df.groupby(<span class="st">'AwayTeam'</span>)[<span class="st">'HTHG'</span>].<span class="bu">sum</span>().reset_index()</span>
-<span id="cb5-6"><a></a></span>
-<span id="cb5-7"><a></a><span class="co"># Merge home and away goals scored and conceded with team_points</span></span>
-<span id="cb5-8"><a></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb5-9"><a></a>team_points <span class="op">=</span> pd.merge(team_points, home_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'HomeTeam'</span>)</span>
-<span id="cb5-10"><a></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_scored, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb5-11"><a></a>team_points <span class="op">=</span> pd.merge(team_points, away_goals_conceded, how <span class="op">=</span> <span class="st">'left'</span>, left_on <span class="op">=</span> <span class="st">'HomeTeam'</span>, right_on <span class="op">=</span> <span class="st">'AwayTeam'</span>)</span>
-<span id="cb5-12"><a></a></span>
-<span id="cb5-13"><a></a><span class="co"># Rename columns during merge</span></span>
-<span id="cb5-14"><a></a>team_points.rename(columns<span class="op">=</span>{<span class="st">'HTHG_x'</span>: <span class="st">'HomeGoalsScored'</span>, <span class="st">'HTAG_x'</span>: <span class="st">'HomeGoalsConceded'</span>,</span>
-<span id="cb5-15"><a></a>                            <span class="st">'HTAG_y'</span>: <span class="st">'AwayGoalsScored'</span>, <span class="st">'HTHG_y'</span>: <span class="st">'AwayGoalsConceded'</span>}, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb5-16"><a></a></span>
-<span id="cb5-17"><a></a><span class="co"># Fill NaN values with 0</span></span>
-<span id="cb5-18"><a></a>team_points.fillna(<span class="dv">0</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb5-19"><a></a></span>
-<span id="cb5-20"><a></a><span class="co"># Calculate total goals scored and conceded</span></span>
-<span id="cb5-21"><a></a>team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsScored'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsScored'</span>]</span>
-<span id="cb5-22"><a></a>team_points[<span class="st">'TotalGoalsConceded'</span>] <span class="op">=</span> team_points[<span class="st">'HomeGoalsConceded'</span>] <span class="op">+</span> team_points[<span class="st">'AwayGoalsConceded'</span>]</span>
-<span id="cb5-23"><a></a></span>
-<span id="cb5-24"><a></a><span class="co"># Calculate goal difference</span></span>
-<span id="cb5-25"><a></a>team_points[<span class="st">'GoalDifference'</span>] <span class="op">=</span> team_points[<span class="st">'TotalGoalsScored'</span>] <span class="op">-</span> team_points[<span class="st">'TotalGoalsConceded'</span>]</span>
-<span id="cb5-26"><a></a></span>
-<span id="cb5-27"><a></a><span class="co"># Sort team_points DataFrame based on TotalPoints and GoalDifference</span></span>
-<span id="cb5-28"><a></a>team_points <span class="op">=</span> team_points.sort_values(by <span class="op">=</span> [<span class="st">'TotalPoints'</span>, <span class="st">'GoalDifference'</span>], ascending <span class="op">=</span> [<span class="va">False</span>, <span class="va">False</span>])</span>
-<span id="cb5-29"><a></a></span>
-<span id="cb5-30"><a></a><span class="co"># Create ranking DataFrame</span></span>
-<span id="cb5-31"><a></a>ht_ranking <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb5-32"><a></a>    <span class="st">'Team'</span>: team_points[<span class="st">'HomeTeam'</span>],  <span class="co"># You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging</span></span>
-<span id="cb5-33"><a></a>    <span class="st">'Points'</span>: team_points[<span class="st">'TotalPoints'</span>],</span>
-<span id="cb5-34"><a></a>    <span class="st">'GoalDifference'</span>: team_points[<span class="st">'GoalDifference'</span>],</span>
-<span id="cb5-35"><a></a>    <span class="st">'Ranking'</span>: <span class="bu">range</span>(<span class="dv">1</span>, <span class="bu">len</span>(team_points) <span class="op">+</span> <span class="dv">1</span>)</span>
-<span id="cb5-36"><a></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
+<!-- ```{python}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Official Rankings"
+# Aggregate goals scored and conceded for each team
+home_goals_scored = df.groupby('HomeTeam')['FTHG'].sum().reset_index()
+home_goals_conceded = df.groupby('HomeTeam')['FTAG'].sum().reset_index()
+away_goals_scored = df.groupby('AwayTeam')['FTAG'].sum().reset_index()
+away_goals_conceded = df.groupby('AwayTeam')['FTHG'].sum().reset_index()
+
+# Merge home and away goals scored and conceded with team_points
+team_points = pd.merge(team_points, home_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, home_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, away_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+team_points = pd.merge(team_points, away_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+
+# Rename columns during merge
+team_points.rename(columns={'FTHG_x': 'HomeGoalsScored', 'FTAG_x': 'HomeGoalsConceded',
+                            'FTAG_y': 'AwayGoalsScored', 'FTHG_y': 'AwayGoalsConceded'}, inplace = True)
+
+# Fill NaN values with 0
+team_points.fillna(0, inplace = True)
+
+# Calculate total goals scored and conceded
+team_points['TotalGoalsScored'] = team_points['HomeGoalsScored'] + team_points['AwayGoalsScored']
+team_points['TotalGoalsConceded'] = team_points['HomeGoalsConceded'] + team_points['AwayGoalsConceded']
+
+# Calculate goal difference
+team_points['GoalDifference'] = team_points['TotalGoalsScored'] - team_points['TotalGoalsConceded']
+
+# Sort team_points DataFrame based on TotalPoints and GoalDifference
+team_points = team_points.sort_values(by = ['TotalPoints', 'GoalDifference'], ascending = [False, False])
+
+# Create ranking DataFrame
+ft_ranking = pd.DataFrame({
+    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Points': team_points['TotalPoints'],
+    'GoalDifference': team_points['GoalDifference'],
+    'Ranking': range(1, len(team_points) + 1)
+})
+``` -->
+<!-- ```{python}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Half Time Results"
+# Import libraries
+import pandas as pd
+
+# Load the dataset
+df = pd.read_csv('data/soccer21-22.csv')
+
+# Function to determine the winner based on points
+def calculate_points(row):
+    if row['HTR'] == 'H':
+        return 3
+    elif row['HTR'] == 'D':
+        return 1
+    else:
+        return 0
+
+# Apply the function to calculate points for each match
+df['HomePoints'] = df.apply(lambda row: calculate_points(row), axis = 1)
+df['AwayPoints'] = df.apply(lambda row: 3 - calculate_points(row) if row['HTR'] != 'D' else 1, axis = 1)
+
+# Aggregate points for each team
+home_points = df.groupby('HomeTeam')['HomePoints'].sum().reset_index()
+away_points = df.groupby('AwayTeam')['AwayPoints'].sum().reset_index()
+
+# Combine home and away points
+team_points = pd.merge(home_points, away_points, how = 'outer', left_on = 'HomeTeam', right_on = 'AwayTeam')
+team_points['TotalPoints'] = team_points['HomePoints'] + team_points['AwayPoints']
+
+# Sort team_points DataFrame based on TotalPoints
+team_points = team_points.sort_values(by = 'TotalPoints', ascending = False)
+
+# Create ranking DataFrame
+ht_ranking = pd.DataFrame({
+    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Points': team_points['TotalPoints'],
+    'Ranking': range(1, len(team_points) + 1)
+})
+```
+
+
+<!-- ```{python}
+#| echo: true
+#| code-fold: true
+#| code-summary: "Repeated Half Time Results"
+# Aggregate goals scored and conceded for each team
+home_goals_scored = df.groupby('HomeTeam')['HTHG'].sum().reset_index()
+home_goals_conceded = df.groupby('HomeTeam')['HTAG'].sum().reset_index()
+away_goals_scored = df.groupby('AwayTeam')['HTAG'].sum().reset_index()
+away_goals_conceded = df.groupby('AwayTeam')['HTHG'].sum().reset_index()
+
+# Merge home and away goals scored and conceded with team_points
+team_points = pd.merge(team_points, home_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, home_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'HomeTeam')
+team_points = pd.merge(team_points, away_goals_scored, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+team_points = pd.merge(team_points, away_goals_conceded, how = 'left', left_on = 'HomeTeam', right_on = 'AwayTeam')
+
+# Rename columns during merge
+team_points.rename(columns={'HTHG_x': 'HomeGoalsScored', 'HTAG_x': 'HomeGoalsConceded',
+                            'HTAG_y': 'AwayGoalsScored', 'HTHG_y': 'AwayGoalsConceded'}, inplace = True)
+
+# Fill NaN values with 0
+team_points.fillna(0, inplace = True)
+
+# Calculate total goals scored and conceded
+team_points['TotalGoalsScored'] = team_points['HomeGoalsScored'] + team_points['AwayGoalsScored']
+team_points['TotalGoalsConceded'] = team_points['HomeGoalsConceded'] + team_points['AwayGoalsConceded']
+
+# Calculate goal difference
+team_points['GoalDifference'] = team_points['TotalGoalsScored'] - team_points['TotalGoalsConceded']
+
+# Sort team_points DataFrame based on TotalPoints and GoalDifference
+team_points = team_points.sort_values(by = ['TotalPoints', 'GoalDifference'], ascending = [False, False])
+
+# Create ranking DataFrame
+ht_ranking = pd.DataFrame({
+    'Team': team_points['HomeTeam'],  # You can choose 'HomeTeam' or 'AwayTeam' because they are the same after merging
+    'Points': team_points['TotalPoints'],
+    'GoalDifference': team_points['GoalDifference'],
+    'Ranking': range(1, len(team_points) + 1)
+})
+``` -->
 </section>
 <section id="plots" class="slide level2">
 <h2>Plots</h2>
-</section>
-<section id="tables" class="slide level2">
-<h2>Tables</h2>
-<p>If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,</p>
-</section>
-<section id="math-expressions" class="slide level2 smaller scrollable">
-<h2>Math Expressions</h2>
-<p>You can write LaTeX math expressions inside a pair of dollar signs, e.g.&nbsp;$\alpha+\beta$ renders <span class="math inline">\(\alpha + \beta\)</span>. You can use the display style with double dollar signs:</p>
-<pre><code>$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$</code></pre>
-<p><span class="math display">\[
-\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
-\]</span></p>
-<p>Limitations:</p>
-<ol type="1">
-<li><p>The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting <code>$$</code> must appear in the very beginning of a line, followed immediately by a non-space character, and the ending <code>$$</code> must be at the end of a line, led by a non-space character;</p></li>
-<li><p>There should not be spaces after the opening <code>$</code> or before the closing <code>$</code>.</p></li>
-</ol>
+<div class="panel-tabset">
+<ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Full-Time</a></li><li><a href="#tabset-3-2">Half-Time</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/fifa1.png" class="nostretch quarto-figure quarto-figure-center" width="700"></p>
+</figure>
+</div>
+</div>
+<div id="tabset-3-2">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/fifa2.png" class="nostretch quarto-figure quarto-figure-center" width="700"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section></section>
-<section>
-<section id="wrap-up" class="title-slide slide level1 center">
-<h1>Wrap up</h1>
+<section id="discussion" class="title-slide slide level1 center">
+<h1>Discussion</h1>
+<p>Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.</p>
+<!-- ## Math Expressions {.smaller}
 
+You can write LaTeX math expressions inside a pair of dollar signs, e.g. \$\\alpha+\\beta\$ renders $\alpha + \beta$. You can use the display style with double dollar signs:
+
+```         
+$$\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i$$
+```
+
+$$
+\bar{X}=\frac{1}{n}\sum_{i=1}^nX_i
+$$
+
+Limitations:
+
+1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
+
+2.  There should not be spaces after the opening `$` or before the closing `$`. -->
 </section>
-<section id="feeling-adventurous" class="slide level2">
-<h2>Feeling adventurous?</h2>
-<ul>
-<li><p>You are welcomed to use the default styling of the slides. In fact, that’s what I expect majority of you will do. You will differentiate yourself with the content of your presentation.</p></li>
-<li><p>But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.</p></li>
-</ul>
+
+<section id="section-1" class="title-slide slide level1 center">
+<h1></h1>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/suui.gif" class="quarto-figure quarto-figure-center" width="30000"></p>
+</figure>
+</div>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
 </div>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
