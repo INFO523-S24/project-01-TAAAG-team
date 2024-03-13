@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.538">
+<meta name="generator" content="quarto-1.4.549">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -214,19 +214,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Evan Gower’s work on Kaggle has made it possible to obtain statistics from 380 matches, giving us a detailed glimpse at the English Premier League season of 2021–2022. Along with comprehensive statistics for both home and away sides, such as goals, shots, fouls, and cards, it also provides important game information such team names, match dates, and referees. This dataset, which contains data on halftime performance as well as full-time results, is an invaluable resource for anyone wishing to examine the factors that affect football match outcomes, from individual player affects to team plans.</p>
-</section>
-<section id="question-1" class="level2">
-<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p>What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?</p>
-<section id="introduction-1" class="level3">
-<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
-<p>The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team’s eventual success or failure.</p>
-</section>
-<section id="approach" class="level3">
-<h3 class="anchored" data-anchor-id="approach">Approach</h3>
-<p>First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team’s outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.</p>
-<p><strong>Data Preparation and Pre-processing</strong> We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called “Result,” where a “1” denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.</p>
-<div id="5237353c" class="cell" data-execution_count="1">
+<div id="fb2f3336" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Importing Dataset</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
@@ -258,8 +248,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluating the model</span></span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>accuracy <span class="op">=</span> accuracy_score(y_test, y_pred)</span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>cm <span class="op">=</span> confusion_matrix(y_test, y_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-<div id="bcea8efe" class="cell" data-execution_count="2">
+</section>
+<section id="question-1" class="level2">
+<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
+<p>What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?</p>
+<section id="introduction-1" class="level3">
+<h3 class="anchored" data-anchor-id="introduction-1">Introduction</h3>
+<p>The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team’s eventual success or failure.</p>
+</section>
+<section id="approach" class="level3">
+<h3 class="anchored" data-anchor-id="approach">Approach</h3>
+<p>First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team’s outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.</p>
+<p><strong>Data Preparation and Pre-processing</strong> We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called “Result,” where a “1” denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.</p>
+<div id="dcb2dec0" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Plot 1: Feature importance visualization</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 1: Feature importance visualization</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>coefficients <span class="op">=</span> pd.DataFrame(model.coef_[<span class="dv">0</span>], X.columns, columns<span class="op">=</span>[<span class="st">'Coefficient'</span>]).sort_values(by<span class="op">=</span><span class="st">'Coefficient'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
@@ -268,10 +273,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Coefficient Value'</span>)</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'In-game Metrics'</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-3-output-1.png" width="816" height="669" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-3-output-1.png" width="817" height="671" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -279,7 +285,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Feature Importance Visualization by Logistic Regression</strong></p>
 <p>A positive coefficient value (bar extending to the right) suggests that higher values of the corresponding metric increase the likelihood of the home team winning. For instance, a positive coefficient for <code>Number of shots on Target by Home Team (HTS)</code> indicates that the home side has a greater chance of winning if they have more shoots on target.</p>
 <p>On the other hand, a negative coefficient value (bar extending to the left) indicates that the probability of the home side winning is decreased at greater levels of that statistic. For example, if <code>Number of redcards recieved Home Team (HR)</code> has a negative coefficient, it means that the home team’s chances of winning are likely to be lowered by committing more red cards received.</p>
-<div id="eebbf502" class="cell" data-execution_count="3">
+<div id="4bd3edb3" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Plot 2: Confusion Matrix</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot 2: Confusion Matrix</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sns.heatmap(cm, annot<span class="op">=</span><span class="va">True</span>, fmt<span class="op">=</span><span class="st">'d'</span>, cmap<span class="op">=</span><span class="st">'Blues'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Confusion Matrix for Home Team Win Prediction'</span>)</span>
@@ -289,10 +297,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Print accuracy</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Model Accuracy: </span><span class="sc">{</span>accuracy<span class="sc">:.2f}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-4-output-1.png" width="543" height="447" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-4-output-1.png" width="547" height="449" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -303,7 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Confusion Matrix for Home Team Win Prediction</strong></p>
 <p>This chart shows how well the model guessed if the home team would win a soccer game. It’s like a report card for the model’s predictions. For example, if the model guessed that the home team wouldn’t win (maybe it thought the game would be a draw or the away team would win), and that was correct, that count goes in the top left corner. If the model thought the home team wouldn’t win, but they actually did, that count goes in the bottom left corner.</p>
 <p>On the other hand, if the model predicted a home win and was right, that goes in the bottom right corner. But if it predicted a home win and was wrong, that goes in the top right corner.</p>
-<div id="0f7dae58" class="cell" data-execution_count="4">
+<div id="60b77420" class="cell" data-execution_count="4">
+<details class="code-fold">
+<summary>Heat Map</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the target variable - Home win (1) or not (0)</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'HomeWin'</span>] <span class="op">=</span> df[<span class="st">'FTR'</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="op">==</span> <span class="st">'H'</span> <span class="cf">else</span> <span class="dv">0</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -318,10 +329,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, fmt<span class="op">=</span><span class="st">".2f"</span>)</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Feature Correlation Heatmap"</span>)</span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-5-output-1.png" width="604" height="504" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="611" height="505" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -415,7 +427,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"ticks"</span>)</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'Points'</span>], color<span class="op">=</span>[team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]],alpha<span class="op">=</span><span class="fl">0.5</span>,width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> plt.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'Points'</span>], color<span class="op">=</span>[team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]],alpha<span class="op">=</span><span class="dv">1</span>,width<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Full-Time Rankings Based on Points'</span>)</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Team'</span>)</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Total Points'</span>)</span>
@@ -510,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>sns.set_style(<span class="st">"whitegrid"</span>)</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize <span class="op">=</span> (<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'GoalDifference'</span>], color <span class="op">=</span> [team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]], alpha<span class="op">=</span><span class="fl">0.5</span>, width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>bars <span class="op">=</span> ax.bar(ft_ranking[<span class="st">'Team'</span>], ft_ranking[<span class="st">'GoalDifference'</span>], color <span class="op">=</span> [team_colors.get(team, <span class="st">'gray'</span>) <span class="cf">for</span> team <span class="kw">in</span> ft_ranking[<span class="st">'Team'</span>]], alpha<span class="op">=</span><span class="dv">1</span>, width<span class="op">=</span><span class="fl">0.5</span>)</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Bar Plot of Goal Difference for Teams'</span>)</span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Team'</span>)</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Goal Difference'</span>)</span>
@@ -552,7 +564,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 17         Watford      28       20</code></pre>
 </div>
 </div>
-<div id="08632316" class="cell" data-execution_count="11">
+<div id="60638098" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -587,7 +599,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 19         Watford      28             -19       20</code></pre>
 </div>
 </div>
-<div id="f1617d5a" class="cell" data-execution_count="13">
+<div id="be06b17a" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -775,7 +787,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {

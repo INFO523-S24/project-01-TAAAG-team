@@ -3,6 +3,7 @@ title: "Premier League Performance Metrics and Results: A Dynamic Analysis"
 subtitle: "INFO 523 - Spring 2023 - Project 1"
 author: "TAAAG Team- Tejas Bhawari, Gabriel Geffen, Ayesha Khatun, Alyssa Nether, Akash Srinivasan"
 format: html
+code-fold: true
 editor: visual
 jupyter: python3
 ---
@@ -15,22 +16,9 @@ This study explores how in-game data, like as shots on goal, fouls, and cards, a
 
 Evan Gower's work on Kaggle has made it possible to obtain statistics from 380 matches, giving us a detailed glimpse at the English Premier League season of 2021–2022. Along with comprehensive statistics for both home and away sides, such as goals, shots, fouls, and cards, it also provides important game information such team names, match dates, and referees. This dataset, which contains data on halftime performance as well as full-time results, is an invaluable resource for anyone wishing to examine the factors that affect football match outcomes, from individual player affects to team plans.
 
-## Question 1
-
-What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?
-
-### Introduction
-
-The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team's eventual success or failure.
-
-### Approach
-
-First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team's outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.
-
-**Data Preparation and Pre-processing** 
-We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called "Result," where a "1" denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.
-
 ```{python, message=FALSE, warning=FALSE, echo=FALSE}
+#| code-summary: "Importing Dataset"
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -64,7 +52,25 @@ accuracy = accuracy_score(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred)
 ```
 
+
+## Question 1
+
+What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?
+
+### Introduction
+
+The first query explores the complex connections between in-game metrics—like shots on goal, fouls, and cards—and how those relationships affect the results of football matches. Our goal is to use these factors to investigate if they can accurately forecast match outcomes that will benefit the home team or the away team. This question is especially fascinating since it addresses fundamental football dynamics and provides information on how different gameplay elements affect a team's eventual success or failure.
+
+### Approach
+
+First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team's outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.
+
+**Data Preparation and Pre-processing** 
+We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called "Result," where a "1" denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.
+
+
 ```{python, message=FALSE, warning=FALSE, echo=FALSE}
+#| code-summary: "Plot 1: Feature importance visualization"
 # Plot 1: Feature importance visualization
 coefficients = pd.DataFrame(model.coef_[0], X.columns, columns=['Coefficient']).sort_values(by='Coefficient', ascending=False)
 plt.figure(figsize=(10, 8))
@@ -82,6 +88,7 @@ A positive coefficient value (bar extending to the right) suggests that higher v
 On the other hand, a negative coefficient value (bar extending to the left) indicates that the probability of the home side winning is decreased at greater levels of that statistic. For example, if `Number of redcards recieved Home Team (HR)` has a negative coefficient, it means that the home team's chances of winning are likely to be lowered by committing more red cards received.
 
 ```{python, message=FALSE, warning=FALSE}
+#| code-summary: "Plot 2: Confusion Matrix"
 # Plot 2: Confusion Matrix
 sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
 plt.title('Confusion Matrix for Home Team Win Prediction')
@@ -100,6 +107,7 @@ This chart shows how well the model guessed if the home team would win a soccer 
 On the other hand, if the model predicted a home win and was right, that goes in the bottom right corner. But if it predicted a home win and was wrong, that goes in the top right corner.
 
 ```{python}
+#| code-summary: "Heat Map"
 # Define the target variable - Home win (1) or not (0)
 df['HomeWin'] = df['FTR'].apply(lambda x: 1 if x == 'H' else 0)
 
@@ -220,7 +228,7 @@ team_colors = {
 sns.set_style("ticks")
 
 plt.figure(figsize=(12, 6))
-bars = plt.bar(ft_ranking['Team'], ft_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']],alpha=0.5,width=0.5)
+bars = plt.bar(ft_ranking['Team'], ft_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ft_ranking['Team']],alpha=1,width=0.5)
 plt.title('Full-Time Rankings Based on Points')
 plt.xlabel('Team')
 plt.ylabel('Total Points')
@@ -292,7 +300,7 @@ print(ft_ranking)
 sns.set_style("whitegrid")
 
 fig, ax = plt.subplots(figsize = (12, 6))
-bars = ax.bar(ft_ranking['Team'], ft_ranking['GoalDifference'], color = [team_colors.get(team, 'gray') for team in ft_ranking['Team']], alpha=0.5, width=0.5)
+bars = ax.bar(ft_ranking['Team'], ft_ranking['GoalDifference'], color = [team_colors.get(team, 'gray') for team in ft_ranking['Team']], alpha=1, width=0.5)
 plt.title('Bar Plot of Goal Difference for Teams')
 plt.xlabel('Team')
 plt.ylabel('Goal Difference')
@@ -356,7 +364,7 @@ print(ht_ranking)
 sns.set_style("ticks")
 
 plt.figure(figsize=(12, 6))
-bars = plt.bar(ht_ranking['Team'], ht_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=0.5, width=0.5)
+bars = plt.bar(ht_ranking['Team'], ht_ranking['Points'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=1, width=0.5)
 plt.title('Half-Time Rankings Based on Points')
 plt.xlabel('Team')
 plt.ylabel('Total Points')
@@ -425,7 +433,7 @@ sns.set_style("whitegrid")
 
 # Create the primary axis
 fig, ax1 = plt.subplots(figsize=(12, 6))
-bars = ax1.bar(ht_ranking['Team'], ht_ranking['GoalDifference'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=0.5, width=0.5)
+bars = ax1.bar(ht_ranking['Team'], ht_ranking['GoalDifference'], color=[team_colors.get(team, 'gray') for team in ht_ranking['Team']], alpha=1, width=0.5)
 ax1.set_title('Bar Plot of Goal Difference for Teams (Half-Time)')
 ax1.set_xlabel('Team')
 ax1.set_ylabel('Goal Difference')

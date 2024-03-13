@@ -17,11 +17,13 @@ format:
     code-tools: true 
     code-block-bg: true
     code-block-border-left: "blue"
-    theme:  ['data/customtheming.scss']
+    theme:  [white, 'data/customtheming.scss']
   
 editor: visual
 jupyter: python3
 execute:
+  warning: false
+  message: false
   echo: false
 ---
 
@@ -158,7 +160,7 @@ We choose relevant attributes such as shots, shots on goal, fouls committed, and
 
 ```{python}
 #| echo: true
-#| code-fold: true
+#| code-fold: false
 #| code-summary: "Data Prep & Pre-processing"
 # Import libraries
 import pandas as pd
@@ -198,7 +200,7 @@ ft_ranking = pd.DataFrame({
 })
 ```
 
-```{python}
+<!-- ```{python}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Official Rankings"
@@ -238,9 +240,9 @@ ft_ranking = pd.DataFrame({
     'GoalDifference': team_points['GoalDifference'],
     'Ranking': range(1, len(team_points) + 1)
 })
-```
+``` -->
 
-```{python}
+<!-- ```{python}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Half Time Results"
@@ -283,7 +285,7 @@ ht_ranking = pd.DataFrame({
 ```
 
 
-```{python}
+<!-- ```{python}
 #| echo: true
 #| code-fold: true
 #| code-summary: "Repeated Half Time Results"
@@ -323,23 +325,23 @@ ht_ranking = pd.DataFrame({
     'GoalDifference': team_points['GoalDifference'],
     'Ranking': range(1, len(team_points) + 1)
 })
-```
+``` --> 
 
 ## Plots
+::: panel-tabset
 
-```{python, message=FALSE, warning=FALSE, echo=FALSE}
+###### Full-Time
+![](images/fifa1.png){.nostretch fig-align="center" width="700px"}
 
-```
+###### Half-Time
+![](images/fifa2.png){.nostretch fig-align="center" width="700px"}
 
-## Tables
+:::
 
-If you want to generate a table, make sure it is in the HTML format (instead of Markdown or other formats), e.g.,
+# Discussion
+Overall, the insights derived from this analysis can offer valuable guidance for teams undergoing significant shifts in rankings. By identifying potential areas for improvement, such as halftime strategies, conditioning, or tactical adjustments, teams can make informed decisions to enhance their performance and competitiveness in professional football leagues.
 
-```{python}
-#penguins.head().to_html()
-```
-
-## Math Expressions {.smaller}
+<!-- ## Math Expressions {.smaller}
 
 You can write LaTeX math expressions inside a pair of dollar signs, e.g. \$\\alpha+\\beta\$ renders $\alpha + \beta$. You can use the display style with double dollar signs:
 
@@ -355,12 +357,8 @@ Limitations:
 
 1.  The source code of a LaTeX math expression must be in one line, unless it is inside a pair of double dollar signs, in which case the starting `$$` must appear in the very beginning of a line, followed immediately by a non-space character, and the ending `$$` must be at the end of a line, led by a non-space character;
 
-2.  There should not be spaces after the opening `$` or before the closing `$`.
+2.  There should not be spaces after the opening `$` or before the closing `$`. -->
 
-# Wrap up
+#
 
-## Feeling adventurous?
-
--   You are welcomed to use the default styling of the slides. In fact, that's what I expect majority of you will do. You will differentiate yourself with the content of your presentation.
-
--   But some of you might want to play around with slide styling. Some solutions for this can be found at https://quarto.org/docs/presentations/revealjs.
+![](images/suui.gif){.nostretch fig-align="center" width="30000px"}
