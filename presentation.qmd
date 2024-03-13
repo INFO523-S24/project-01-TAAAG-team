@@ -193,7 +193,7 @@ ft_ranking = pd.DataFrame({
 
 ###### Half-Time
 
-![](images/fifa2.png){.nostretch fig-align="center" width="700px"}
+![](images/fifa2_v2.png){.nostretch fig-align="center" width="700px"}
 :::
 
 # Discussion
