@@ -52,7 +52,6 @@ accuracy = accuracy_score(y_test, y_pred)
 cm = confusion_matrix(y_test, y_pred)
 ```
 
-
 ## Question 1
 
 What is the connection between in-game metrics such as shots on goal, fouls committed, and cards received, and the outcomes of soccer matches? Can these metrics help in creating a predictive model to forecast whether the match results will favor the home or away team?
@@ -65,9 +64,7 @@ The first query explores the complex connections between in-game metrics—like 
 
 First, we do a logistic regression analysis to see how in-game metrics might be used to predict a home team's outcome. We choose relevant attributes such as shots, shots on goal, fouls committed, and cards both the home and away teams have earned. To guarantee the robustness of the model, the dataset is divided into training and testing sets. The logistic regression model is then trained, and its effectiveness is assessed using an accuracy score and a confusion matrix. We are able to measure the effect of every in-game indicator on the probability that the home team will win thanks to this scientific approach.
 
-**Data Preparation and Pre-processing** 
-We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called "Result," where a "1" denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.
-
+**Data Preparation and Pre-processing** We begin the data preparation step by loading the entire football dataset, which includes a wealth of match information from the 2021–2022 English Premier League season. We convert the full-time result (FTR) into a binary target variable called "Result," where a "1" denotes a home team win, to make our analysis easier. Then, we choose crucial elements that could have an impact on how the game turns out, like shots, shots on goal, fouls, and cards both the home and away teams receive. We then divided the dataset into training and testing sets, which prepared the stage for creating and assessing our prediction model. The data is ready for perceptive examination thanks to this careful preparation.
 
 ```{python, message=FALSE, warning=FALSE, echo=FALSE}
 #| code-summary: "Plot 1: Feature importance visualization"
@@ -125,8 +122,7 @@ plt.show()
 
 ```
 
-**Feature Correlation Heatmap** 
-This heatmap visualizes the correlation between different features (metrics) from the soccer dataset. Each cell in the heatmap shows the correlation coefficient between two features, ranging from -1 to 1. A correlation coefficient close to 1 implies a strong positive relationship (as one feature increases, the other tends to increase), close to -1 implies a strong negative relationship (as one feature increases, the other tends to decrease), and around 0 implies no linear relationship.
+**Feature Correlation Heatmap** This heatmap visualizes the correlation between different features (metrics) from the soccer dataset. Each cell in the heatmap shows the correlation coefficient between two features, ranging from -1 to 1. A correlation coefficient close to 1 implies a strong positive relationship (as one feature increases, the other tends to increase), close to -1 implies a strong negative relationship (as one feature increases, the other tends to decrease), and around 0 implies no linear relationship.
 
 For example, if 'HS' (Home Shots) and 'HST' (Home Shots on Target) have a correlation coefficient close to 1, it means that when the home team takes more shots, they also tend to have more shots on target. Conversely, if 'HS' and 'AF' (Away Fouls) have a correlation coefficient close to -1, it suggests that as the home team takes more shots, the away team tends to commit fewer fouls, indicating a possible defensive strategy or play style difference when under pressure.
 
@@ -142,10 +138,10 @@ In question two, we analyze a hypothetical scenarios to offer practical insights
 
 Initially, we will employ traditional ranking methods based on full-time match results. Per the European Premier League, rank will be determined based on points per game, where a win is three points, a draw is one point, and a loss is zero points. When necessary, we will employ goal difference and total goals scored to determine team standings. Subsequently, we will simulate halftime outcomes for each match and recalculate team rankings using the same criteria applied for full-time results. An analysis will be conducted in two parts: first, comparing the disparities between the rankings derived from full-time and halftime outcomes; and secondly, focusing on the performance of the top three and bottom three teams in both scenarios to assess the influence of halftime outcomes on promotion, relegation, and the overall league championship. Through this comprehensive approach, we aim to provide insights into the dynamics of soccer match outcomes and their implications for team standings and league competitiveness.
 
-**Data Preparation and Pre-processing** 
-Data preparation for the analysis of the 2021-2022 European Premier League (EPL) season began with the calculation of points awarded to home and away teams based on match outcomes, adhering to the EPL's point allocation system. Subsequently, the dataset was organized through grouping operations, which revealed instances of point ties among teams. To address this, a feature engineering process was employed to derive the goal difference metric, representing the difference between goals scored and goals conceded by each team. This involved aggregating match statistics to determine the net goals accumulated by each team throughout the season. By iteratively refining the dataset through these preprocessing steps, we ensured the readiness of the data for subsequent analysis, laying the groundwork for examining match outcomes and team dynamics during the 2021-2022 EPL season.
+**Data Preparation and Pre-processing** Data preparation for the analysis of the 2021-2022 European Premier League (EPL) season began with the calculation of points awarded to home and away teams based on match outcomes, adhering to the EPL's point allocation system. Subsequently, the dataset was organized through grouping operations, which revealed instances of point ties among teams. To address this, a feature engineering process was employed to derive the goal difference metric, representing the difference between goals scored and goals conceded by each team. This involved aggregating match statistics to determine the net goals accumulated by each team throughout the season. By iteratively refining the dataset through these preprocessing steps, we ensured the readiness of the data for subsequent analysis, laying the groundwork for examining match outcomes and team dynamics during the 2021-2022 EPL season.
 
 With an overview of the preparation and pre-processing steps, we begin by calculating team rankings using full time results. The code below shows the general structure that is used to calculate team rankings using the win/draw/loss point systems. Although the code works for both full time results and half time results, the instance below illustrates an example for full time results.
+
 ```{python}
 #| label: calculate-full-time-rankings-based-on-points
 #| code-fold: true
@@ -219,6 +215,7 @@ team_colors = {
 }
 
 ```
+
 ```{python}
 #| label: Plot-the-table-as-a-bar-plot-for-visualization
 #| code-fold: true
@@ -310,7 +307,7 @@ plt.show()
 
 ```
 
-With the point system and goal difference, we no longer have ties between any teams and have the official ranking of teams in the 2021-2022 EPL Season. Now we repeat the process again with the half time results before beginning our discussion. The below table and plot show the half-time result ranking. 
+With the point system and goal difference, we no longer have ties between any teams and have the official ranking of teams in the 2021-2022 EPL Season. Now we repeat the process again with the half time results before beginning our discussion. The below table and plot show the half-time result ranking.
 
 ```{python}
 #| label: calculate-half-time-rankings-based-on-points
@@ -440,7 +437,7 @@ ax1.set_ylabel('Goal Difference')
 ax1.tick_params(axis='x', rotation=45 )
 
 plt.show() 
-``` 
+```
 
 ### Discussion
 
@@ -454,9 +451,6 @@ Overall, the insights derived from this analysis can offer valuable guidance for
 
 ## References
 
-Pandas documentation used to assist with joining dataframes and resetting index.
-https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html
-https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html
+Pandas documentation used to assist with joining dataframes and resetting index. https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html
 
-We also checked the official Premier League website to determine how rankings are calculated.
-https://www.premierleague.com/premier-league-explained 
+We also checked the official Premier League website to determine how rankings are calculated. https://www.premierleague.com/premier-league-explained
