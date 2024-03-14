@@ -58,6 +58,7 @@ import_data = pd.read_csv("data/soccer21-22.csv")
 
 
 ## Ever wondered how soccer game events, from shots to fouls, influence the score?
+
 ![](images/IntoPic.jpg){ width=400px }
 
 # Question 1
